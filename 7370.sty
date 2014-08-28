@@ -4,6 +4,33 @@
 \newcommand{\dC}{\mathbf{C}}
 \newcommand{\dF}{\mathbf{F}}
 \newcommand{\dN}{\mathbf{N}}
+\newcommand{\dP}{\mathbf{P}}
 \newcommand{\dQ}{\mathbf{Q}}
 \newcommand{\dR}{\mathbf{R}}
 \newcommand{\dZ}{\mathbf{Z}}
+
+% theorems
+\newtheorem{conjecture}[subsubsection]{Conjecture}
+\newtheorem{corollary}[subsubsection]{Corollary}
+\newtheorem{lemma}[subsubsection]{Lemma}
+\newtheorem{theorem}[subsubsection]{Theorem}
+\newtheorem{definition}[subsubsection]{Definition}
+\theoremstyle{definition} % contents are not italic
+\declaretheorem[sibling=subsubsection, qed=$\triangleright$]{example}
+
+% operators
+\DeclareMathOperator{\galois}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\h}{H}
+\DeclareMathOperator{\height}{ht}
+\DeclareMathOperator{\order}{ord}
+\DeclareMathOperator{\rank}{rk}
+\DeclareMathOperator{\selmer}{Sel}
+\DeclareMathOperator{\SL}{SL}
+
+\newcommand{\frobenius}{\mathrm{fr}}
+
+\DeclareFontFamily{U}{wncy}{}
+\DeclareFontShape{U}{wncy}{m}{n}{<->wncyr10}{}
+\DeclareSymbolFont{mcy}{U}{wncy}{m}{n}
+\DeclareMathSymbol{\sha}{\mathord}{mcy}{"58} % Tate-Shafarevich groups

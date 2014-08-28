@@ -1,0 +1,283 @@
+% !TEX root = 7370.tex
+
+\section{Introduction}
+
+
+
+
+
+\subsection{Disclaimer}
+
+These notes originated in the course MATH 7370: Ranks of elliptic curves, 
+taught by Ravi Ramakrishna at Cornell University. The notes are not necessarily 
+an exact reflection of the material as it was covered in class. 
+
+
+
+
+
+\subsection{Motivation}
+
+Our main references will be the preprints 
+\cite{
+  bhargava-shankar-1,
+  bhargava-shankar-2,
+  bhargava-shankar-3,
+  bhargava-shankar-4,
+  bhargava-skinner,
+  bhargava-skinner-zhang}. 
+
+The fundamental question is how to solve general diophantine equations 
+$f_1(x_1,\dots,x_m) = \cdots = f_n(x_1,\dots,x_m) = 0$ for the 
+$f_i$ polynomials over $\dQ$ or $\dZ$ and the $x_i$ in $\dQ$ or $\dZ$. This is 
+very hard, so we'll focus on curves. This comes down to solving equations 
+$f(x,y)=0$ where $f\in \dZ[x,y]$ or $\dQ[x,y]$. Or we could homogenize and 
+consider points on the associated projective curve. 
+
+\begin{example}
+Consider the equation $x^2+y^2=1$. There is one obvious solution $(0,1)$. From 
+this we get all the other solutions by looking at lines $y=m x+1$ with 
+$m\in \dQ$. The equation $x^2+(m x+1)^2=1$ already has one rational solution, 
+so the other must be rational, and all rational solutions to $x^2+y^2=1$ are of 
+this form. So solutions to $x^2+y^2=1$ are in bijection with $\dQ$. More 
+geometrically, any nice (that is, smooth, proper and geometrically integral) 
+curve $C_{/\dQ}$ that has one rational point is isomorphic (over $\dQ$) to 
+$\dP^1_{/\dQ}$. 
+\end{example}
+
+Any smooth projective curve $C_{/\dQ}$ is the homogeneous zero-set of an 
+equation $f(x,y,z)=0$. The set $C(\dC)$ is naturally a compact Riemann surface 
+of some genus $g$. 
+
+\begin{theorem}[Faltings]
+If $C_{/\dQ}$ be a curve of genus $g>1$. Then $\# C(\dQ)<\infty$. 
+\end{theorem}
+There still isn't an effective algorithm for curves of genus $\geqslant 2$ that 
+will produce the set of zeros of $f$. 
+
+We've seen that when $g=0$, either $C(\dQ)=\varnothing$ or 
+$C\simeq \dP^1$. When $g\geqslant 2$, Faltings' theorem tells us that 
+$\# C(\dQ)<\infty$. Our concern is the remaining case $g=1$. If $C_{/\dQ}$ is 
+a genus one curve and $C(\dQ)=\varnothing$, there isn't much to do. For the 
+remainder, we will concentrate on nice curves $E_{/\dQ}$ together with a chosen 
+point $0\in E(\dQ)$. Such curves are called \emph{elliptic curves}. 
+
+Let $E_{/\dQ}$ be an elliptic curve. Basic algebraic geometry involving little 
+more than Riemann-Roch shows that $E$ can be written in the form 
+$y^2=x^3+A x+B$ with $A,B\in \dZ$. Projectively, this is
+$y^2 z=x^3 + A x z^2+B z^3$. The point $(0:1:0)$ is the $0\in E(\dQ)$. 
+
+\begin{example}
+Consider the curve $y^2=x^3-9 x+9$. There are obvious solutions 
+$(1,1)$, $(3,3)$. The line through them is $y=x$. Since the cubic 
+$x^2=x^3-9 x-9$ already has two rational solutions, the third must be rational. 
+This third point is  $(-3,-3)$. In general, if $P,Q,R\in E$, we say that 
+$P+Q+R=0$ if $P,Q,R$ are the intersection points of a line and $E$ in 
+$\dP^2$. For example, one can check that 
+\begin{align*}
+  (-3,3)+(1,1) &= (\frac 9 4, -\frac 3 8) \\
+  (-3,3)+\left(\frac 9 4, -\frac 3 8\right) &= \left(\frac{57}{49},-\frac{111}{343}\right).
+\end{align*} 
+\end{example}
+
+Any elliptic curve $E_{/\dQ}$ has the canonical structure of a group variety 
+over $\dQ$. For our purposes, this means that there are regular maps 
+$m:E\times E\to E$ and $i:E\to E$ that make $E(\dC)$ with the maps induced by 
+$m,i$ an honest group with identity element $0$. But for any field 
+$F\supset \dQ$, there is an abelian group $E(F)$ which is functorial in $F$. 
+
+\begin{theorem}[Mordell-Weil]
+Let $E_{/\dQ}$ be an elliptic curve. Then $E(\dQ)$ is finitely generated. 
+\end{theorem}
+
+Thus it makes sense to define the \emph{rank} of $E$ to be 
+$\rank(E)=\rank_\dZ E(\dQ)$. Given a specific elliptic curve $E$, we might ask: 
+what are its rank and torsion? The second part is easy. In his paper 
+\cite{mazur-1977}, Mazur proved that the torsion part of $E(\dQ)$ is one of the 
+following groups:
+\begin{center}
+\begin{tabular}{rl}
+$\dZ/m$ & for $m\leqslant 10$ or $m=12$ \\
+$(\dZ/2)\oplus (\dZ/2 n)$ & for $n\leqslant 4$ 
+\end{tabular}
+\end{center}
+This paper is very beautiful, and inspired a lot of amazing mathematics. If $E$ 
+is a specific elliptic curve, it is easy to explicitly check which of these the 
+torsion subgroup of $E(\dQ)$ is. 
+
+
+
+
+
+\subsection{\texorpdfstring{$L$}{L}-functions of elliptic curves}
+
+For $p$ sufficiently large, $E_{/\dF_p}$ is an elliptic curve. Write 
+$\# E(\dF_p)=p+1-a_p$; we have the \emph{Hasse bound} $|a_p|\leqslant 2\sqrt p$. 
+
+We define the $L$-function of $E$ as 
+\[
+  L(E) = \prod_{p \text{ bad}} ? \times \prod_{p\text{ good}} \left(1-\frac{a_p}{p^s} + \frac{1}{p^{2s-1}}\right)^{-1} .
+\]
+There only finitely many bad primes (they are the ones dividing 
+the discriminant $\Delta=-(4 A^3+27 B^2)$ if $E$ is the curve 
+$y^2=x^3+A x+B$.), and the factors at the bad primes are rational functions in 
+$p^s$. Nonetheless, this is the world's most awful definition! Let's give a 
+better one. We know that 
+$E[l^n]\simeq (\dZ/l^n)^2$. This group admits an action of 
+$G_\dQ=\galois(\bar\dQ/\dQ)$, an uncountable group with a natural 
+compact, totally disconnected topology. We can paste these actions together 
+to get a representation $\rho:G_\dQ\to \GL_2(\dZ_l)$. There are conjugacy 
+classes $\frobenius_p\in G_\dQ$, and $p\nmid \Delta$, we have 
+\[
+  \rho(\frobenius_p) \sim \begin{pmatrix} \alpha_p \\ & \beta_p \end{pmatrix} .
+\]
+It turns out that 
+\[
+  1-\frac{a_p}{p^s} + \frac{1}{p^{2s-1}} = \left(1-\frac{\alpha_p}{p^s}\right)\left(1 - \frac{\beta_p}{p^s}\right) .
+\]
+The function $L(E,s)$ may not seem that complicated, but note that the zeta 
+function built from the trivial representation $G_\dQ\to \GL_1(\dC)$ is the 
+Riemann zeta function 
+\[
+  \zeta(s)=\prod_p \left(1-\frac{1}{p^s}\right)^{-1} .
+\]
+So we should expect the behavior of $L(E,s)$ to be very subtle! Most zeta 
+functions encountered in number theory come from Galois representations in this 
+manner. 
+
+\begin{conjecture}[Birch, Swinnerton-Dyer]
+Let $E_{/\dQ}$ be an elliptic curve. Then $\rank(E)=\order_{s=1} L(E,s)$. 
+\end{conjecture}
+
+In fact, Birch and Swinnerton-Dyer predicted the leading term at $s=1$ of 
+$L(E,s)$ in terms of arithmetic data attached to $E$. The conjecture implicitly 
+includes the assertion that $L(E,s)$ has a meromorphic continuation past $s=1$. 
+By the work of Wiles and his followers, we know that $E$ is modular, hence its 
+$L$-function agrees with that of a modular form. Hecke showed that modular 
+$L$-functions have such meromorphic continuations, so no problems there. 
+
+It is known that $L(E,s)$ satisfies a functional equation 
+\[
+  L(E,s) = \pm ? L(E,2-s) 
+\]
+where $?$ is easily computable. If the sign is negative, we know that 
+$L(E,1)=0$, which suggests that $\rank(E)>0$.
+
+\begin{conjecture}[Goldfeld, Katz-Sarnak]
+Let $E_{/\dQ}$ be an elliptic curve. Then 
+\[
+  \rank(E) = \begin{cases} 0 & \text{50\% of the time} \\ 1 & \text{50\% of the time.} \end{cases}
+\]
+\end{conjecture}
+
+We have to be careful about what we mean by ``50\% of the time'' as there are 
+infinitely many elliptic curves over $\dQ$. To make probabilistic statements 
+precise, we'll order elliptic curves. 
+
+
+
+
+
+\subsection{Asymptotics of rank}
+
+Given $A,B\in \dZ$ with $4 A^3+27 B^2\ne 0$, write $E_{A,B}$ for the elliptic 
+curve $y^2=x^3+A x+B$. Define its \emph{height} to be 
+$\height(E)=\max(4 |A|^3,27 |B|^2)$. It's easy to check that asymptotically, 
+about $X^{5/6}$ curves have height $\leqslant X$. Let $A(X)$ be the average 
+rank of the set of elliptic curves with height $\leqslant X$. Assuming the 
+Generalized Riemann  Hypothesis, these were the bounds on $A(X)$ prior to 
+Bhargava's work: 
+\begin{align*}
+  \limsup_{X\to \infty}  A(X) \leqslant 
+    & 2.3 && \text{\cite{brumer-1992}} \\
+    & 2.0 && \text{\cite{heath-brown-2004}} \\
+    & 1.79 && \text{\cite{young-2006}}
+\end{align*}
+Unconditionally, all that was known was the trivial bounds
+\[
+  0\leqslant \liminf_{X\to \infty} A(X) \leqslant \limsup_{X\to \infty} A(X) \leqslant \infty .
+\]
+Now, after Bhargava's work, we have
+\[
+  0.2 \leqslant \liminf_{X\to \infty} A(X) \leqslant \limsup_{X\to \infty} A(X) \leqslant 0.885 .
+\]
+We also know that $\order_{s=1} L(E,s) = \rank E(\dQ)$ at least 
+$66.43\%$ of the time, and there is a strategy to get $100\%$. Unfortunately, 
+this strategy only says things about the (conjecturally $100\%$ of) elliptic 
+curves with $\rank\leqslant 1$. 
+
+There is a folklore question: is $\rank(E)$ bounded? About 15 years ago, most 
+people thought this wasn't bounded, now, most people think it is bounded. 
+
+
+
+
+
+\subsection{Proof strategy}
+
+For any abelian group $A$, we it is trivial that
+$\rank(A)\leqslant \dim_{\dF_p}(A/p)$. We can prove that the set of elliptic 
+curves with $\dZ/p\subset E[p]$ is density zero, so it won't affect density 
+arguments. 
+
+There is an exact sequence 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E[p](\overline\dQ) \ar[r] 
+    & E(\bar\dQ) \ar[r, "p"]
+    & E(\bar\dQ) \ar[r] 
+    & 0 .
+\end{tikzcd}\]
+Take $G_\dQ$-invariants and pass to the long exact sequence in Galois 
+cohomology: 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\dQ)[p] \ar[r] 
+    & E(\dQ) \ar[r, "p"] 
+    & E(\dQ) \ar[r] 
+    & \h^1(G_\dQ,E[p]) \ar[r] 
+    & \cdots
+\end{tikzcd}\]
+Some fiddling around involving completions of $\dQ$ gives a short exact sequence 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\dQ)/p \ar[r] 
+    & \selmer_p(E) \ar[r] 
+    & \sha(E)[p] \ar[r]
+    & 0 .
+\end{tikzcd}\]
+In the 60s, Cassels discovered a nice geometric way of describing $\selmer_p E$. 
+Elements correspond to some geometric objects (a map $C\to E$), which in turn 
+correspond to a embedding $C\hookrightarrow \dP^{p-1}$ (at least if 
+$p\geqslant 3$). When $p=3$, $C$ is the zero locus of a ternary cubic form. 
+
+Ternary cubics have two invariants $I,J$. These correspond to $A$ and $B$. So 
+rather than counting elliptic curves, we can count ternary cubics (up to 
+equivalence). 
+
+The quadratic forms $x^2+y^2$ and $(u+v)^2+v^2$ are isomorphic over $\dZ$. 
+General quadratic forms $a x^2+b x y+c y^2$ over $\dZ$ have an invariant 
+$b^2-4 a c$ (invariant for action of $\SL_2(\dZ)$). Essentially, you have 
+to find a fundamental domain for the action of $\SL_2(\dZ)$ on the upper 
+half plane. It's a lot harder to find a fundamental domain for the action 
+of $\SL_3(\dZ)$ on a bigger space. 
+
+For $p\leqslant 5$, you count equivalences of forms; this is done by 
+finding a fundamental domain for the action of some arithmetic group. 
+This has been done for $p=2,3,5$. 
+
+Essentially, one counts lattice points in $G\backslash V_\dZ$. The problem 
+is, the fundamental domains can have cusps. It turns out that the 
+nonzero elements of $\selmer_p E$ appear in the ``main body'' of the 
+fundamental domain, and only $0$ appears in the cusps. 
+
+\begin{theorem}[Bhargava-Shankar]
+The average size of $\selmer_p E=p+1$ for $p=2,3,5$. 
+\end{theorem}
+
+Put $x\dim_{\dF_p} E(\dQ)/p$. It is easy to check that 
+$(p^2-p) x+2 p-p^2 \leqslant p^x$. Note that $p^x$ is $p+1$ on average. 
+It follows that on average, $\rank E\leqslant 1+\frac{1}{p(p-1)}$. 
+If we could prove this for all $p$, we get average $\leqslant 1$. Bhargava 
+and Shankar use work of the Dokchitser's to get bounds $<1$ without proving 
+that the average of $\#\selmer_p E=p+1$ for all $p$. 
