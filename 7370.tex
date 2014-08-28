@@ -1,0 +1,77 @@
+\documentclass[oneside]{article}
+
+\usepackage[
+  paperheight = 9in,
+  paperwidth  = 6in,
+  textheight  = 7.5in,
+  textwidth   = 5in,
+]{geometry}
+
+\usepackage{
+  amsmath,
+  amssymb,
+  amsthm,
+  anyfontsize, % arbitrary font size
+  bm,          % boldsymbol
+  bookmark,    % replaces (and loads) hyperref
+  fixltx2e,    % textsubscript
+  mathrsfs,    % mathscr
+  mathtools,   % allows prescript
+  microtype,   % improved looks
+  tikz-cd,     % better commutative diagrams
+  thmtools,    % custom end to example environment
+  7370,        % custom style file
+}
+\usetikzlibrary{matrix,decorations.pathreplacing}
+
+\usepackage[
+  hyperref = true,      % links to online documents
+  backend  = bibtex,    % use bibtex instead of biber
+  sorting  = nyt,       % sorts by (name, year, title)
+  style    = alphabetic % citations look like [Har77]
+]{biblatex}
+\addbibresource{7370.bib}
+
+\hypersetup{
+  colorlinks = true,
+  linkcolor  = blue,
+  urlcolor   = cyan
+}
+
+\pagestyle{myheadings}
+\markright{\hfill Ranks of elliptic curves\hfill\thepage}
+
+
+\title{Ranks of elliptic curves}
+\author{Daniel Miller and Ravi Ramakrishna}
+\date{Fall 2014}
+
+
+\begin{document}
+\fontsize{10.5}{12.6} % default is 10,12
+\selectfont
+
+\maketitle
+\tableofcontents
+
+
+
+
+
+\section{Introduction}
+
+\subsection{Disclaimer}
+
+These notes originated in the course MATH 7370: Ranks of elliptic curves, 
+taught by Ravi Ramakrishna at Cornell University. The notes are not necessarily 
+an exact reflection of the material as it was covered in class. 
+
+Some good references to start out with are \cite{bhargava-thesis-i,bhargava-thesis-ii}. 
+
+
+
+
+
+\newpage
+\printbibliography[heading=bibintoc]
+\end{document}
