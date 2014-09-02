@@ -28,11 +28,13 @@ Our main references will be the preprints
   bhargava-skinner-zhang}. 
 
 The fundamental question is how to solve general diophantine equations 
-$f_1(x_1,\dots,x_m) = \cdots = f_n(x_1,\dots,x_m) = 0$ for the 
-$f_i$ polynomials over $\dQ$ or $\dZ$ and the $x_i$ in $\dQ$ or $\dZ$. This is 
-very hard, so we'll focus on curves. This comes down to solving equations 
-$f(x,y)=0$ where $f\in \dZ[x,y]$ or $\dQ[x,y]$. Or we could homogenize and 
-consider points on the associated projective curve. 
+\[
+  f_1(x_1,\dots,x_m) = \cdots = f_n(x_1,\dots,x_m) = 0
+\]
+for the $f_i$ polynomials over $\dQ$ or $\dZ$ and the $x_i$ in $\dQ$ or $\dZ$. 
+This is very hard, so we'll focus on curves. This comes down to solving 
+equations $f(x,y)=0$ where $f\in \dZ[x,y]$ or $\dQ[x,y]$. Or we could 
+homogenize and consider points on the associated projective curve. 
 
 \begin{example}
 Consider the equation $x^2+y^2=1$. There is one obvious solution $(0,1)$. From 
@@ -275,9 +277,254 @@ fundamental domain, and only $0$ appears in the cusps.
 The average size of $\selmer_p E=p+1$ for $p=2,3,5$. 
 \end{theorem}
 
-Put $x\dim_{\dF_p} E(\dQ)/p$. It is easy to check that 
+Put $x=\dim_{\dF_p} E(\dQ)/p$. It is easy to check that 
 $(p^2-p) x+2 p-p^2 \leqslant p^x$. Note that $p^x$ is $p+1$ on average. 
 It follows that on average, $\rank E\leqslant 1+\frac{1}{p(p-1)}$. 
 If we could prove this for all $p$, we get average $\leqslant 1$. Bhargava 
 and Shankar use work of the Dokchitser's to get bounds $<1$ without proving 
 that the average of $\#\selmer_p E=p+1$ for all $p$. 
+
+
+
+
+
+Homework [due in 70 minutes]. Write down the terms you don't know. We'll make a 
+list. 
+
+
+
+
+
+\subsection{Review of the overview}
+
+Let $E_{/\dQ}$ be an elliptic curve. This is a smooth genus $1$ curve over 
+$\dQ$ of the form $y^2=x^3+A x+B$, where $A,B\in \dQ$, such that 
+\[
+  p^4\mid A\Rightarrow p^6\nmid B .
+\]
+(Basic fact: all such curves can be put in this form.)
+
+Throughout, we'll write an equation $y^2=x^3+A x+B$ to mean the subvariety of 
+$\dP^2$ cut out by the homogenization of this equation. So $E(\dQ)$ consists 
+of solutions to this equation, as well as the point ``at infinity.'' 
+
+1. $E(\dQ)$ is a finitely-generated abelian group (Mordell-Weil). 
+
+2. $E(\dQ)_\mathrm{tors}$ is ``understood'' (Mazur's list). All possible such 
+subgroups have been written down, and they exist (all contained in 
+$\dZ/m$ or $\dZ/n$ for $m,n\leqslant 15$). This is effective. Indeed, recall 
+the group law [insert standard picture]. It is given by polynomials in the 
+entries of the point in $E$. In particular, compute the polynomial 
+``multiply by $n$'' for $n\leqslant 15$. Then check if this polynomial has 
+any rational solutions. Formally, $E[n]$ will be a finite \'etale cover of 
+$\dQ$, and these can be computed with. 
+
+3. $\#E(\dQ)_\mathrm{tors}=1$ one hundred percent of the time. 
+
+Recall that the \emph{height} of $E_{A,B}:y^2 z=x^3+A x z^2+b z^3$ is 
+$\height(E_{A,B})=\max(4|A|^3,27 B^2)$. This definition is actually 
+pretty natural if you know the definition of the discriminant of $E$. 
+
+Recall that our goal is to study the average rank of $E_{/\dQ}$ with height 
+$\leqslant X$, as $X\to \infty$. That is, we are interested in the asymptotics 
+of 
+\[
+  \lim_{X\to \infty} \frac{\sum_{\height E\leqslant X} \rank(E)}{\#\{E:\height E\leqslant X\}} .
+\]
+Currently it is not known if this limit exists, but conjecturally it is $1/2$. 
+Note that $\#\{E:\height E\leqslant X\}=O(X^{1/3}\cdot X^{1/2})=O(X^{5/6})$. We 
+have to be careful, because some of these curves will be singular, but this happens 
+on a thin set, so it will not affect our calculations. 
+
+We want average data of $\dim_\dQ E(\dQ)\otimes\dQ\leqslant \dim_{\dF_p} (E(\dQ)\otimes \dF_p) = \dim_{\dF_p}(E(\dQ)/p)$. 
+
+Fact: $E(\overline\dQ)$ is a divisible group.
+
+Pf. Given $n\in \dZ$ and $x\in E(\overline\dQ)$, we need some $y\in E(\overline\dQ)$ 
+such that $n\cdot y=x$. The coefficients of the polynomial $[n]$ will be 
+algebraic over $\dQ$, so all solutions to $[n] y=x$ will be algebraic over $\dQ$. 
+
+[also cite source on structure].
+
+So, we have an exact sequence 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\overline\dQ)[p] \ar[r] 
+    & E(\overline\dQ) \ar[r, "p"] 
+    & E(\overline\dQ) \ar[r] 
+    & 0 .
+\end{tikzcd}\]
+Recall that $E(\dC)\simeq S^1\times S^1$ as real Lie groups. The finite group 
+$E(\overline\dQ)[p]\simeq (\dZ/p)^2$ comes with a standard pairing, the 
+\emph{Weil pairing}, coming from the cup product on $\h^1(\dQ,E[p])$. 
+
+Let $\overline\dQ$ be an algebraic closure of $\dQ$, and let 
+$G_\dQ=\galois(\overline\dQ/\dQ)$. This is an uncountable, totally disconnected 
+compact topological group, and its cohomology has a good duality theory. [cite 
+NSW] There is an analogy between this and 3-manifolds [cite Morishita]
+
+The group $G_\dQ$ acts on $E(\overline\dQ)$, respecting the group structure. So 
+we can take its cohomology. We will abbreviate $\h^\bullet(G_\dQ,E(\overline\dQ))$ 
+by $\h^\bullet(\dQ,E)$. 
+
+The functor $M\mapsto M^{G_\dQ}$ is left exact, so we can do the usual nonsense with 
+enough injectives and derived functors to get $\h^\bullet(\dQ,M)$. Or we can write 
+a direct definition using cocycles and coboundaries. 
+
+A commutative diagram 
+\[\begin{tikzcd}
+  \overline\dQ \ar[r] 
+    & \dC \\
+  \dQ \ar[r] \ar[u] 
+    & \dR \ar[u] 
+\end{tikzcd}\]
+gives rise to an injection $G_\dR=\galois(\dC/\dR)to G_\dQ$. Also, for 
+each prime $l$ we get an inclusion $G_{\dQ_l}\to G_\dQ$. The groups 
+$G_{\dQ_l}$ are much bigger than $G_\dR=\dZ/2$, but they're pretty well-behaved 
+[for example, they're pro-solvable in a nice way]. The group 
+$G_\dQ$ is very poorly understood. We know its abelianization quite well, and 
+2-dimensional representations reasonably well, but higher-dimensional 
+representations not well at all. 
+
+There is a natural long exact sequence 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\dQ)/p \ar[r] 
+    & \h^1(G_\dQ,E[p]) \ar[r] 
+    & \h^1(G_\dQ,E)[p] \ar[r] 
+    & 0
+\end{tikzcd}\]
+Unfortunately, $\h^1(G_\dQ,E[p])$ is infinite-dimensional, so this doesn't seem 
+very helpful. But we can extend this to a diagram 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\dQ)/p \ar[r] \ar[d] 
+    & \h^1(G_\dQ,E[p]) \ar[r] \ar[d] 
+    & \h^1(G_\dQ,E)[p] \ar[r] \ar[d] 
+    & 0 \\
+  0 \ar[r] 
+    & \prod_v E(\dQ_v)/p \ar[r] 
+    & \prod_v \h^1(G_{\dQ_v},E[p]) \ar[r] 
+    & \prod_v \h^1(G_{\dQ_v},E)[p] \ar[r] 
+    & 0 .
+\end{tikzcd}\]
+Here, by convention $v$ ranges over all primes \emph{and $\infty$}, and we 
+put $\dQ_\infty=\dR$. The vertical maps come from basic functoriality 
+(restriction) of group cohomology. Put 
+\[
+  \selmer_p(E) = \ker\left(\h^1(G_\dQ,E[p]) \to \prod_v \h^1(G_{\dQ_v},E)[p]\right) .
+\]
+This is finite-dimensional, and $E(\dQ)/p\monic \selmer_p E$. The group 
+$\selmer_p(E)$ is measuring some local-global stuff. That is, cohomology 
+classes in $\h^1(G_\dQ,E[p])$ that ``are'' trivial locally everywhere. 
+
+In the 60s, Cassels showed that elements of $\selmer_p(E)$ are in bijection 
+with locally soluble $p$-coverings of $E$. 
+
+Briefly, the map $p:E\to E$ has field of definition $\dQ$. Consider the varieties 
+$U:x^2+y^2=1$ and $V:x^2+y^2=3$. There is an isomorphism 
+$U_{\dQ(\sqrt 3)} \to V_{\dQ(\sqrt 3)}$ by $(x,y)\mapsto (\sqrt 3x,\sqrt 3 y)$, 
+but this isomorphism isn't defined over $\dQ$. A \emph{locally soluble 
+$p$-covering} of $E$ is an isomorphism $\phi:C\iso E$ (not necessarily 
+defined over $\dQ$) such that $[p]\circ \phi$ is defined over $\dQ$. Moreover, 
+$C$ must have points over $\dR$ and all $\dQ_l$. 
+
+Locally soluble $p$-coverings of $E$ give degree-$p$ divisors on $C$. This 
+gives a map $C\to \dP^{p-1}$, which is an embedding of degree $3$ if 
+$p\geqslant 3$. 
+
+Say $p=3$. A degree-$3$ curve in $\dP^2$ is easy to describe. So elements in 
+$\selmer_3(E)$ correspond to degree-$3$ cubics over $\dQ$ (up to equivalence). 
+
+Let's switch gears. Consider binary quadratic forms over $\dZ$. These are just 
+polynomials $a x^2+b x y+c y^2$ for $a,b\in \dZ$. These have a natural 
+$\SL_2(\dZ)$-action coming from 
+\[
+  \begin{pmatrix} x \\ y \end{pmatrix} \mapsto \begin{pmatrix} a & b \\ c & d \end{pmatrix} = \begin{pmatrix} a x+b y \\ c x+d y \end{pmatrix} .
+\]
+But $\SL_2(\dZ)$ has generators $\begin{pmatrix} 1 & 1 \\ & 1 \end{pmatrix}$ and 
+$\begin{pmatrix} & -1 \\ 1 \end{pmatrix}$. 
+
+Claim: $d=b^2-4 a c$ is an invariant of the action of $\SL_2(\dZ)$. We'll only 
+check $\begin{pmatrix} 1 & 1 \\ & 1 \end{pmatrix}$-invariance. We get 
+\begin{align*}
+  a(x+y)^2+b (x+y)y+c y^2 
+    &= a x^2 + (2 a+b)x y + (c+b+a) y^2 ,
+\end{align*}
+and simply check that $(2 a+b)^2 - 4 a(a+b+c)=b^2-4 a c$. 
+
+\begin{theorem}[Gauss?]
+Given $d$, there exist only finitely many inequivalent binary quadratic forms 
+over $\dZ$ with discriminant $d$. 
+\end{theorem}
+
+It's natural to ask: ``how many are there?'' We'll ask the exact same question 
+for ternary forms. In that case there are two invariants $I,J$. Proving that these 
+are invariant is a simple computation. What is harder is the analogue of 
+\[
+  \dZ[b^2-4 a c]= \dZ[a,b,c]^{\SL_2(\dZ)} .
+\]
+
+A general theorem of Borel and Harish-Chandra [look up] says that there 
+are still only finitely many equivalence classes of forms with any given 
+pair of invariants. 
+
+Q. what values $d$ occur? [easy: $d\equiv 0$ or $1\pmod 4$]
+
+Q. What is the arithmetic significance of 
+\[
+  h(d)=\#\{\text{inequivalent quadratic forms with discriminant }d\}
+\]
+It turns out that $h(d)$ is the \emph{narrow class number} of $\dQ(\sqrt d)$. 
+This measures failure of unique factorization in that field. 
+
+Q. What is the average value of $h(d)$?
+
+\begin{theorem}[Mertens, Siegel]
+(a) For $-X<d<0$, the average value of $h(d)$ is $\frac{\pi}{18} X^{3/2} + O(X^{3/2-\varepsilon})$ for some explicit $\varepsilon>0$. 
+
+(b) For $0<d<X$, the average value of $h(d)\log(\epsilon_d)$ is 
+$\frac{\pi^2}{18} X^{3/2}+O(X^{3/2-\varepsilon})$. Here 
+$\epsilon_d$ is a fundamental unit of $\dQ(\sqrt d)$. 
+\end{theorem}
+\begin{proof}
+Look this up, find error terms. 
+\end{proof}
+
+What's different about $p=2$ and $p>2$? When $p=2$, 
+$C\to \dP^{p-1}$ isn't an embedding. But it is a degree-2 cover with four 
+branch points. This comes down to counting binary quartic forms up to 
+equivalence. Let 
+\[
+  a x^4 + b x^3 y + c x^2 y^2 + d x y^3 + e y^4 
+\]
+be such a form. The group $\SL_2(\dZ)$ acts as before. If 
+\begin{align*}
+  I &= 12 a e - 3 b d + c^2 \\
+  J &= 72 a c e + 9 b c d - 27 a d^2 - 27 e b^2 - 2 c^3 .
+\end{align*}
+then we have 
+
+\begin{theorem}
+$\dZ[I,J] = \dZ[a,b,c,d,e]^{\SL_2(\dZ)}$. 
+\end{theorem}
+\begin{proof}
+Find source [not Hilbert!]
+\end{proof}
+
+So counting elements of $\selmer_2(E)$ of $E$ of height $X$ corresponds to counting 
+binary quartic forms via $(I,J)\leftrightarrow (A,B)$. 
+
+\begin{theorem}
+The number of such forms up to height $X$ with 
+\begin{align*}
+  4\text{ real roots} & \frac{4}{\zeta(2)}{135} X^{5/6}+O(X^{3/4}) \\
+  2\text{ real roots} & 32 \frac{\zeta(2)}{135} X^{5/6} + O(X^{3/4}) \\
+  \text{no real roots} & 8 \frac{\zeta(2)}{135} X^{5/6} + O(X^{3/4}) .
+\end{align*}
+\end{theorem}
+
+\begin{corollary}
+When ordered by height, $\average(\#\selmer_2)=2+1$. 
+\end{corollary}
+
