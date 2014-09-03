@@ -288,41 +288,42 @@ that the average of $\#\selmer_p E=p+1$ for all $p$.
 
 
 
-Homework [due in 70 minutes]. Write down the terms you don't know. We'll make a 
-list. 
-
-
-
-
-
 \subsection{Review of the overview}
 
+\emph{Note}: the above introduction was given in a department-wide lecture. 
+What follows is a general overview given in the first day the class met. 
+
 Let $E_{/\dQ}$ be an elliptic curve. This is a smooth genus $1$ curve over 
-$\dQ$ of the form $y^2=x^3+A x+B$, where $A,B\in \dQ$, such that 
+$\dQ$ of the form $y^2=x^3+A x+B$, where $A,B\in \dZ$, such that 
 \[
   p^4\mid A\Rightarrow p^6\nmid B .
 \]
-(Basic fact: all such curves can be put in this form.)
+It is a basic fact that every isomorphism class of elliptic curves over 
+$\dQ$ has a unique representative of this form. 
 
 Throughout, we'll write an equation $y^2=x^3+A x+B$ to mean the subvariety of 
-$\dP^2$ cut out by the homogenization of this equation. So $E(\dQ)$ consists 
-of solutions to this equation, as well as the point ``at infinity.'' 
+$\dP^2$ cut out by the homogenization $y^2 z=x^3+A x z^2+B z^3$ of this 
+equation. So $E(\dQ)$ consists of solutions to $y^2=x^3+A x+B$, as well as the 
+point $(0:1:0)$ ``at infinity.'' Some useful facts:
+\begin{enumerate}
+\item
+$E(\dQ)$ is a finitely-generated abelian group (Mordell-Weil). 
 
-1. $E(\dQ)$ is a finitely-generated abelian group (Mordell-Weil). 
+\item
+$E(\dQ)_\mathrm{tors}$ is ``understood'' All possible such 
+subgroups have been written down (see Mazur's list above), and they all 
+occur. There is an effective algorithm to determine the torsion part of the 
+Mordell-Weil group of an elliptic curve $E$. Since the group law is given by 
+polynomials, the ``multiply by $n$'' map $[n]:E\to E$ is a polynomial. 
+Simply check whether the roots of $[n]$ lie in $\dQ$. There are only finitely 
+many possible $n$, so the algorithm will terminate. 
 
-2. $E(\dQ)_\mathrm{tors}$ is ``understood'' (Mazur's list). All possible such 
-subgroups have been written down, and they exist (all contained in 
-$\dZ/m$ or $\dZ/n$ for $m,n\leqslant 15$). This is effective. Indeed, recall 
-the group law [insert standard picture]. It is given by polynomials in the 
-entries of the point in $E$. In particular, compute the polynomial 
-``multiply by $n$'' for $n\leqslant 15$. Then check if this polynomial has 
-any rational solutions. Formally, $E[n]$ will be a finite \'etale cover of 
-$\dQ$, and these can be computed with. 
-
-3. $\#E(\dQ)_\mathrm{tors}=1$ one hundred percent of the time. 
+\item
+$\#E(\dQ)_\mathrm{tors}=1$ one hundred percent of the time. 
+\end{enumerate}
 
 Recall that the \emph{height} of $E_{A,B}:y^2 z=x^3+A x z^2+b z^3$ is 
-$\height(E_{A,B})=\max(4|A|^3,27 B^2)$. This definition is actually 
+$\max(4|A|^3,27 B^2)$. This definition is actually 
 pretty natural if you know the definition of the discriminant of $E$. 
 
 Recall that our goal is to study the average rank of $E_{/\dQ}$ with height 
@@ -333,60 +334,73 @@ of
 \]
 Currently it is not known if this limit exists, but conjecturally it is $1/2$. 
 Note that $\#\{E:\height E\leqslant X\}=O(X^{1/3}\cdot X^{1/2})=O(X^{5/6})$. We 
-have to be careful, because some of these curves will be singular, but this happens 
-on a thin set, so it will not affect our calculations. 
+have to be careful, because some of the curves $E_{A,B}$ will be singular, but 
+this happens on a thin set, so it will not affect our calculations. 
 
-We want average data of $\dim_\dQ E(\dQ)\otimes\dQ\leqslant \dim_{\dF_p} (E(\dQ)\otimes \dF_p) = \dim_{\dF_p}(E(\dQ)/p)$. 
+Note that for any finitely-generated abelian group $A$, we have 
+\[
+  \rank(A) = \dim_\dQ(A\otimes\dQ) \leqslant \dim_{\dF_p}(A\otimes\dF_p) .
+\]
+So to get upper bounds on $\rank(E)$, it suffices to bound 
+$\dim_{\dF_p}(E(\dQ)/p)$. 
 
-Fact: $E(\overline\dQ)$ is a divisible group.
-
-Pf. Given $n\in \dZ$ and $x\in E(\overline\dQ)$, we need some $y\in E(\overline\dQ)$ 
+\begin{theorem}
+Let $E_{/\dQ}$ be an elliptic curve. Then $E(\overline\dQ)$ is a divisible 
+group. 
+\end{theorem}
+\begin{proof}
+Given $n\in \dZ$ and $x\in E(\overline\dQ)$, we need some $y\in E(\overline\dQ)$ 
 such that $n\cdot y=x$. The coefficients of the polynomial $[n]$ will be 
 algebraic over $\dQ$, so all solutions to $[n] y=x$ will be algebraic over $\dQ$. 
+\end{proof}
 
-[also cite source on structure].
-
-So, we have an exact sequence 
-\[\begin{tikzcd}
+By \cite[Cor 5.11]{moonenABV}, we have $E[n](\overline\dQ)\simeq (\dZ/n)^2$ for 
+all $n\geqslant 1$. Thus $E(\overline\dQ)_\mathrm{tors}\simeq (\dQ/\dZ)^2$. 
+Since $E(\overline\dQ)$ is divisible, we have an exact sequence 
+\begin{equation}\label{eq:ell-ses}
+\begin{tikzcd}
   0 \ar[r] 
     & E(\overline\dQ)[p] \ar[r] 
     & E(\overline\dQ) \ar[r, "p"] 
     & E(\overline\dQ) \ar[r] 
     & 0 .
-\end{tikzcd}\]
+\end{tikzcd}
+\end{equation}
 Recall that $E(\dC)\simeq S^1\times S^1$ as real Lie groups. The finite group 
 $E(\overline\dQ)[p]\simeq (\dZ/p)^2$ comes with a standard pairing, the 
 \emph{Weil pairing}, coming from the cup product on $\h^1(\dQ,E[p])$. 
 
 Let $\overline\dQ$ be an algebraic closure of $\dQ$, and let 
 $G_\dQ=\galois(\overline\dQ/\dQ)$. This is an uncountable, totally disconnected 
-compact topological group, and its cohomology has a good duality theory. [cite 
-NSW] There is an analogy between this and 3-manifolds [cite Morishita]
+compact topological group, and its cohomology has a good duality theory; see for 
+example \cite{neukirch-schmidt-winberg-2008}. There is an analogy between 
+$G_\dQ$ and 3-manifolds, see e.g.~\cite{morishita-2012}. 
 
 The group $G_\dQ$ acts on $E(\overline\dQ)$, respecting the group structure. So 
-we can take its cohomology. We will abbreviate $\h^\bullet(G_\dQ,E(\overline\dQ))$ 
-by $\h^\bullet(\dQ,E)$. 
-
-The functor $M\mapsto M^{G_\dQ}$ is left exact, so we can do the usual nonsense with 
-enough injectives and derived functors to get $\h^\bullet(\dQ,M)$. Or we can write 
-a direct definition using cocycles and coboundaries. 
+we can take its cohomology. 
+The functor $M\mapsto M^{G_\dQ}$ is left exact, so we can do the usual nonsense 
+with enough injectives and derived functors to get $\h^\bullet(G_\dQ,M)$. Or we 
+can write a direct definition using cocycles and coboundaries. Often, to save 
+space, if $F$ is a field, $G_F$ its absolute Galois group and $M$ a 
+$G_F$-module, we'll write $\h^\bullet(F,M)$ instead of $\h^\bullet(G_F,M)$. 
 
 A commutative diagram 
 \[\begin{tikzcd}
-  \overline\dQ \ar[r] 
+  \overline\dQ \ar[r, hook] 
     & \dC \\
-  \dQ \ar[r] \ar[u] 
-    & \dR \ar[u] 
+  \dQ \ar[r, hook] \ar[u, hook] 
+    & \dR \ar[u, hook] 
 \end{tikzcd}\]
-gives rise to an injection $G_\dR=\galois(\dC/\dR)to G_\dQ$. Also, for 
-each prime $l$ we get an inclusion $G_{\dQ_l}\to G_\dQ$. The groups 
+gives rise to an injection $G_\dR=\galois(\dC/\dR)\monic G_\dQ$. Also, for 
+each prime $l$ we get an inclusion $G_{\dQ_l}\monic G_\dQ$. The groups 
 $G_{\dQ_l}$ are much bigger than $G_\dR=\dZ/2$, but they're pretty well-behaved 
 [for example, they're pro-solvable in a nice way]. The group 
 $G_\dQ$ is very poorly understood. We know its abelianization quite well, and 
 2-dimensional representations reasonably well, but higher-dimensional 
 representations not well at all. 
 
-There is a natural long exact sequence 
+The long exact sequence in cohomology coming from \eqref{eq:ell-ses} gives 
+rise to a natural short exact sequence 
 \[\begin{tikzcd}
   0 \ar[r] 
     & E(\dQ)/p \ar[r] 
@@ -418,8 +432,8 @@ This is finite-dimensional, and $E(\dQ)/p\monic \selmer_p E$. The group
 $\selmer_p(E)$ is measuring some local-global stuff. That is, cohomology 
 classes in $\h^1(G_\dQ,E[p])$ that ``are'' trivial locally everywhere. 
 
-In the 60s, Cassels showed that elements of $\selmer_p(E)$ are in bijection 
-with locally soluble $p$-coverings of $E$. 
+In \cite{cassels-1962}, Cassels showed that elements of $\selmer_p(E)$ are in 
+bijection with locally soluble $p$-coverings of $E$. 
 
 Briefly, the map $p:E\to E$ has field of definition $\dQ$. Consider the varieties 
 $U:x^2+y^2=1$ and $V:x^2+y^2=3$. There is an isomorphism 
@@ -453,7 +467,7 @@ check $\begin{pmatrix} 1 & 1 \\ & 1 \end{pmatrix}$-invariance. We get
 \end{align*}
 and simply check that $(2 a+b)^2 - 4 a(a+b+c)=b^2-4 a c$. 
 
-\begin{theorem}[Gauss?]
+\begin{theorem}[Gauss]
 Given $d$, there exist only finitely many inequivalent binary quadratic forms 
 over $\dZ$ with discriminant $d$. 
 \end{theorem}
@@ -465,7 +479,7 @@ are invariant is a simple computation. What is harder is the analogue of
   \dZ[b^2-4 a c]= \dZ[a,b,c]^{\SL_2(\dZ)} .
 \]
 
-A general theorem of Borel and Harish-Chandra [look up] says that there 
+A general theorem of Borel and Harish-Chandra says that there 
 are still only finitely many equivalence classes of forms with any given 
 pair of invariants. 
 
@@ -487,9 +501,6 @@ Q. What is the average value of $h(d)$?
 $\frac{\pi^2}{18} X^{3/2}+O(X^{3/2-\varepsilon})$. Here 
 $\epsilon_d$ is a fundamental unit of $\dQ(\sqrt d)$. 
 \end{theorem}
-\begin{proof}
-Look this up, find error terms. 
-\end{proof}
 
 What's different about $p=2$ and $p>2$? When $p=2$, 
 $C\to \dP^{p-1}$ isn't an embedding. But it is a degree-2 cover with four 
@@ -518,9 +529,9 @@ binary quartic forms via $(I,J)\leftrightarrow (A,B)$.
 \begin{theorem}
 The number of such forms up to height $X$ with 
 \begin{align*}
-  4\text{ real roots} & \frac{4}{\zeta(2)}{135} X^{5/6}+O(X^{3/4}) \\
-  2\text{ real roots} & 32 \frac{\zeta(2)}{135} X^{5/6} + O(X^{3/4}) \\
-  \text{no real roots} & 8 \frac{\zeta(2)}{135} X^{5/6} + O(X^{3/4}) .
+  4\text{ real roots} && \frac{4}{\zeta(2)}{135} X^{5/6}+O(X^{3/4}) \\
+  2\text{ real roots} && 32 \frac{\zeta(2)}{135} X^{5/6} + O(X^{3/4}) \\
+  \text{no real roots} && 8 \frac{\zeta(2)}{135} X^{5/6} + O(X^{3/4}) .
 \end{align*}
 \end{theorem}
 
