@@ -1,0 +1,228 @@
+% !TEX root = 7370.tex
+
+\section{Background}
+
+We'll thread a very narrow path to the main theorems, assuming a bunch of 
+facts along the way. A good source on the algebraic geometry we'll do is
+\cite[ch.2,3]{silverman-2009}. 
+
+
+
+
+
+\subsection{Riemann-Roch}
+
+We'll spend the rest of this subsection explaining the terms in the following 
+theorem. 
+
+\begin{theorem}[Riemann-Roch]
+Let $C_{/k}$ be a smooth projective curve. Let $K$ be the canonical divisor and 
+$D$ a divisor. Then $l(D)-l(K-D)=\deg D-g+1$. 
+\end{theorem}
+
+For us, a curve $C_{/k}$ is the zero locus of a (non-constant) polynomial 
+$f\in k[x,y]$. We stress the fact that $k$ is \emph{not} necessarily 
+algebraically closed here. Pictorially, smoothness means that $C$ has no 
+cusps or self-intersections. For example, $f$ can't be something like 
+$x y$ or $x^2-y^3$. More formally, we want the tangent space to be 
+$1$-dimensional at every point on $C$. For any $c\in C$, we have a 
+matrix 
+$\begin{pmatrix} \frac{\partial f}{\partial x}(c),\frac{\partial f}{\partial y}(c)\end{pmatrix}$
+which needs to be nondegenerate, i.e.~the partials of $f$ never 
+simultaneously vanish. Note that here, ``$c\in C$'' means $c\in C(\bar k)$, so 
+we consider points not defined over $k$. We'll constantly move between the 
+affine curve $V(f)\subset \dA^2$ and the projective curve in $\dP^2$ cut out by 
+the projectivisation of $f$. 
+
+A \emph{divisor} on a curve $C$ is a formal $\dZ$-linear combination of points 
+(defined over $\bar k$). 
+
+\begin{example}
+Let $C:x^2+y^2=10$. Let $P=(4,i\sqrt 6)$ and $Q=(4,-i\sqrt 6)$. Then $P$ and 
+$Q$ are not defined over $\dQ$, but $P+Q$ is a divisor on $C$ defined over 
+$\dQ$. 
+\end{example}
+
+The absolute Galois group $G_k$ of $k$ acts on the space of divisors on $C$. We 
+say a divisor $D$ is \emph{defined over $k$} if $D=D^\sigma$ for all 
+$\sigma\in G_k$. 
+
+We put an equivalence relation on divisors: $D_1\sim D_2$ if 
+$D_1-D_2=\divisor(f)$ for some rational function $f$ on $C$. 
+So we need to define $\divisor(f)$. Let $k[C]=k[x,y]/f$ be the ring of regular 
+functions on $f$, and let $k(C)$ be the field of fractions of $k[C]$; we call 
+$k(C)$ the field of \emph{rational functions} on $C$. Any rational function 
+$f$ induces a morphism $f:C\to \dP^1$. Since $C$ is projective, this map is 
+either constant or surjective. We can now put 
+\[
+  \divisor(f) = \sum_{c\in C(\bar k)} \order_c(f) \cdot c.
+\]
+We put $\picard(C)=\divisors(C)/\divisor(k(C)^\times)$. 
+
+Now we need to define the canonical divisor. It is the class of a nonvanishing 
+differential on $C$. More formally, it's the divisor class corresponding to the 
+line bundle $\Omega_C^1$. 
+
+We put $l(D)=\dim \sL(D)$, where 
+\[
+  \sL(D) = \{f:C\epic \dP^1:\divisors(f)+D\geqslant 0\} \cup \{0\}.
+\]
+It is a theorem that $l(D) < \infty$ for all divisors $D$. 
+
+Aside: let $[L:\dQ]<\infty$, i.e.~let $L$ be a number field. Then there is an 
+exact sequence 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & \cO_L^\times \ar[r] 
+    & L^\times \ar[r] 
+    & I_L \ar[r] 
+    & \picard(O_L) \ar[r] 
+    & 0 ,
+\end{tikzcd}\]
+where $I_L$ is the group of fractional ideals in $L$. See 
+\cite{lorenzini-1996} for more on the parallel between 
+algebraic number theory and algebraic geometry. This is analogous to the 
+sequence 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & k^\times \ar[r] 
+    & k(C)^\times \ar[r, "\divisor"] 
+    & \divisors^\circ(C) \ar[r] 
+    & \picard^\circ(C) \ar[r] 
+    & 0 .
+\end{tikzcd}\]
+Here the degree $\deg(\sum n_c c) = \sum n_c$. It is a basic fact that for 
+$f\in k(C)^\times$, we have $\deg(f)=0$. In fact, $\picard(X)$ makes sense 
+for $X$ any scheme (e.g.~a curve or the spectrum of $\cO_L$). 
+
+If $C_{/\dQ}$ is a smooth projective curve, then $C(\dC)$ will be a compact 
+Riemann surface, hence a torus with $g$ holes. We call $g$ the \emph{genus} of 
+$C$. Geometrically, $g=\dim \h^0(\Omega^1)$. 
+
+\begin{theorem}\label{thm:basic-facts}
+\begin{enumerate}
+\item $\deg D<0\Rightarrow l(D)=0$. 
+\item $l(D)<\infty$. 
+\item $D\sim D'\Rightarrow \sL(D)\simeq \sL(D')$. 
+\item $l(K_C)=g$ and $\deg(K_C)=2 g-2$. 
+\item $\deg(D)>2 g-2\Rightarrow l(D)=\deg(D)-g+1$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}Choose $D$ cleverly (i.e.~$0$ or $K_C$) in the Riemann-Roch 
+Theorem, and use $l(0)=1$. 
+\end{proof}
+
+
+
+
+
+\subsection{Elliptic curves}
+
+If we're analyzing the case $g=0$, diophantine properties were known to the 
+Greeks. For $g\geqslant 2$, Faltings tells that $\#C(\dQ)<\infty$. The 
+remaining case is $g=1$. 
+
+\begin{definition}
+Let $k$ be a field. An \emph{elliptic curve over $k$} is a smooth projective 
+curve $E_{/k}$ together with a point $0\in E(k)$. 
+\end{definition}
+
+Let $E_{/k}$ be an elliptic curve, $e\in E(k)$. What is $l(e)$? From 
+\autoref{thm:basic-facts}, we get: 
+\begin{center}
+\begin{tabular}{c|cl}
+$n$ & $l(n\cdot e)$ & basic of $\sL(n\cdot e)$ \\ \hline
+1 & 1 & $\{1\}$ \\
+2 & 2 & $\{1,x\}$ \\
+3 & 3 & $\{1,x,y\}$ \\
+4 & 4 & $\{1,x,y,x^2\}$ \\
+5 & 5 & $\{1,x,t,x^2,x y\}$ \\
+6 & 6 & $\{1,x,y,x^2,x y, x^3\text{ or } y^2\}$ 
+\end{tabular}
+\end{center}
+The last set could have seven elements, but $\sL(6\cdot e)$ is 
+$6$-dimensional. It follows that there is a dependence relation 
+\[
+  \alpha_0 + \alpha_1 x + \alpha_2 y+ \alpha_3 x^2 + \alpha_4 x y+\alpha_5 x^3 + \alpha_6 y^2 = 0 .
+\]
+We claim that $(\alpha_4,\alpha_6)\ne (0,0)$. Basic consideration of the 
+orders of poles in the remaining equation at $e$ shows this. We can assume that 
+$\alpha_6\ne 0$. Say $\alpha_6=0$ (then $\alpha_4\ne 0$). Consider the change 
+of variables 
+\begin{align*}
+  x &\mapsto x + cy \\
+  y &\mapsto y. 
+\end{align*}
+The new coefficient of $y^2$ is $\alpha_3 c^2 + \alpha_4 c$, and we can choose 
+$c$ so that this is $\ne 0$. There's a better proof that $\alpha_6\ne 0$. If 
+$\alpha_6=0$, since $\{1,x,y,x^2,x y,x^3\}$ is a basis of $\sL(6\cdot e)$, all 
+the $\alpha_i=0$, which we can assume is not the case. 
+
+Divide through by $\alpha_6$ to get the following:
+\[
+  y^2 + y (\alpha_2+\alpha_4 x) + \left(\frac{\alpha_2+\alpha_4 x}{2}\right)^2 - \left(\frac{\alpha_2+\alpha_4 x}{2}\right)^2 + \alpha_3 x^3 + \alpha_1 x + \alpha_0 = 0 .
+\]
+Replace $y$ by $y+\frac{\alpha_2+\alpha_4 x}{2}$; we get: 
+\[
+  y^2 = \gamma_3 x^3 + \gamma_2 x^2 + \gamma_1 x + \gamma_2 .
+\]
+Replace $y$ by $\gamma_3^2 y$ and $x$ by $\gamma_3 x$; this gives 
+$x^3$ and $y^2$ the same coefficient. Rescale and we get 
+\[
+  y^2 = x^3 + \delta_2 x^2 + \delta_1 x + \delta_0 .
+\]
+Replace $x$ by $x-\frac{\delta_2}{3}$, and we get an equation 
+\[
+  y^2 = x^3 + A x+B 
+\]
+with $A,B\in k$. 
+
+Note we have used that $k$ has characteristic not $2$ or 
+$3$. Completion of squares doesn't work in characteristic $2$, and the 
+first step in solving cubics doesn't work in characteristic $3$. So in 
+characteristic $3$, you can get $y^2=(\text{cubic})$, but for characteristic 
+$2$, you can't really simplify the equation at all. In general, if $A$ is a 
+$d$-dimensional abelian variety, it is noted in \cite{serre-tate-1968} that 
+primes $p\leqslant 2 d+1$ can be especially nasty. 
+
+We will need to reduce elliptic curves modulo $2$ and $3$. 
+Given $E_{/\dQ}$, there is an integer $N$, called the \emph{conductor} of $E$, 
+that measures the ``badness'' of the singularities in the reductions of $E$. 
+For $p\geqslant 3$, we have $v_p(N)\leqslant 2$. For 
+$p=3$, we just have $v_3(N)\leqslant 4$, and for $p=2$, we can have 
+$v_2(N)=6$. 
+
+We'll continue under the assumption that $k=\dQ$. Write our curve 
+$E_{/\dQ}$ as 
+\[
+  y^2=x^3 + \frac{N_1}{D} x + \frac{N_2}{D} ,
+\]
+with $N_1,N_2,D\in \dZ$. Make the change of variables 
+\begin{align*}
+  x &\mapsto x/D^2 \\ 
+  y &\mapsto y/D^3 .
+\end{align*}
+Then multiply through by $D^6$ and relabel. We get 
+\[
+  y^2=x^3+ A x+ B x ,
+\]
+with $A,B\in \dZ$. For any prime $p$, say 
+$p^4\mid A$ and $p^6\mid B$. Make the change of variables
+\begin{align*}
+  x &\mapsto p^2 x \\ 
+  y &\mapsto p^3 y .
+\end{align*}
+you can rescale again until one of these possibilities fail. We end up with 
+a Weierstrass form $y^2=x^3+A x+B$ with $p^4\mid A\Rightarrow p^6\nmid B$. This 
+is the \emph{minimal model} of $E$. 
+
+Now we can study $E_{/\dQ}$ and write $E=E_{A,B}$, given by $y^2=x^3+A x+B$, 
+for $A,B\in \dZ$ with $(p^4\nmid A\text{ or }p^6\nmid B)$. Recall that 
+$E_{A,B}$ is singular exactly if 
+\[
+  \begin{pmatrix} 2 y & 3 x^2+A\end{pmatrix} = 0
+\]
+for some $(x,y)\in E(\overline\dQ)$. This can happen only if 
+$27 B^2+4 A^3=0$. The set of such $(A,B)$ is thin. 
+
+This procedure works over $\dZ[\frac 1 6]\subset \dZ$. 
