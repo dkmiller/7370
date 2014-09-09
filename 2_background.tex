@@ -226,3 +226,189 @@ for some $(x,y)\in E(\overline\dQ)$. This can happen only if
 $27 B^2+4 A^3=0$. The set of such $(A,B)$ is thin. 
 
 This procedure works over $\dZ[\frac 1 6]\subset \dZ$. 
+
+
+
+
+
+\subsection{Group law on an elliptic curve}
+
+Let $E_{/k}$ be an elliptic curve in strong Weierstrass form 
+$y^2=x^3+A x+B$. We will give $E$ the structure of an abelian 
+variety over $k$. We declare $P+Q+R=0$ if $P$, $Q$, and $R$ lie on the same 
+line through $E$ in $\dP^2$. This determines a morphism 
+$E\times E\to E$ defined over $k$. From the definition, it is clear that 
+addition is commutative. We won't verify that the group law is associative. 
+It can be directly, but this is very tedious. A more conceptual approach is to 
+use the Picard variety. To summarize: 
+
+\begin{theorem}
+Let $E_{/k}$ be an elliptic curve given by $y^2=x^3+A x+B$. Then $E$ has the 
+unique structure of an abelian variety such that $(0:1:0)$ is the identity 
+element. 
+\end{theorem}
+\begin{proof}
+Existence follows from the fact that the map $E\to \picard^0(E)$ is an 
+isomorphism of varieties over $k$. Uniqueness follows from Proposition 1.13 of 
+\cite{moonenABV}. 
+\end{proof}
+
+Let $P=(\alpha,\beta)$. What is $2 P=P+P$? We can implicitly differentiate 
+$y^2=x^3+A x+B$ to get 
+\[
+  y' = \left.\frac{3 x^2+A}{2 y}\right|_{(\alpha,\beta)} = \frac{3\alpha^2+A}{2 \beta} .
+\]
+We can solve the equation 
+\[
+  \left(\beta+\frac{3\alpha^2+A}{2\beta}(x-\alpha)\right)^2 = x^3+A x+B ,
+\]
+to see that the third root is $\frac{(3\alpha^2+A)^2}{4\beta^2} - 2\alpha$. So 
+\[
+  x_{2 P} = \frac{(3\alpha^2+A)^2}{4(\alpha^3+A\alpha+B)} - 2\alpha ,
+\]
+and $y_{2 P}$ can be computed similarly. 
+
+Given $Q=(\alpha,\beta)\in E(\overline K)$, let's find $P$ such that 
+$2 P=Q$. Since $\# E[2](\overline K)=4$, we expect four such $P$. It comes down 
+to solving the equation 
+\[
+  \frac{(3\alpha^2+A)^2}{4(\alpha^3+A\alpha+B)} - 2\alpha = r .
+\]
+The polynomial on the left has degree $4$, so there will indeed be four $P$. 
+
+In general, given $Q\in E(\overline K)$, the equation $n P=Q$ has $n^2$ 
+solutions, provided $n$ is invertible in $k$. Also, if $n$ is invertible in 
+$k$, then $E[n]\simeq (\dZ/n)^2$, and $G_K=\galois(\overline K/K)$ acts on 
+$E[n]$ by group automorphisms. This is really easy. To verify this, all we need 
+to check is that $\sigma(P+Q)=\sigma(P)+\sigma(Q)$ for all $\sigma\in G_K$ and 
+$P,Q\in E(\overline K)$. But $x_{P+Q}$ and $y_{P+Q}$ are rational functions in 
+the coordinates of $P$ and $Q$, \emph{defined over $K$}. If 
+$f\in K(t)$ is a rational function, then $\sigma(f(x))=f(\sigma(x))$ for all 
+$x\in \overline K$, whence $\sigma(x_{P+Q})=x_{\sigma P+\sigma Q}$. 
+
+Given $E_{/\dQ}$, set $a_p=p+1-\# E(\dF_p)$, where $E(\dF_p)$ is the 
+$\dF_p$-points of the projective curve associated to $E$. Note that 
+$p+1=\dP^1(\dF_p)$. Note that this only makes sense for $p\nmid \Delta$. 
+
+\begin{theorem}[Hasse]
+$|a_p|\leqslant 2\sqrt p$. 
+\end{theorem}
+Recall the $L$-function of $E$ is defined in terms of the $a_p$: 
+\[
+  L(E,p) = \text{(finite \# of terms)} \prod_{p\nmid \Delta} \left(1-\frac{a_p}{p^s} + \frac{p}{p^{2s}}\right)^{-1} .
+\]
+If $\Re s=\frac 3 2+\epsilon$, then 
+\[
+  \left|-\frac{a_p}{p^s} + \frac{p}{p^{2s}}\right| \leqslant \frac{2}{p^{1+\epsilon}}+\frac{1}{p^{2+2\epsilon}} \leqslant p^{-1-\epsilon/2} ,
+\]
+at least for $p\gg 0$. We know that $\prod (1-p^{-s})^{-1}$ converges for 
+$\Re s>1$. Thus $L(E,s)$ is defined for $\Re s>3/2$. 
+
+We know that $|a_p|\leqslant p+1$. This gives well-definedness of $L(E,s)$ for 
+$\Re s>2$, and it isn't too hard to get $\Re s>3/2$. The following theorem was 
+proved in the course of Wiles' proof of Fermat's Last Theorem. 
+
+\begin{theorem}
+$L(E,s)$ has a meromorphic continuation to $\dC$. 
+\end{theorem}
+
+Recall the weak Birch and Swinnerton-Dyer conjecture:
+
+\begin{conjecture}
+$\order_{s=1} L(E,s) = \rank E$. 
+\end{conjecture}
+Note that $\rank E$ is global data, while the $a_p$ only depend on the reduction 
+$E_{/\dF_p}$. The following theorem was known as the Sato-Tate conjecture. 
+
+\begin{theorem}[Taylor et.~al.]
+Define $\theta_p$ by $\frac{a_p}{2\sqrt p} = \cos(\theta_p)$ and 
+$\theta_p\in [-\pi/2,\pi/2)$. Then 
+\[
+  \lim_{X\to \infty}\frac{\#\{p\leqslant X:c\leqslant \theta_p\leqslant d\}}{\pi(X)} = \frac 2 \pi \int_c^d \sin^2(u)\, \mathrm{d} u .
+\]
+\end{theorem}
+\begin{proof}
+In \cite{serre-1968}, Serre outlined a strategy. It relied on 
+$L(\symmetric^n E,s)$ being analytic at $1$ for infinitely many $n$. At the 
+time, we didn't even know this for $n=1$! This requires a vast generalization 
+of Wiles et.~al.~(who worked with $n=1$). 
+\end{proof}
+
+In some ways, the Sato-Tate conjecture is unsatisfying because it says that 
+``all (non-CM) elliptic curves are the same.'' On the other hand, the Birch and 
+Swinnerton-Dyer conjecture is about how local data of elliptic curves gives 
+information about global data. 
+
+\begin{conjecture}[Harris]
+Let $E_1$, $E_2$ be non-isogenous (up to twist) elliptic curves over $\dQ$. 
+Then the Sato-Tate distributions of $E_1$, $E_2$ are independent. 
+\end{conjecture}
+
+See \cite{harris-ST} for a careful statement and motivation. 
+There is an obvious family to pairwise non-isogenous families 
+$\{E_1,\cdots,E_n\}$, but there isn't a clear approach to prove this. 
+
+
+
+
+
+\subsection{Kummer theory}
+
+Let $K\subset L$ be a Galois field extension. There is a version of Galois 
+theory for $G=\galois(L/K)$, but we need to give $G$ a topology. Let a basis 
+of $1$ be the subgroups of the form $G_x=\stabilizer_G(x)$ for $x\in L$. Under 
+this topology (the \emph{Krull topology}), the group $G$ is compact, Hausdorff, 
+and totally disconnected. See Chapter IV of \cite{neukirch-1999} for details. 
+
+Let $k$ be a field, $p$ a prime invertible in $k$ such that $\dmu_p\subset k$. 
+Let $k^{(p)}$ be the composite of all $\dZ/p$-Galois extensions of $k$ in 
+$\overline k$. 
+
+\begin{theorem}
+The pairing $\galois(k^{(p)}/k)\times k^\times/p \to \dmu_p$ given by 
+\[
+  \langle \sigma,x\rangle = \frac{\sigma(x^{1/p})}{x^{1/p}} 
+\]
+is a well-defined perfect pairing of topological groups. 
+\end{theorem}
+
+See \cite[IV \S 3]{neukirch-1999} for a proof. 
+
+As an example, for $p=2$ and $k=\dR$, we see that there is only one 
+$\dZ/2$-extension of $\dR$. This can be used to show that $\dC$ has no solvable 
+extensions. 
+
+There is a purely geometric approach to Kummer theory. Let $X$ be a scheme 
+on which $n$ is invertible. The \emph{Kummer exact sequence} is the sequence 
+\[
+  1 \to \dmu_n \to \Gm \xrightarrow n \Gm \to 1 
+\]
+of \'etale sheaves on $X$. The long exact sequence in sheaf cohomology gives 
+us a short exact sequence: 
+\[
+  1 \to \sO(X)^\times/n \to \h^1(X,\dmu_n) \to \picard(X)[n] \to 1 .
+\]
+Since $\dmu_n\simeq \dZ/n$, we have $\h^1(X,\dmu_n)=\hom(\pi_1(X),\dZ/n)$. 
+When $X=\spectrum(k)$, we have $\picard(X)=0$, so 
+$k^\times/n\simeq \hom(G_k,\dZ/n)$. For arbitrary $X$, the Kummer exact 
+sequence can be used to get a pretty good grasp of $\pi_1(X)^\mathrm{ab}$. 
+See \cite[5.8.3]{szamuely-2009} for details. 
+
+Kummer theory is used to study solvable extensions in classical algebraic 
+number theory. More generally, it is used in class field theory to build the 
+abelian extensions of a field. Finally, it is used in local and global duality 
+theorems in the cohomology of $G_\dQ$, $G_{\dQ_l}$. 
+
+The Weil pairing is a kind of ``geometric Kummer theory.'' It is a perfect 
+pairing $E[m]\times E[m]\to \dmu_m$. This means that 
+$E[m]\simeq \hom(E[m],\dmu_m)=E[m]^\vee$, the dual in the correct sense. So 
+$E[m]$ is self-dual in some sense. Even better, 
+$E[m]\simeq \h^1_\mathrm{et}(E,\dZ/m)$, and the Weil pairing is the cup-product 
+pairing in \'etale cohomology: 
+\[
+  \h^1(E,\dZ/m)\times \h^1(E,\dZ/m) \to \h^2(E,\dZ/m).
+\]
+
+
+
+
