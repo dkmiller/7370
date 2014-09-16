@@ -100,6 +100,7 @@ Riemann surface, hence a torus with $g$ holes. We call $g$ the \emph{genus} of
 $C$. Geometrically, $g=\dim \h^0(\Omega^1)$. 
 
 \begin{theorem}\label{thm:basic-facts}
+Let $C_{/k}$ be a smooth projective curve, $D$ a divisor on $C$. Then 
 \begin{enumerate}
 \item $\deg D<0\Rightarrow l(D)=0$. 
 \item $l(D)<\infty$. 
@@ -371,8 +372,16 @@ The pairing $\galois(k^{(p)}/k)\times k^\times/p \to \dmu_p$ given by
 \]
 is a well-defined perfect pairing of topological groups. 
 \end{theorem}
+\begin{proof}
+Say $\langle \sigma,x_0\rangle=1$ for all $\sigma\in \galois(k^{(p)}/k)$. Then 
+$\sigma(x_0^{1/p})=x_0^{1/p}$ for all $\sigma$. This implies 
+$x_0^{1/p}$ is fixed by $\galois(k^{(p)}/k)$, which implies 
+$x_0^{1/p}\in k$, which implies $x_0\in (k^\times)^p$. We'll prove the other 
+direction later. 
+\end{proof}
 
-See \cite[IV \S 3]{neukirch-1999} for a proof. 
+See \cite[IV \S 3]{neukirch-1999} for a proof. The theorem, correctly 
+rephrased, works with arbitrary $n$ invertible in $k$. 
 
 As an example, for $p=2$ and $k=\dR$, we see that there is only one 
 $\dZ/2$-extension of $\dR$. This can be used to show that $\dC$ has no solvable 
@@ -403,11 +412,172 @@ The Weil pairing is a kind of ``geometric Kummer theory.'' It is a perfect
 pairing $E[m]\times E[m]\to \dmu_m$. This means that 
 $E[m]\simeq \hom(E[m],\dmu_m)=E[m]^\vee$, the dual in the correct sense. So 
 $E[m]$ is self-dual in some sense. Even better, 
-$E[m]\simeq \h^1_\mathrm{et}(E,\dZ/m)$, and the Weil pairing is the cup-product 
+$E[m]^\vee\simeq \h^1_\mathrm{et}(E,\dZ/m)$, and the Weil pairing is comes from 
+the cup-product 
 pairing in \'etale cohomology: 
 \[
   \h^1(E,\dZ/m)\times \h^1(E,\dZ/m) \to \h^2(E,\dZ/m).
 \]
+
+\begin{example}
+Let $p=2$ and $k=\dQ$. Then 
+$\dQ^{(2)}=\dQ(\sqrt{-1},\sqrt{l}\text{ all prime }l)$. Note that 
+\[
+  \galois(\dQ^{(2)}/\dQ) \simeq \prod_{l,-1} \dZ/2 .
+\]
+On the other hand, $\dQ^\times/2 = \bigoplus_{l,-1} \dZ/2$. The point is that 
+the Kummer pairing is between a discrete group and a (uncountable) compact 
+group. 
+\end{example}
+
+In general, Galois groups are either finite or uncountable (because they're 
+compact). 
+
+
+
+
+
+\subsection{Weil pairing}
+
+We start with some needed facts, which are proved using Riemann-Roch. Let 
+$k$ be a field, $n\geqslant 2$ an integer invertible in $k$, and let 
+$E_{/k}$ be an elliptic curve. Suppose $D=\sum n_x(x)$ is a divisor on $E$. 
+\begin{enumerate}
+\item
+If $\deg(D)=0$, then $D=\divisor(f)$ for some rational function $f$ on $E$ if 
+and only if $\sum [n_x] x=0$ as an element of $E(\overline k)$. 
+
+\item
+If $x\ne 0$ in $E$, then $(x)-(0)\ne \divisor(f)$ in $\picard^\circ(E)$. 
+\end{enumerate}
+
+Given $x,y\in E[n]$, we'll define $e_n(x,y)\in \dmu_n$ following 
+\cite[III \S 8]{silverman-2009}. By fact 1 above, the divisor 
+$D=n(y)-n(0)$ is $\divisor(f)$ for some function $f$ on $E$. Let $y'$ be such 
+that $[n]y'=y$, and consider 
+\[
+  [n]^\ast D = \sum_{z\in E[n]} (y'+z)-(z) ,
+\]
+where $y'+z$ is defined using the addition in $E$. This is a degree-$0$ 
+diivisor, and within $E$, we have $\sum_{z\in E[n]}(y'+z-z)=n^2 y' = n y = 0$. 
+Thus $[n]^\ast D=\divisor(g)$ for some $g$, and it is easy to check that we 
+must have $f = c g^n$ for some $c\in \overline k$. We can replace $g$ by a 
+scalar multiple tog et $f=g^n$. Note that 
+$g(t+x)^n = f([n] t+[n] x) = f([n] t) = g(t)^n$. Thus we can define 
+\[
+  e_n(x,y) = \frac{g(t+x)}{g(t)}
+\]
+for any $t$ in the domain of $g$. Note that this definition is 
+asymmetric with respect to $x,y$. Also $f,g$ are independent of $y$. 
+
+\begin{theorem}
+Let $E_{/k}$ be an elliptic curve. Then: 
+\begin{enumerate}
+  \item $e_n(x_1+x_2,y) = e_n(x_1,y) e_n(x_2,y)$ 
+  \item $e_n(x,y_1+y_2) = e_n(x,y_1) e_n(x,y_2)$ 
+  \item $e_n(x,x)=1$, so $e_n(x,y) = e_n(y,x)^{-1}$ 
+  \item $e_n(x,y)^\sigma = e_n(x^\sigma,y^\sigma)$ for all $\sigma\in G_k$. 
+  \item $e_n(x,y)=1$ for all $x$ implies $y=0$, and vice versa. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+This is Proposition III.8.1 in \cite{silverman-2009}. 
+
+1. We have 
+\begin{align*}
+  e_n(x_1+x_2,y) 
+    &= \frac{g(t+x_1+x_2)}{g(t)} \\
+    &= \frac{g((t+x_1)+x_2)}{g(t+x_1)} \frac{g(t+x_1)}{g(t)} \\
+    &= e_n(x_1,y) e_n(x_2,y) .
+\end{align*}
+The other part is more involved. Call $y_3=y_1+y_2$. Let 
+$f_i,g_i$ be the functions for $y_i$. We must relate $g_3$ to $g_1,g_2$. 
+Put $D=(y_3)-(y_1)-(y_2)+(0)$; this has degree $0$, and the sum of its points 
+is $0$ in $E$, so $D=\divisor(h)$ for some $h$. Recall that 
+$\divisor(f_i) = n(y_i) - n(0)$. Thus 
+\[
+  \divisor\left(\frac{f_3}{f_1 f_2}\right) = \divisor(h^n) .
+\]
+Thus $f_3=c f_1 f_2 h^n$ for some $c$. It follows that 
+$f_3\circ [n] = c f_1\circ [n] f_2\circ [n] (h\circ [n])^n$, so 
+$g_3^n = g_1^n g_2^n (h\circ [n])^n$. Take $n$-th roots: we get 
+$g_3 = \widetilde c g_1 g_2 (h\circ [n])$. We can now compute: 
+\begin{align*}
+  e_n(x,t_3) 
+    &= \frac{g_3(t+x)}{g_3(t)} \\
+    &= \frac{g_1(t+x)g_2(t+x)h([n] t+[n] x)}{g_1(t) g_2(t) h([n] t)} \\
+    &= e_n(x,y_1) e_n(x,y_2) .
+\end{align*}
+
+4. We compute 
+\[
+  e_n(x,y)^\sigma 
+    = \left(\frac{g(t+x)}{g(t)}\right)^\sigma 
+    = \frac{g^\sigma(t^\sigma+x^\sigma)}{g^\sigma(t^\sigma)} 
+    = e_n(x^\sigma,y^\sigma) .
+\]
+
+We leave the rest of the proof as an exercise. 
+\end{proof}
+
+The alternating property and Galois-equivariance of the Kummer pairing have a 
+nice consequence. Choose a generating set $x,y\in E[n]$, $\sigma\in G_k$. Then 
+$\sigma$ acts on $E[n]$ via some matrix 
+\[
+  \begin{pmatrix} a & b \\ c & d \end{pmatrix}\in \GL_2(\dZ/n)
+\]
+with respect to the basis $\{x,y\}$. Suppose $e_n(x,y)=\zeta\in \dmu_n$. Then 
+$\sigma(\zeta) = \zeta^{\chi(\sigma)}$, where $\chi:G_k\to \GL_1(\dZ/n)$ is 
+the cyclotomic character. Write $\rho_{E,n}:G_k\to \GL_2(\dZ/n)$ for the 
+representation coming from $E$. We claim that $\det\rho_{E,n} = \chi_n$. All 
+we need to show is that $e_n(x,y)^\sigma = \zeta^\sigma = \zeta^{a d-b c}$. We 
+know that $e_n(x,y)^\sigma = e_n(x^\sigma,y^\sigma) = e_n(a x+c y, b x+d t)$; 
+we're left with $e_n(x,y)^{a b-c d}$, as desired. 
+
+
+
+
+
+\subsection{Isogenies}
+
+An \emph{isogeny} will be morphisms between elliptic curves, defined over the 
+base field. Since elliptic curves are varieties, we should require these 
+morphisms to be polynomial (or rational). Since elliptic curves have a group 
+law, we also want these morphisms to respect this structure. Summing up: if we 
+think of elliptic curves as group objects in the category of projective 
+varieties (projective $\Rightarrow$ abelian), an isogeny is a non-constant 
+morphism of such objects. Isogenies always have finite kernel. 
+
+If $\phi:E_1\to E_2$ is defined over $k$, then $\ker\phi$ is $G_k$-stable as a 
+group (not pointwise). Given $E_{/\dQ}$ and an isogeny $\phi:E\to E$, usually 
+$\phi$ is $[n]$ for some $n\in\dZ\smallsetminus 0$. When there are isogenies 
+not of this form, amazing congruences happen. 
+
+\begin{example}
+Let $\Delta=q \prod_{n\geqslant 1} (q-1^n)^{24} = \sum \tau(n) q^n$; the first 
+few terms are: 
+\[
+  \Delta = q-24 q^2 + 252 q^3 - 1472 q^4 + 4830 q^5 - 6048 q^6 + \cdots .
+\]
+Ramanujan observed that $(m,n)=1$ implies $\tau(m n) = \tau(m) \tau(n)$. He 
+also observed that for a prime $p$, 
+$\tau(p^{r+1}) = \tau(p) \tau(p^r) - p^{11} \tau(p^{r-1})$. Also, 
+$|\tau(p)|\leqslant 2 p^{11/2}$ (this is hard: it was proved by Deligne in the 
+course of the Weil conjectures). Finally, 
+\[
+  \tau(n) \equiv \sigma_{11}(n) = \sum_{d\mid n} d^{11} \pmod{691} .
+\]
+This congruence is a manifestation of the ``existence of a non-trivial 
+isogeny.'' 
+\end{example}
+
+This example is one of the first cases of a congruence between a \emph{cusp 
+form} and \emph{Eisenstein series}. The first paper to make much use of this 
+idea is \cite{ribet-1976}, in which Ribet used modular forms to prove the 
+converse of Kummer's criterion. The ideas here were crucial in the proof of 
+Iwasawa's Main Conjecture, Skinner and Urban's recent work, and many other 
+parts of modern number theory. See Mazur's survey article 
+\cite{mazur-2011} for an excellent overview of this circle of ideas. 
 
 
 
