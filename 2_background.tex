@@ -678,7 +678,7 @@ classification of pairs $(E,C)$ defined over $\dQ$ comes down to the study of
 $Y_0(p)(\dQ)$. The complex points of $Y_1(p)$ are in bijection with 
 $\fH/\Gamma_1(p)$, where 
 \[
-  \Gamma_0(p) = \left\{\gamma\in \SL_2(\dZ):\gamma\equiv \begin{pmatrix} 1 & \ast \\ & 1 \end{pmatrix} \pmod p\right\} .
+  \Gamma_1(p) = \left\{\gamma\in \SL_2(\dZ):\gamma\equiv \begin{pmatrix} 1 & \ast \\ & 1 \end{pmatrix} \pmod p\right\} .
 \]
 
 \begin{theorem}[Mazur]
@@ -688,7 +688,167 @@ $Y_0(p)(\dQ)=\varnothing$ for all $p\geqslant 11$.
 This implies that there does not exist an $E_{/\dQ}$ and (for $p\geqslant 11$) 
 $P\in E(\dQ)$ of order $p$. This theorem is proved in the seminal paper 
 \cite{mazur-1977}. This allows the classification of $E(\dQ)_\mathrm{tors}$ for 
-$E_{/\dQ}$. 
+$E_{/\dQ}$. Mazur's theorem tells us that $p\nmid E(\dQ)_\mathrm{tors}$ for 
+$p\geqslant 11$. All that remains are the primes $p<11$, and this is a finite 
+list. 
+
+Note that an isogeny can be given by a pair $(E,C)$, where $E_{/k}$ is an 
+elliptic curve and $C_{/k}$ is a subgroup scheme of $E$. The quotient $E/C$ 
+must be defined in the appropriate sense -- this can get pretty complicated. 
+
+Are isogenies ramified? Let's restrict to characteristic zero. We are asking: 
+if $\phi:E_1\to E_2$ is an isogeny, are there points $x\in E_2(\bar k)$ such 
+that $\#\phi^{-1}(x)< \deg(\phi)$? The answer is no: isogenies are \'etale, 
+hence unramified. This is because $\phi$ is a group homomorphism, so 
+$\#\phi^{-1}(x) = \# \phi^{-1}(0) = \deg(\phi)$ for all $x$. If 
+$\phi:C_1\to C_2$ is a map between curves over $k$, then if one of the curves 
+isn't elliptic, it's possible for $\phi$ to have ramification points. The 
+Riemann-Hurwitz formula gives us a bound on possible ramification. 
+
+
+
+
+
+\subsection{Jacobians}
+
+Let $C_{/k}$ be a curve. The \emph{Jacobian} of $C$, denoted $\jacobian(C)$, 
+is a group variety build from $C$, which has a natural map $C\to \jacobian(C)$. 
+If $C$ has genus $g$, then $\jacobian(C)$ is $g$-dimensional. 
+
+The \emph{divisor group} of $C$, denoted $\divisors(C)$, is the free abelian 
+group on $C(\bar k)$. It contains a subgroup $\divisors^\circ(C)$ consisting 
+of degree-zero divisors. There is a smaller subgroup of \emph{principal 
+divisors}, which are of the form $\divisor(f)$ for $f\in k(C)^\times$. One can 
+show that $\deg(\divisor(f))=0$ for all such $f$. Define 
+$\picard^\circ(C)$ to be the quotient 
+$\divisors^\circ(C)/\divisor(k(C)^\times)$. 
+
+\begin{theorem}
+Let $C_{/k}$ be a genus-$g$ curve. Then $\picard^\circ(C)$ naturally has the 
+structure of the $\bar k$-points of a $g$-dimensional abelian variety over $k$. 
+\end{theorem}
+
+Note that we've only constructed $\jacobian(C)$ as an abstract group. The 
+underlying variety can be quite complicated. See \cite{kleiman-2005} for a 
+survey of general Picard schemes. 
+
+\begin{example}
+Work over $\dC$. An elliptic curve $E_{/\dC}$ is just a complex torus. Let 
+$L_1,L_2$ be generators for $\pi_1(E)$. Since $E$ has genus $1$, the space of 
+holomorphic differential forms is one-dimensional, spanned by $\omega$. Let 
+$A_i=\int_{L_i} \omega$. Then $\dC/\langle A_1,A_2\rangle\simeq E(\dC)$. 
+\end{example}
+
+If $C$ has genus $g\geqslant 2$, there are $2 g$ loops $L_1,\dots,L_{2 g}$ and 
+$g$ holomorphic differentials $\omega_1,\dots,\omega_g$. One gets 
+$\jacobian(C)(\dC) = \dC^g / \Lambda$, where $\Lambda$ is the lattice spanned 
+by the vectors 
+\[
+  \int_{L_i} \begin{pmatrix} \omega_1 \\ \vdots \\ \omega_g \end{pmatrix}\qquad (1\leqslant i \leqslant 2 g ).
+\]
+
+Back to an elliptic curve $E_{/k}$. There is a map 
+$\kappa:E\to \picard^\circ(E)$; this is an isomorphism. It sends 
+$x\in E$ to the divisor $(x)-(0)$. If $\phi:E_1\to E_2$ is an isogeny, it 
+induces a map $\phi^\ast:\picard^\circ(E_2)\to \picard^\circ(E_1)$ by 
+pullback of divisors: $D\mapsto \phi^\ast D$, where 
+\[
+  \phi^\ast \sum n_x(x) = \sum n_x \phi^{-1}(x) .
+\]
+We can use our isomorphisms $E_i\iso \picard^\circ(E_i)$ to get an isogeny 
+$\phi^\vee:E_2\to E_1$, given by 
+$\phi^\vee = \kappa_1^{-1}\circ \phi^\ast\circ \kappa_2$. We call 
+$\phi^\vee:E_2\to E_1$ the \emph{dual isogeny} to $\phi$. We have not (and will 
+not) checked, but it is true, that: 
+\begin{itemize}
+  \item $\picard^\circ(C)$ is a smooth projective variety over $k$. 
+  \item $\kappa$ is an isomorphism of varieties. 
+  \item $\phi^\vee$ is an isogeny. 
+\end{itemize}
+
+It turns out that $\deg:\hom_k(E,E)\to \dN$ is a positive definite quadratic 
+form. This depends on the fact that $\phi^\vee\circ\phi=[\deg\phi]$. The 
+degree map is clearly positive-definite. To show that it's a quadratic form, 
+just check that $\deg(\phi+\psi)-\deg(\phi)-\deg(\psi)$ is bilinear. We can 
+compute: 
+\begin{align*}
+  (\phi+\psi)^\vee(\phi+\psi) - \phi^\vee \phi - \psi^\vee \psi 
+    &= \phi^\vee\phi + \psi^\vee \phi + \phi^\vee \psi + \psi^\vee \psi - \phi^\vee \phi - \psi^\vee \psi \\
+    &= \phi^\vee \psi - \psi^\vee  \phi ,
+\end{align*}
+which yields the desired result. 
+
+In general, if $d:A\to \dZ$ is a positive definite quadratic form for 
+some abelian group $A$, then 
+$|d(\psi-\phi)-d(\psi)-d(\phi)|\leqslant 2\sqrt{d(\phi)d(\psi)}$. This is 
+basically Cauchy-Schwarz. 
+
+\begin{theorem}
+Let $E_{/\dF_q}$ be an elliptic curve. Then $|\#E(\dF_q)-q-1|\leqslant 2\sqrt q$. 
+\end{theorem}
+\begin{proof}
+Given $E_{/\dF_q}$, the map $\Frob_q-1$ is separable. Moreover, 
+$\ker(\Frob_q-1) = E(\dF_q)$. Now we use Cauchy-Schwarz for the isogenies 
+$\phi=\Frob$, $\psi=1$. We get 
+\begin{align*}
+  |\#E(\dF_q)-q-1| 
+    &=|\deg(\Frob-1)-\deg(\Frob)-\deg(1)| \\
+    &\leqslant 2\sqrt{\deg(\Frob)\deg(1)} \\
+    &= 2\sqrt{1\cdot q} .
+\end{align*}
+\end{proof}
+
+This is a real theorem. A Putnam exam had the following question: 
+consider the equation $y^2=x^3+A x+B$ for $A,B\in \dZ$. Show that there exist 
+solutions modulo $p$ for all $p$. Assume the induced (projective) curve $E$ 
+is smooth. It is also true that $E_{/\dF_p}$ is smooth for all but finitely 
+many $p$. For these good $p$, we know that 
+$|\# E(\dF_p) - p - 1|\leqslant 2\sqrt p$. The curve $E$ has no affine 
+solutions only when $\# E(\dF_p)=1$, which gets $1<2/\sqrt p$. This gives us 
+the solution for all $p$ of good reduction. 
+
+Note that as $q\to \infty$, we get $\# E(\dF_q) \sim q+1$, which clearly goes to 
+infinity. So for $q$ large, \emph{all} $E_{/\dF_q}$ will have nonzero points. 
+If $(6,q)=1$, then $E_{/\dF_q}$ is of the form $y^2=x^3+A x+B=f(x)$. Define a 
+character $\chi:\dF_q\to \dZ$ by 
+\[
+  \chi(x) = \begin{cases} 1 & x\in (\dF_q^\times)^2 \\ -1 & x\notin (\dF_q^\times)^2 \\ 0 & x=0 \end{cases}.
+\]
+We have 
+\[
+  \# E(\dF_q) = 1 + \sum_{x\in \dF_q}\left(\chi(f(x))+1\right) = q+1 + \sum_{x\in \dF_q} \chi(f(x)) .
+\]
+So there is some finite Fourier analysis going on here -- this has a distant 
+relation with the Langlands program. Recall that in characteristic $p$, if you 
+want a degree $p$ separable extension, you don't study $x^p-\alpha$ -- rather, you 
+study Artin-Schreier theory and study equations of the form $x^p-x-\alpha$. In 
+general, we want \emph{separable} polynomials, where $g$ is separable if 
+$(g,g')=1$. 
+
+\begin{theorem}
+No elliptic curve $E_{/\dQ}$ given by $y^2=x^3+A x+B$ with $A,B\in \dZ$ has 
+good reduction at all primes, i.e.~is smooth modulo $p$ for all $p$. 
+\end{theorem}
+\begin{proof}
+For $E$ to be smooth modulo $p$ for all $p$, we need $x^3+A x+B$ to have 
+distinct roots modulo $p$ for all $p$. Let $\alpha,\beta,\gamma$ be the roots, 
+and set $\Delta=\left((\alpha-\beta)(\beta-\gamma)(\gamma-\alpha)\right)^2$. 
+You can check that $\Delta=\pm (4 A^3+27 B^2)$. If $\Delta\notin \{\pm 1\}$, 
+then some prime $p\mid\Delta$, which means that $E_{/\dF_p}$ is singular. So 
+we need $\Delta=\pm 1$, which gives $4 A^3\equiv \pm 1\pmod 9$. This means 
+$x^3\in \{0,\pm 1\}\pmod 9$, and there is no way that 
+$0,\pm 4$ can be congruent to $\pm 1$ modulo $9$. 
+\end{proof}
+
+It is known that there are finite extensions $L/\dQ$ and elliptic 
+schemes $E_{/\cO_L}$. On the other hand, we have the following: 
+
+\begin{theorem}[Fontaine]
+There are no abelian varieties over $\dZ$. 
+\end{theorem}
+\begin{proof}
+See Fontaine's beautiful paper \cite{fontaine-1985}. 
+\end{proof}
 
 
 
