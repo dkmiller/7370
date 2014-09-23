@@ -850,6 +850,158 @@ There are no abelian varieties over $\dZ$.
 See Fontaine's beautiful paper \cite{fontaine-1985}. 
 \end{proof}
 
+% exercise: Consider the elliptic curve $y^2=x^3+3 x+1$. Find $\# E(\dF_{5^3})$. 
+
+Let $k$ be a field of characteristic $p$ and $E_{/k}$ be an elliptic curve 
+$y^2=x^3+a x+b$. Then $\Frob_q$ is \emph{not} a morphism $E\to E$. Rather, it 
+is a morphism $E\to E^{(q)}$, where $E^{(q)}$ has Weierstrass equation 
+$y^2=x^2+a^q x+b^q$. When $k\subset \dF_q$, then $a^q=a,b^q=b$, so 
+$\Frob_q$ is actually a morphism $E\to E$. 
+
+We've looked informally at the reduction of $E_{/\dQ}$ modulo $p$. This can be 
+done directly via the Weierstrass equations. The relation between an elliptic 
+curve and its Weierstrass equation is analogous to the relation between a 
+vector space and its basis. Often, when proving (and computing) facts in 
+linear algebra, we want to use bases, but basis-free proofs are often cleaner. 
+In algebraic geometry, it is often possible to prove the same theorems about 
+elliptic curves without using Weierstrass equations, but this requires more 
+algebraic machinery in general. 
+
+If $\phi:E\to E$ is an isogeny, then $e_m(\phi^\vee(x),y) = e_m(x,\phi(y))$ for 
+all $x,y\in E[m]$. So $\phi$ is ``self-adjoint'' as an operator on 
+$E[m]\simeq (\dZ/m)^2$. It would be nice to have an operator in characteristic 
+zero. Define 
+\[
+  \tate_l E = \varprojlim E[l^n] \simeq \varprojlim (\dZ/l^n)^2 \simeq \dZ_l^2 .
+\]
+The ring $\dZ_l$ is a complete discrete valuation ring of characteristic zero. 
+It is uncountable, and contains $\dZ$ as a dense subring. Elements can be 
+written as $\sum_{n\geqslant 0} a_n p^n$, where $a_n\in \{0,\dots,l-1\}$, but 
+this isn't very helpful. Isogenies of $E$ act on $\tate_l E$ by linear 
+transformations. So we have a representation $\End(E)\to \matrices_2(\dZ_l)$. 
+Usually, for $k$ a number field, $\End(E)\simeq \dZ$. Rarely, 
+$\End(E)\otimes\dQ\simeq \dQ(\sqrt{-d})$ for some $d\in \dN$. For $k$ of 
+characteristic $p$, $\End(E)\otimes \dQ$ will either be a quadratic imaginary 
+field or a quaternion algebra. 
+
+\begin{theorem}[Faltings]
+Let $k$ be a number field, $E_{/k}$ an elliptic curve. Then 
+$\End(E)\otimes \dZ_l\iso \End_{\dZ_l[G_k]}(\tate_l E)$. 
+\end{theorem}
+
+This theorem is highly non-trivial, and holds for arbitrary abelian varieties 
+over a global field. The Tate module $\tate_l E$ with its Galois action, 
+``knows'' $L(E,s)$, which (if we believe BSD) ``knows'' $\rank(E)$. Faltings 
+proved that $\tate_l E$ determines $E$ up to isogeny. 
+
+\begin{proposition}
+Let $E_{/k}$ be an elliptic curve, $\psi:E\to E$ be an isogeny. Then 
+$\det(\psi,\tate_l E) = \deg(\psi)\in \dZ$ and 
+$\trace(\psi,\tate_l E) = 1+\deg\psi-\deg(1-\psi)$. 
+\end{proposition}
+\begin{proof}
+Write $\psi_l$ for $\psi$ considered as an endomorphism of $\trace_l E$.. 
+We can write 
+$\psi_l=\begin{pmatrix} a & b \\ c & d \end{pmatrix}\in \matrices_2(\dZ_l)$ 
+with respect to some basis. We'll use $\varprojlim e_{l^n}$ to get a pairing 
+$e:\tate_l E\times \tate_l E\to \varprojlim \dmu_{l^n} = \tate_l \Gm$. We now 
+compute 
+\begin{align*}
+  e(v_1,v_2)^{\deg\psi} 
+    &= e([\deg\psi]v_1,v_2) \\
+    &= e(\psi_l^\vee\psi_l v_1,v_2) \\
+    &= e(\psi_l v_1,\psi_l v_2) \\
+    &= e(a v_1+c v_2, b v_1+d v_2) \\
+    &= e(v_1,v_2)^{a d-b c} \\
+    &= e(v_1,v_2)^{\det(\psi_l)} .
+\end{align*}
+Since the Weil pairing is perfect, this forces $\deg\psi=\det(\psi_l)$. 
+
+In general, we know that for any $2\times 2$ matrix $\theta$, we have 
+\begin{equation*}\label{eq:trace-id}
+  \trace(\theta)=1+\det(\theta)-\det(1-\theta); 
+\end{equation*}
+so we're done. 
+\end{proof}
+
+Let's apply this result to $\Frob_5$ on $E_{/\dF_5}:y^2=x^3+3 x+1$. We know 
+$\deg(\Frob_5)=5$. Consider the characteristic polynomial 
+$\det(T-\Frob_5,\tate_l E)$; it has two roots $\alpha,\beta$. We know that 
+$\alpha\beta=\deg(\Frob_5)=5$. From our identity \eqref{eq:trace-id} with 
+$\theta=\Frob_{5,l}$, we get 
+$\alpha+\beta=1+5-\det(1-\Frob_{5,l}) = 6-\# E(\dF_5)$. Consider the following 
+table: 
+\begin{center}
+\begin{tabular}{c|cc}
+$x$ & $x^3+3 x+1$ & $\#\sqrt{x^3+3 x+1}$ \\ \hline
+0 & 1 & 2 \\
+1 & 0 & 1 \\
+2 & 0 & 1 \\
+3 & 2 & 0 \\
+4 & 2 & 0 
+\end{tabular}
+\end{center}
+We conclude that $\# E(\dF_5)=5$, so $\alpha+\beta=1$. In general, 
+$\#E(\dF_{5^f}) = (1-\alpha^f)(1-\beta^f)$, so for example 
+\begin{align*}
+  \# E(\dF_{5^3}) 
+    &= (1-\alpha^3)(1-\beta^3) \\
+    &= 1-(\alpha^3+\beta^3) + (\alpha\beta)^2 \\
+    &= 1-(\alpha+\beta)^3 + 3\alpha\beta(\alpha+\beta) + (2\beta)^3 \\
+    &= 1-1^3 + 3\cdot 5\cdot 1 + 5^3 \\
+    &= 140 .
+\end{align*}
+So we see that computing something like $\# E(\dF_q)$ is easy. More 
+importantly, $\# E(\dF_q),\# E(\dF_{q^2}),\ldots$ depnds only on two pieces 
+of data. This brings us to the Weil Conjectures. 
+
+
+
+
+
+\subsection{Weil conjectures}
+
+Let $V_{/\dF_q}$ be a smooth proper $d$-dimensional variety. Set 
+\[
+  Z(V,T) = \exp\left(\sum_{n\geqslant 1} \# V(\dF_{q^n}) \frac{T^n}{n}\right) .
+\]
+This is just a fancy generating series encoding the numbers $\# V(\dF_{q^n})$. 
+
+\begin{conjecture}[Weil]
+\leavevmode
+\begin{enumerate}
+\item $Z(V,T)\in \dQ(T)$. 
+\item $Z\left(V,\displaystyle\frac{1}{q^d T}\right) = \pm q^{d\chi/2} T^\chi Z(V,T)$
+\item $Z(V,T)=\prod_{i=0}^{2 d} P_i(T)^{(-1)^{i+1}}$, where $P_i\in \dZ[T]$ and 
+the roots of $P_i$ are pure of size $q^{i/2}$. 
+\end{enumerate}
+\end{conjecture}
+
+Part 1 of the Weil Conjectures tells us that $Z(V,T)$ actually contains only a 
+finite amount of information. This was proved by Dwork in [find source]. In 
+part 2, $\chi$ is the Euler characteristic of $V$; this was proved by 
+Grothendieckin SGA 5. Part 3 was proved by Deligne in [source]. 
+
+The roots of $P_i$ are algebraic numbers. An algebraic number 
+$\omega\in \overline\dQ$ is \emph{pure} if the absolute value 
+$|\iota(\omega)|$ is the same for all embeddings 
+$\iota:\overline\dQ\monic \dC$. Grothendieck proved more than 2; we have 
+\[
+  Z(V,T) = \prod_{i=0}^{2 d} \det\left(T-\Frob_q,\h_\etale^i(V_{\overline{\dF_q}},\dQ_l)\right)^{(-1)^{i+1}} .
+\]
+You should think about $\Frob_q$ acting on 
+$\tate_l E = \h_\etale^1(E_{\overline{\dF_q}},\dZ_l)$. This is basically 
+a rephrasing of the Lefschetz trace formula from algebraic topology. However, 
+the algebraic Lefschetz trace formula is enormously difficult. 
+
+Deligne's result settles the Ramanujan conjecture for modular forms. For 
+example, define $\tau$ by 
+\[
+  \Delta=q \prod_{n\geqslant 1} (1-q^n)^{24} = \sum_{n\geqslant 0} \tau(n) q^n .
+\]
+The Ramanujan conjecture is: $|\tau(p)|\leqslant p^{11/2}$. Even here, 
+algebraic geometry is lurking under the surface. 
+
 
 
 
