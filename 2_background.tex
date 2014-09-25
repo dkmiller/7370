@@ -894,12 +894,47 @@ over a global field. The Tate module $\tate_l E$ with its Galois action,
 ``knows'' $L(E,s)$, which (if we believe BSD) ``knows'' $\rank(E)$. Faltings 
 proved that $\tate_l E$ determines $E$ up to isogeny. 
 
-\begin{proposition}
-Suppose $\phi:E_1\to E_2$ is an isogeny and $\ker\phi\supset E_1[n]$. Then 
-there exists $\psi:E_1\to E_2$ such that $\phi=\psi\circ[n]$. 
+\begin{proposition}\label{prop:isog-invert}
+Let $k$ be a field, $E_1,E_2$ elliptic curves over $k$, and $n$ an integer 
+invertible in $k$. If $\phi:E_1\to E_2$ is an isogeny and 
+$\ker\phi\supset E_1[n]$, then there exists $\psi:E_1\to E_2$ such that 
+$\phi=\psi\circ[n]$. 
 \end{proposition}
 \begin{proof}
-Cite source.
+This follows directly from \cite[III 4.11]{silverman-2009}. 
+\end{proof}
+
+\begin{proposition}\label{prop:end-rank}
+Let $E_{/k}$ be an elliptic curve. Then $\End(E)$ is a finitely generatd 
+abelian group of rank $\leqslant 4$. 
+\end{proposition}
+\begin{proof}
+Let $R=\End(E)$. We will first show that if $M\subset R$ is a finitely 
+generated subgroup, then 
+\[
+  M^\mathrm{div}=\{\phi\in R:[n]\phi\in M\text{ for some } n\geqslant 1\} 
+\]
+is also finitely generated. Indeed, we can naturally extend the degree map 
+to $\deg:M_\dR=M\otimes \dR\to \dR$. There is a natural embedding 
+$M^\mathrm{div}\subset M_\dR$, and $M^\mathrm{div}$ is a discrete subgroup 
+since all $\phi\in \End(E)$ have degree $\geqslant 1$,which implies the 
+open set $\{\phi\in M_\dR:\deg\phi<1\}$ is disjoint from $M^\mathrm{div}$. 
+Any discrete subgroup of $M_\dR$ has rank $\leqslant \dim(M_\dR)$, so we 
+even know that $\rank(M^\mathrm{div})\leqslant \rank(M)$. 
+
+Next, we'll prove that $R_l=R\otimes \dZ_l\monic \End(\tate_l E)$. If 
+$\phi\in R_l$ is the zero map on $\tate_l E$. Then there exists a finitely 
+generated group $M\subset R$ such that $\phi\in M_l=M\otimes \dZ_l$. Since 
+$M^\mathrm{div}$ is finitely generated, for each $n$ there exists 
+$\phi_n\in M^\mathrm{div}$ such that $\phi_n\equiv \phi\pmod{l^n}$. Since 
+$\phi[l^n]=0$, \autoref{prop:isog-invert} yields that 
+$\phi_n\equiv 0\pmod{l^n}$. Since $n$ was arbitrary, we see that $\phi=0$. 
+
+Finally, we show that $R$ has $\dZ$-rank $\leqslant 4$. Let 
+$\phi_1,\dots,\phi_t$ be a $\dZ_l$-basis for $R_l$ such that 
+$\phi_i\in R$. (Such a basis exists because $R$ is dense in $R_l$.) Note that 
+$t\leqslant 4$. Then for $M=\langle \phi_1,\dots,\phi_t\rangle$, we have 
+$R=M^\mathrm{div}$, whence $\rank_\dZ(R)\leqslant 4$. 
 \end{proof}
 
 \begin{proposition}
@@ -907,73 +942,34 @@ Let $E$ be an elliptic curve. Then $\End(E)\otimes\dQ$ is either $\dQ$,
 an imaginary quadratic field, or a quaternion algebra. 
 \end{proposition}
 \begin{proof}
-Recall that in general, $\hom(E_1,E_2)\monic \hom(\tate_l E_1,\tate_l E_2)$. Note 
-that $\hom(\tate_l E_1,\tate_l E_2)$ is a rank-$4$ $\dZ_l$-module. So 
-$\End(\tate_l E)\simeq \dZ^4$, and thus $\End(E)\otimes\dZ_l$ is a 
-$\dZ_l$-module of rank at most $4$. We know that $\End(E)$ is an integral 
-domain. Indeed, isogenies have finite kernel, so the composite of two 
-isogenies has finite kernel. In particular, there is no way that two 
-non-zero endomorphisms of $E$ can have trivial composite. If we knew that 
-$\End(E)$ was finitely generated as an additive group, we would know it 
-was free. We could use the injection $\End(E)\monic \dZ_l^4$ to conclude that 
-$\rank(\End E)\leqslant 4$. It is a purely algebraic result that any 
-(possibly non-commutative) integral domain of rank $\leqslant 4$ with an 
-anti-involution is one of our three choices, after tensoring with $\dQ$. 
-The anti-involution here is $\phi\mapsto \phi^\vee$. 
+Note that $\End(E)$ has no zero-divisors. Indeed, isogenies have finite 
+kernel, so the composite of two isogenies has finite kernel. Thus the only 
+way for the composite of two endomorphisms to be zero is for one of them to 
+have been $0$ to begin with. 
 
-All that remains is to prove that $\End(E)$ is finitely generated. More 
-generally, we'll prove that $\hom(E_1,E_2)$ is finitely generated. 
-Let $M\subset \hom(E_1,E_2)$ be finitely generated. Set 
-$M^\mathrm{div}=\{\phi:[n]\circ\phi\in M\text{ for some }n\in \dN\}$. Recall 
-$\deg:M\to \dZ$; we can extend this to the finite-dimensional vector space 
-$M_\dR=M\otimes\dR$, getting $\deg:M_\dR\to \dR$. Set 
-$U=\{\phi\in M_\dR:\deg\phi<1\}$; this is an open neighborhood of zero in 
-$M_\dR$. Also, 
-$M^\mathrm{div}\subset M_\dR$, and $M^\mathrm{div}\cap U=0$ as isogenies have 
-degree $\geqslant 1$. Thus $M^\mathrm{div}$ is discrete in 
-$M_\dR$, which is finite-dimensional because $M$ is finitely generated. 
-It follows that $M^\mathrm{div}$ is finitely generated. 
-[haven't proved $\hom$ is f.g.]
-
-Also, we'll prove 
-$\hom(E_1,E_2)\otimes\dZ_l\monic \hom(\tate_l E_1,\tate_l E_2)$. Let 
-$\phi\in \hom(E_1,E_2)\otimes\dZ_l$ be such that $\phi_l=0$. Let 
-$\phi_1,\dots,\phi_t$ be a basis of $M^\mathrm{div}$. [We can assume 
-$\phi\in M\otimes\dZ_l$. Now $M^\mathrm{div}$ is finitely generated; 
-say it has basis $\phi_1,\dots,\phi_t$. Thus we can write 
-$\phi=\sum \alpha_i \phi_i$ with the $\alpha_i\in \dZ_l$. Choose 
-$\beta_i\in \dZ$ such that $\beta_i\equiv \alpha_i\pmod{l^n}$. Since 
-$\phi_l=0$, $\phi_l$ kills all $l$-power torsion. This implies 
-$\beta_i\equiv 0\pmod{l^n}$. But $n$ was arbitrary, so each 
-$\alpha_i=0$. Thus $\rank_{\dZ_l}\hom(E_1,E_2)\otimes\dZ_l\leqslant 4$. 
-
-Now we need to show that $\hom(E_1,E_2)$ is finitely generated. 
+Now we apply \cite[III 9.3]{silverman-2009} to show that any such ring 
+posessing an anti-involution is either $\dZ$, an order in an imaginary 
+quadratic field, or an order in a quaternion algebra. The involution we use 
+is the \emph{Rosatti involution}, given by $\phi\mapsto \phi^\vee$. 
 \end{proof}
 
-[Aside: $\dQ(\mu_{p^\infty})/\dQ$ has Galois group 
-$\dZ_p^\times\simeq \dZ/(p-1)\times \dZ_p$. So we should have a 
-$\dZ_p$-extension $L$ of $\dQ$. The theorem is that there exists a 
-unique $\dZ_p$-extension of $\dQ$. In general, if $k$ is a number field, 
-take the composite $L$ of all $\dZ_p$-extensions of $k$. Its Galois 
-group over $k$ will be $\dZ_p^r$ for some $r$. The famous 
-\emph{Leopoldt conjecture} is that $r=r_2+1$, where $r_2$ is the number of 
-complex places of $k$. This is known for $k/\dQ$ abelian. There are two 
-famous theorems about $\cO_k$ and $\cO_k^\times$. One is that 
-$\picard(\cO_k)$ is finitely generated, and the other is that $\cO_k^\times$ 
-is finitely generated -- a product of its torsion subgroup and 
-$\dZ^{r_1+r_2-1}$. 
+As an aside, note that $\dQ(\dmu_{p^\infty})/\dQ$ has Galois group 
+$\dZ_p^\times\simeq \dZ/(p-1)\times \dZ_p$. So there is a $\dZ_p$-extension 
+$L$ of $\dQ$ (this extension is unique by class field theory). More generally, 
+if $k$ is a number field, let $L$ be the composite of all $\dZ_p$-extensions of 
+$k$. Write $r=\rank_{\dZ_p}\galois(L/k)$. The famous \emph{Leopoldt conjecture} 
+is that $r=r_2+1$ where $r_2$ is the number of complex places of $k$. In 
+\cite{brumer-1967}, Brumer proved Leopoldt's conjecture for abelian extensions 
+of $\dQ$. At the moment, despite several claimed proofs, the general case is 
+wide open. It is not even clear if the conjecture holds for any specific 
+non-solvable extensions of $\dQ$. 
 
-Now $\cO_k^\times \monic \prod_{\fp\mid p} \cO_{k,\fp}^\times$. Leopoldt's 
-conjecture is true exactly if $\dZ$-independent elements of 
-$\cO_k^\times$ become $\dZ_p$-independent in 
-$(\cO_k\otimes \dZ_p)^\times$. Is this known for any non-solvable 
-extensions of $\dQ$?]
-
-[Further aside: Let $h=\#\picard(\cO_k)$, $R$ be the volume of a fundamental 
-domain of generators for $\cO_k^\times$. Then $h R$ is ``easy'' to numerically 
-approximate via the clas number formula. Finding either individually is 
-quite hard.]
-
+This is relevant to \autoref{prop:end-rank} because of the following 
+argument. Note that there is a natural map 
+$\cO_k^\times \to \cO_{k,p}^\times$, where 
+$\cO_{k,p}=\cO_k\otimes \dZ_p=\prod_{\fp\mid p} \cO_{k,\fp}$. Leopoldt's 
+conjecture is equivalent to this map being an injection, i.e.~$\dZ$-linearly 
+independent elements remaining $\dZ_p$-independent. 
 
 \begin{proposition}
 Let $E_{/k}$ be an elliptic curve, $\psi:E\to E$ be an isogeny. Then 
