@@ -1085,28 +1085,30 @@ algebraic geometry is lurking under the surface.
 
 \subsection{\texorpdfstring{$p$}{p}-adic numbers}
 
-Recall the $p$-adic norm $|\cdot|_p:\dQ\to \dR_{\geqslant 0}$, determined 
-by the facts that 
-\begin{enumerate}
-  \item $|a b|_p=|a|_p |b|_p$, 
-  \item $|p^r|_p=p^{-r}$, and 
-  \item $|m/n|_p=1$ if $p\nmid m,n$. 
-\end{enumerate}
-The completion of $\dQ$ with respect to this norm is denoted $\dQ_p$. There is 
-an obvious field embedding $\dQ\monic \dQ_p$ with dense image. Let 
+Recall the $p$-adic norm $|\cdot|_p:\dQ\to \dR_{\geqslant 0}$, 
+defined by $|p^r \frac m n |_p = p^{-r}$, if $p\nmid m,n$. It is an easy 
+exercise to check that this actually is a norm, i.e.~it is multiplicative and 
+satisfies $|x+y|\leqslant \max\{|x|,|y|\}$. The completion of $\dQ$ with 
+respect to this norm is denoted $\dQ_p$. There is an obvious embedding 
+$\dQ\monic \dQ_p$ with dense image. Let 
 \[
   \dZ_p=\{x\in \dQ_p:|x|_p\leqslant 1\} .
 \]
-It turns out that $\dZ_p$ is a compact topological ring which is a complete 
-discrete valuation ring. 
+It turns out that $\dZ_p$ is a complete discrete valuation ring which is 
+compact. Thus $\dQ_p$ is locally compact as a topological field. 
 
 \begin{lemma}[Hensel]\label{lem:hensel}
-Let $f\in \dZ_p[X]$ satisfy $f(x)\equiv 0\pmod p$ and 
-$f'(x_0)\not\equiv 0\pmod p$. Then Newton's method converges ($p$-adically) 
-to a solution $x\in \dZ_p$ such that $f(x)=0$ and $x\equiv x_0\pmod p$. 
+Let $f\in \dZ_p[x]$. Suppose $f(x_0)\equiv 0\pmod p$ for some 
+$x_0\in \dF_p$ for which $f'(x_0)\not\equiv 0\pmod p$. Then there exists 
+$\widetilde{x_0}\in \dZ_p$ such that $\widetilde{x_0}\equiv x_0\pmod p$ and 
+$f(\widetilde{x_0})=0$. 
 \end{lemma}
 \begin{proof}
-Reduce to \'etale schemes over $\spectrum(\dZ_p)$
+Let $X=\spectrum(\dZ_p[x]/f)$. This is a scheme over $S=\spectrum(\dZ_p)$. 
+The condition on $f'(x_0)$ is exactly that the fiber $X_{x_0}$ is smooth 
+over $S$. It is known that smooth morphisms are formally smooth, so 
+$X_{x_0}(\dZ/p^{n+1}) \epic X_{x_0}(\dZ/p^n)$ for all $n$, whence the 
+result. 
 \end{proof}
 
 \begin{example}[Selmer]
@@ -1125,71 +1127,105 @@ let $x=1,z=0$ and we get $y^3=-3/4$. Repeat the process in $\dF_5^\times$.
 As a homework problem, show that if $p\equiv 1\pmod 3$, then 
 $C(\dQ_p)\ne\varnothing$. 
 
-There is a canonical short exact sequence of Galois groups: 
+Let $\overline{\dQ_p}$ be an algebraic closure of $\dQ_p$. Then by 
+\cite[II 6.6]{neukirch-1999}, the absolute value on $\dQ_p$ has a unique 
+extension to one on $\overline{\dQ_p}$. We will write $|\cdot|=|\cdot|_p$ for 
+both. We can define 
+\begin{align*}
+  \cO_{\overline{\dQ_p}} &= \{x\in \overline{\dQ_p}:|x| \leqslant 1 \} \\
+  \fm_{\overline{\dQ_p}} &= \{x\in \overline{\dQ_p}:|x|<1\} .
+\end{align*}
+Then $\cO_{\overline{\dQ_p}}$ is a (non-noetherian) local ring with maximal 
+ideal $\fm_{\overline{\dQ_p}}$ and residue field $\overline{\dF_p}$. By the 
+uniqueness of the extension of $|\cdot|$ to $\overline{\dQ_p}$, we see that 
+$|\sigma(x)|=|x|$ for all $x\in \overline{\dQ_p}$. This allows us to define a 
+short exact sequence of Galois groups: 
 \[\begin{tikzcd}
   1 \ar[r] 
     & I_p \ar[r] 
     & G_{\dQ_p} \ar[r] 
     & G_{\dF_p} \ar[r] 
-    & 1 ,
+    & 1 .
 \end{tikzcd}\]
-in which $G_{\dF_p}\simeq \widehat\dZ$ canonically. The group $I_p$, called the 
-\emph{inertia group}, can be defined directly by 
+The map $G_{\dQ_p}\to G_{\dF_p}$ is $\sigma(\bar x)=\overline{\sigma(x)}$ for 
+$\bar x\in \cO_{\overline{\dQ_p}}/\fm_{\overline{\dQ_p}}$. The group $I_p$, 
+called the \emph{inertia group}, can be defined directly by 
 \[
   I_p = \{\sigma\in G_{\dQ_p} : \sigma(x)\equiv x\mod\fm_{\overline{\dQ_p}} \text{ for all }x\in \cO_{\overline{\dQ_p}}\} .
 \]
-Write $\dQ_p^\unram$ for the field $(\overline{\dQ_p})^I$; it turns out that 
-$p$ is prime in $\dZ_p^\unram=\cO_{\dQ_p^\unram}$. There is another 
-canonical short exact sequence 
+Write $\dQ_p^\unram$ for the field $(\overline{\dQ_p})^{I_p}$; it turns out that 
+$p$ is prime in $\dZ_p^\unram=\cO_{\dQ_p^\unram}$. For each $l\ne p$, define 
+$t_l:I_p \to \dZ_l$ by 
+\[
+  \sigma(p^{1/l^n}) = \zeta_{l^n}^{t_l(\sigma)\pmod{l^n}} p^{1/l^n} .
+\]
+Then $t=\prod_l t_l$ induces another canonical short exact sequence 
+(this can be derived from \cite[II 7.7]{neukirch-1999}):
 \[\begin{tikzcd}
   1 \ar[r] 
-    & I^\mathrm{wild} \ar[r] 
-    & I_p \ar[r] 
+    & P \ar[r] 
+    & I_p \ar[r, "t"] 
     & \widehat\dZ / \dZ_p \ar[r] 
     & 1 .
 \end{tikzcd}\]
-The group $I^\mathrm{wild}$ is pro-$p$. We don't ``understand'' representations 
+The group $P$ is pro-$p$; in fact it is the Sylow $p$-subgroup of $I_p$. We 
+don't ``understand'' representations 
 $G_\dQ\to \GL_n(\dZ_p)$ largely because 
-$G_\dQ\supset G_{\dQ_p}\supset I^\mathrm{wild}$, and we don't understand the 
-image of $I^\mathrm{wild}$ in $\GL_n(\dZ_p)$. The field of \emph{$p$-adic Hodge 
+$G_\dQ\supset G_{\dQ_p}\supset P$, and we don't understand the 
+image of $P$ in $\GL_n(\dZ_p)$. The field of \emph{$p$-adic Hodge 
 theory} seeks to understand this image, among other things. 
 
-Let $E_{/\dQ}$ be an elliptic curve, $\rho_{E,l}:G_\dQ\to \GL_2(\dZ_l)$ the 
-Galois representation coming from $\tate_l E$. Say $p$ is a prime of 
-\emph{good reduction} for $E$ if a model $y^2=x^3+A x+B$ exists for $E$ over 
-$\dQ$ with distinct roots modulo $p$. 
+\begin{definition}
+Let $E_{/\dQ}$ be an elliptic curve, $p$ a prime. We say that $E$ has 
+\emph{good reduction} at $p$ if there exists an abelian scheme 
+$\cE$ over $\dZ_{(p)}$ such that $\cE_\dQ\simeq E$. 
+\end{definition}
 
-\begin{theorem}[N\'eron-Ogg-Shafarevi\v c]
+From the theory of N\'eron models (see \cite{bosch-lutkebohmert-raynaud-1990}), 
+such an $\cE$ is unique up to isomorphism. 
+Moreover, if $p\geqslant 5$, it is equivalent to require that there exist a 
+model $y^2=x^3+A x+B$ for $E$ with $A,B\in \dZ_{(p)}$ and 
+$p\nmid (4 A^3+26 B^2)$. For a general elliptic curve $E_{/\dQ}$, write 
+$\rho_{E,l}$ for the Galois representation $G_\dQ\to \GL_2(\dZ_l)$ coming from 
+the $l$-adic Tate module $\tate_l E$. 
+
+\begin{theorem}[N\'eron-Ogg-Shafarevich]\label{thm:neron-ogg}
 An elliptic curve $E_{/\dQ}$ has good reduction at $p\ne l$ if and only if 
 $\rho_{E,l}(I_p) = 1$. 
 \end{theorem}
-Since $\rho_{E,l}(I_p)=1$, the representation $\rho_{E,l}|_{G_{\dQ_p}}$ factors 
-through $G_{\dF_p} = \widehat\dZ$, which is (canonically) generated by Frobenius 
-$\frobenius_p:x\mapsto x^p$. What is $\rho_{E,l}(\frobenius_p)$? It will be a 
-diagonalizable matrix conjugate to 
-$\begin{pmatrix} \alpha_p \\ & \beta_p \end{pmatrix}$, 
-where $\# E(\dF_f) = p^f+1-(\alpha_p^f + \beta_p^f)$. 
+\begin{proof}
+See \cite{serre-tate-1968} for a beautiful proof using the theory of N\'eron 
+models. 
+\end{proof}
 
-What if $E$ has bad reduction at $p$? Then inertia $I_p$ will act nontrivially 
+Suppose $E$ has good reduction at some $p\ne l$. Since $\rho_{E,l}(I_p)=1$, the 
+representation $\rho_{E,l}|_{G_{\dQ_p}}$ factors 
+through $G_{\dF_p} = \widehat\dZ$, which is (canonically) generated by Frobenius 
+$\frobenius_p:x\mapsto x^p$. The matrix $\rho_{E,l}(\frobenius_p)$ is 
+semisimple, hence conjugate to 
+$\begin{pmatrix} \alpha_p \\ & \beta_p \end{pmatrix}$, 
+where $\# E(\dF_f) = p^f+1-(\alpha_p^f + \beta_p^f)$ for all $f$. 
+
+If $E$ has bad reduction at $p$, the inertia at $p$ will act nontrivially 
 on $\tate_l E$, so $\rho_{E,l}(\frobenius_p)$ is not meaningful here. But we 
 still have an action of $\frobenius_p$ on 
 $(\tate_l E)^{I_p} = \h^0(I_p,\tate_l E)$. This lets us define the $L$-factors 
 of $L(E,s)$ at primes of bad reduction. Namely, 
-\[
-  L_p(E,t) = \det\left(1-\frobenius_p\cdot t, (\tate_l E)^{I_p}\right)^{-1} .
-\]
-We put 
-\[
-  L(E,s) = \prod_p L_p(E,p^{-s}) .
-\]
+\begin{align*}
+  L_p(E,t) & \det\left(1-\frobenius_p\cdot t, (\tate_l E)^{I_p}\right)^{-1} && (\text{any }l\ne p)\\
+  L(E,s) &= \prod_p L_p(E,p^{-s}) .
+\end{align*}
 If $(\tate_l E)^{I_p}=\tate_l E$, we get 
 \[
-  \det\left(1-\begin{pmatrix} \alpha_p p^{-s} \\ & \beta_p p^{-s} \end{pmatrix} \right) = \left(1-\frac{\alpha_p}{p^s}\right)\left(1-\frac{\beta_p}{p^s}\right) = 1 + a_p p^{-s} + p^{1-2 s} .
+  \det\left(1-\begin{pmatrix} \alpha_p p^{-s} \\ & \beta_p p^{-s} \end{pmatrix} \right) = \left(1-\frac{\alpha_p}{p^s}\right)\left(1-\frac{\beta_p}{p^s}\right) = 1 + a_p p^{-s} + p^{1-2 s} ,
 \]
-
-[Note: $L$-function of Galois representation\ldots]
-
-[Note: $l$-independence]
+so this definition of $L(E,s)$ agrees with our earlier definition at the places 
+of good reduction. One thing that is not \emph{a priori} clear is whether 
+$L_p(E,s)$ depends on the choice of the prime $l$. If $E$ has good reduction at 
+$p$, then we can see that $L_p(E,s)$ doesn't depend on $l$, but in general it 
+is not obvious. Fortunately, by \cite[3.3.9]{deligne-1980}, this is the case. 
+At primes of bad reduction, this is even harder. For elliptic curves (and more 
+generally, abelian varieties), this can be done directly using N\'eron models. 
 
 \begin{conjecture}[Birch, Swinnerton-Dyer]
 Let $E_{/\dQ}$ be an elliptic curve. Then $L(E,s)$ admits a meromorphic 
@@ -1205,22 +1241,24 @@ primes of bad reduction, and
   \alpha_p \beta_p &= p .
 \end{align*}
 
-What about $\rho_{E,p}|_{G_{\dQ_p}}:G_{\dQ_p} \to \GL_2(\dZ_p)$? Even if $E$ 
-has good reduction at $p$, this representation can be ramified. If $E$ has good 
-reduction, then either good ordinary or good supersingular reduction. In 
-good ordinary, we have 
+In our definition of $L_p(E,t)$, we looked at 
+$\rho_{E,l}|_{G_{\dQ_p}}:G_{\dQ_p}\to \GL_2(\dZ_l)$ for some prime 
+$l$ that is \emph{not} equal to $p$. Also, in the N\'eron-Ogg-Shafarevich 
+criterion (\ref{thm:neron-ogg}), we needed $l=p$. What can be said about 
+$\rho_p=\rho_{E,p}|_{G_{\dQ_p}}:G_{\dQ_p} \to \GL_2(\dZ_p)$? Even if $E$ 
+has good reduction at $p$, this representation can be ramified. 
+There are two cases. If $E$ has \emph{ordinary reduction}, then we have 
 \[
   \rho_p \sim \begin{pmatrix} \varepsilon \chi & \ast \\ & \psi^{-1} \end{pmatrix} ,
 \]
 where $\psi:G_{\dQ_p}\to \dZ_p^\times$ is unramified and 
-$\varepsilon$ is the $p$-adic cyclotomic character, which comes from the 
-$p$-adic Tate module of $\Gm$. 
+$\varepsilon$ is the $p$-adic cyclotomic character.
+If $E$ has good supersingular reduction at $p$, then $\rho_p$ is irreducible. 
 
-[Cite Ochiai: $l$-independence of trace of monodromy: $\rho_{E,p}|_{G_{\dQ_p}}$ 
-``knows'' $L_p(E,s)$ via Fontaine's semistable ring.]
-
-If $E$ has good supersingular reduction at $p$, the this representation is 
-irreducible. 
+Although it is ramified, the representation $\rho_p$ knows quite a lot about 
+$E$. For example, the $L$-factor at $p$ can be recovered from $\rho_p$, though 
+this is quite tricky and involves Fontaine's semistable period ring 
+$\mathbf{B}_\mathrm{st}$ \cite{ochiai-1999}. 
 
 
 
