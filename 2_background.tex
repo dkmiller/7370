@@ -1263,7 +1263,6 @@ $\mathbf{B}_\mathrm{st}$ \cite{ochiai-1999}.
 
 
 
-
 \subsection{Selmer groups}
 
 Let $E_{/\dQ}$ be an elliptic curve. Recall we have a short exact sequence 
@@ -1329,6 +1328,182 @@ $1+\frac{1}{p(p-1)} \geqslant \rank(E)$.
 Proceeding na\"ively won't get an average $\leqslant 1$. 
 We expect $\average(\rank )=1/2$. 
 %We need the work of Dokchitser-Dokchitser [Tim and Vladimir], as well as Skinner-Urban's converse to Kolyvagin to get the result. [motivated by Kolyvagin, Kato, Gross-Zagier]
+
+
+
+
+
+\subsection{State-of-the-art}
+
+
+Our definition of $L(E,s)$ actually works for \emph{any} Galois representation 
+$\rho:G_\dQ\to \GL_n(\dQ_l)$ that is sufficiently nice. That is, we want $\rho$ 
+to come in a \emph{compatible family} $\{\rho_l:G_\dQ\to \GL_n(\dQ_l)\}$ that 
+have the same characteristic polynomials of Frobenii (and these characteristic 
+polynomials lie in $\dQ[T]$) for varying $l$. One puts 
+\begin{align*}
+  L_p(\rho,t) &= \det\left(1-\rho_l(\frobenius_p)\cdot t,\rho_l^{I_p}\right) && l\ne p \\
+  L(\rho,s) &= \prod_p L_p(\rho,s^{-p}) .
+\end{align*}
+We could make the same definition if $\chi:G_\dQ\to \GL_n(\dC)$ is a continuous 
+character. This recovers the classical \emph{Artin $L$-functions}. If 
+$n=1$, these are \emph{Dirichlet $L$-functions}, and it is known that if 
+$\chi:G_\dQ\to \dC^\times$ is a nontrivial character, then $L(\chi,s)$ has 
+analytic continuation to $\dC$ and satisfies $L(\chi,1)\ne 0$. This has as a 
+corollary Dirichlet's theorem that for $(a,n)=1$, there are infinitely many 
+primes in the sequence $\{a+n k:k\geqslant 1\}$. For general $\rho$, very 
+little is known about analytic continuation of $L(\rho,s)$. 
+
+[Serre's book: compatible family, be more careful here\ldots]
+
+For example, if $\rho=\rho_E$ for $E_{/\dQ}$ an elliptic curve, one proves that 
+$L(E,s)=L(\rho_E,s)$ has meromorphic continuation by proving that $E$ is 
+modular! That is, set $\xi(s)=N^{s/2} (2\pi)^{-s} \Gamma(s) L(E,s)$, where $N$ 
+is the conductor of $E$. One proves that $\xi(s)=\pm \xi(2-s)$. But this is 
+done by proving that $L(E,s)$ is actually $L(f,s)$ for a cuspidal eigenform 
+$f$. 
+
+\begin{theorem}[Wiles, Taylor-Wiles, \ldots]
+Let $E_{/\dQ}$ be an elliptic curve. Then for $N$ the conductor of $E$, there 
+exists a regular surjection $X_0(N)\epic E$. 
+\end{theorem}
+\begin{proof}[Strategy of proof]
+One considers the associated Galois representation 
+$\rho_{E,l}:G_\dQ\to \GL_2(\dZ_l)$ coming from $\tate_l E$. This gives an 
+action of $G_\dQ$ on $\adjoint^\circ(\tate_l E)\otimes (\dQ_l/\dZ_l)$. Here 
+$M=\adjoint^\circ\subset \mathfrak{gl}_2$ is the subalgebra of trace-zero 
+matrices, with action of $\GL(2)$ by conjugation. Consider the kernel of 
+\[
+  \h^1(G_\dQ,M) \to \bigoplus_p \h^1(G_{\dQ_p},M) / \text{(some subgroup)} .
+\]
+Wiles reduced proving the modularity of $E$ to a precise computation of 
+the kernel (called a generalized Selmer group). 
+\end{proof}
+
+The curve $X_0(N)$ is a smooth curve over $\dQ$. A complex-analytic model for 
+$X_0(N)$ (minus the cusps) is $\Gamma_0(N)\backslash \fH$, where $\fH$ is 
+the upper half plane and 
+\[
+  \Gamma_0(N)=\left\{\begin{pmatrix} a & b \\ c & d\end{pmatrix}\in \SL_2(\dZ):c\equiv 0\pmod N\right\} .
+\]
+Given such a surjection $\pi:X_0(N)\epic E$, we can pullback the unique 
+holomorphic differential $\omega$ on $E$ to get a holomorphic differential 
+$\pi^\ast\omega$ on $X_0(N)$. The differential $\pi^\ast\omega$ will be 
+$f(z)\mathrm{d} z$ for a modular form $f$. It is this $f$ which satisfies 
+$L(f,s) = L(E,s)$. 
+
+As an aside, let $k\supset \dQ$ be a number field. Then we can define the 
+\emph{zeta-function} of $k$ by 
+\[
+  \zeta_k(s) = \sum_{\fa\subset \cO_k} \frac{1}{\norm(\fa)^s} = \prod_{\fp\in\spectrum(\cO_k)} \left(1-\frac{1}{\norm(\fp)^s}\right)^{-1} .
+\]
+\begin{theorem}
+The function $\zeta_k$ has a simple pole at $s=1$ with residue 
+$2^{r_1} (2\pi)^{r_2} \frac{h R}{w\sqrt{D_k}}$, where 
+\begin{itemize}
+\item $r_1$ is the number of real places of $k$, 
+\item $r_2$ is the number of complex places of $k$, 
+\item $h=\# \picard(\cO_k)$ is the class number of $k$, 
+\item $w=\# \dmu(k)$ is the number of roots of unity in $k$, 
+\item $D_k$ is the discriminant of $k$, and 
+\item $R$ is the regulator of $k$. 
+\end{itemize}
+\end{theorem}
+
+Given $k$, it's not hard to compute the residue of $\zeta_k$ at $s=1$ with 
+reasonable accuracy. It's easy to compute $r_1,r_2,w$, and $D_k$. So we can 
+compute $h R$ pretty easily. But computing $h$ and $R$ individually is quite 
+difficult. Quadratic imaginary fields are ``easy,'' because for these fields 
+we have $R=1$. 
+
+We are not able to state the (correct) version of the Birch and Swinnerton-Dyer 
+conjecture. 
+
+\begin{conjecture}
+Let $E_{/\dQ}$ be an elliptic curve. Set $r=\rank(E)$. Then 
+$\order_{s=1} L(E,s) = r$, with residue 
+$\frac{\Omega \prod_v c_v R \sha}{\# E(\dQ)_\mathrm{tors}^2}$, where 
+\begin{itemize}
+\item $\Omega$ is the period of $E$ (a complex integral), 
+\item $R$ is the regulator of $E$, 
+\item $\sha=\#\ker\left(\h^1(\dQ,E)\to \prod_l \h^1(\dQ_l,E)\right)$, and 
+\item the $c_v$ are Tamagawa numbers, namely $\#\pi_0(\cE_{\dF_v})$, where 
+$\cE$ is the N\'eron model of $E$ at $v$. 
+\end{itemize}
+\end{conjecture}
+
+We know the following easy fact: let $\phi:E_1\to E_2$ be an isogeny of 
+elliptic curves over $\dQ$. Then $L(E_1,s)=L(E_2,s)$. But all other 
+of the numbers appearing in BSD except $\# E(\dQ)_\mathrm{tors}$ can be 
+different for $E_1$ and $E_2$. The paper [Tate: arithmetic of elliptic 
+curves] is a great overview of the arithmetic of elliptic curves. In this 
+paper, Tate asked whether $\# \sha<\infty$ and whether $L(E,s)$ is defined at 
+$s=1$? The first question is wide open. The second is known, via the 
+modularity theorem. 
+
+\begin{theorem}[Gross-Zagier, Kolyvagin, Kato]
+Let $E_{/\dQ}$ be an elliptic curve. If $\order_{s=1}L(E,s)\leqslant 1$, 
+then the Birch and Swinnerton-Dyer conjecture holds for $E$. 
+\end{theorem}
+
+The original proof of this theorem assumed the curve $E$ was modular. Thanks 
+to Wiles et.~al., we know this is the case. 
+
+\begin{theorem}[Skinner-Urban]
+If $\rank(E)=0$ and $\sha<\infty$ [and some technical hypotheses hold], then 
+BSD holds for $E$. 
+\end{theorem}
+
+\begin{theorem}[Skinner]
+If $\rank(E)=1$ and $\sha<\infty$, then $\order_{s=1} L(E,s)=1$. 
+\end{theorem}
+
+\begin{theorem}[Dokchitser-Dokchitser]
+If $\sha<\infty$, then $r_\mathrm{an}\equiv r_\mathrm{alg}\pmod 2$. 
+\end{theorem}
+
+We expect this congruence. Indeed, we know that 
+\[
+  L(E,s) = \pm(\text{stuff}>0)L(E,2-s).
+\]
+From this, assuming BSD, we get the parity conjecture proved by Skinner 
+under the assumption that $\sha<\infty$. 
+
+\begin{theorem}[Bhargava-Shankar]
+$\average(\rank) \leqslant \average(\dim \selmer_p)\leqslant 1+\frac{1}{p(p-1)}$ 
+for $p\in \{2,3,5\}$. 
+\end{theorem}
+
+Even if this could be proved for all $p$, we would only know that 
+$\average(\rank) \leqslant 1$, but we expect the average to be $1/2$. If we 
+could get $\average(\rank)<1$, this would imply that a positive proportion of 
+elliptic curves have rank $0$. 
+
+[resort: some of this should be after Selmer groups]
+
+Bhargava et.~al.~construct a family $\fF$ of elliptic curves over $\dQ$, 
+that is a positive fraction of the set of all elliptic curves over $\dQ$. All 
+the technical hypotheses of Skinner, Skinner-Urban are satisfied on $\fF$. They 
+use Dokchitser-Dokchitser as well. Let $p_i$ be the proportion of $E$ in $\fF$ 
+with $\dim(\selmer_3)=i$. They prove that $\average(\#\selmer_3)=4$ in $\fF$. 
+They also prove that half of the curves in $\fF$ have sign $1$ (resp.~$-1$) in 
+their functionnal equations. Consider the sum 
+\[
+  p_0\cdot 1 + p_1\cdot 3 + \left(\frac 1 2-p_0\right)\cdot 3^2 + \left(\frac 1 2-p_0\right)\cdot 3^3 \leqslant 4.
+\]
+Note that $p_0\leqslant p_n$ for $n\geqslant 2$. Now the sign $w=1$ if 
+and only if $\dim\selmer_p$ is even. We also know that $p_0,p_1\leqslant 1/2$. 
+Playing around with the inequality, we get 
+\begin{align*}
+  p_1 &\geqslant 5/12 \\
+  p_0 &\geqslant 1/4 .
+\end{align*}
+This implies that a positive fraction of all $E$ (not just those in $\fF$) have 
+ranks $0$ or $1$. 
+
+
+
+
 
 
 
