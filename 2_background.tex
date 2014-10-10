@@ -1327,7 +1327,6 @@ $1+\frac{1}{p(p-1)} \geqslant \rank(E)$.
 
 Proceeding na\"ively won't get an average $\leqslant 1$. 
 We expect $\average(\rank )=1/2$. 
-%We need the work of Dokchitser-Dokchitser [Tim and Vladimir], as well as Skinner-Urban's converse to Kolyvagin to get the result. [motivated by Kolyvagin, Kato, Gross-Zagier]
 
 
 
@@ -1335,14 +1334,19 @@ We expect $\average(\rank )=1/2$.
 
 \subsection{State-of-the-art}
 
-
-Our definition of $L(E,s)$ actually works for \emph{any} Galois representation 
-$\rho:G_\dQ\to \GL_n(\dQ_l)$ that is sufficiently nice. That is, we want $\rho$ 
-to come in a \emph{compatible family} $\{\rho_l:G_\dQ\to \GL_n(\dQ_l)\}$ that 
-have the same characteristic polynomials of Frobenii (and these characteristic 
-polynomials lie in $\dQ[T]$) for varying $l$. One puts 
+Our definition of $L(E,s)$ actually works for any sufficiently nice Galois 
+representation. The correct definition of ``sufficiently nice'' is a bit 
+tricky. For us, it will mean ``coming from a pure motive.'' The upshot of 
+this is that we will have a family $\rho=\{\rho_l:G_\dQ\to \GL_n(\dQ_l)\}$ of 
+Galois representations, one for each prime $l$, such that for each $l$, the 
+representation $\rho_l$ is unramified at all but finitely many primes, and 
+whenever $\rho_l$ and $\rho_{l'}$ are both unramified at $p$, we have 
+\[
+  \det\left(1-t\cdot \rho_l(\frobenius_p)\right) = \det\left(1-t\cdot \rho_{l'}(\frobenius_p\right) \in \dQ[t] .
+\]
+We write $\det(1-t\cdot \rho(\frobenius_p))$ for the common value. One puts 
 \begin{align*}
-  L_p(\rho,t) &= \det\left(1-\rho_l(\frobenius_p)\cdot t,\rho_l^{I_p}\right) && l\ne p \\
+  L_p(\rho,t) &= \det\left(1-\rho(\frobenius_p)\cdot t,\rho_l^{I_p}\right \\
   L(\rho,s) &= \prod_p L_p(\rho,s^{-p}) .
 \end{align*}
 We could make the same definition if $\chi:G_\dQ\to \GL_n(\dC)$ is a continuous 
@@ -1353,8 +1357,6 @@ analytic continuation to $\dC$ and satisfies $L(\chi,1)\ne 0$. This has as a
 corollary Dirichlet's theorem that for $(a,n)=1$, there are infinitely many 
 primes in the sequence $\{a+n k:k\geqslant 1\}$. For general $\rho$, very 
 little is known about analytic continuation of $L(\rho,s)$. 
-
-[Serre's book: compatible family, be more careful here\ldots]
 
 For example, if $\rho=\rho_E$ for $E_{/\dQ}$ an elliptic curve, one proves that 
 $L(E,s)=L(\rho_E,s)$ has meromorphic continuation by proving that $E$ is 
@@ -1478,8 +1480,6 @@ Even if this could be proved for all $p$, we would only know that
 $\average(\rank) \leqslant 1$, but we expect the average to be $1/2$. If we 
 could get $\average(\rank)<1$, this would imply that a positive proportion of 
 elliptic curves have rank $0$. 
-
-[resort: some of this should be after Selmer groups]
 
 Bhargava et.~al.~construct a family $\fF$ of elliptic curves over $\dQ$, 
 that is a positive fraction of the set of all elliptic curves over $\dQ$. All 
