@@ -1637,6 +1637,84 @@ We won't prove \autoref{prop:height-abelian}. Instead, we will show that the
 height function we constructed on $E(\dQ)$ satifies the hypothese of this 
 result. 
 
+If $k$ is a general number field and $A_{/k}$ is an abelian variety, the 
+Mordell-Weil theorem tells us that $A(k)$ is a finitely generated abelian 
+group. But given $E_{/\dQ}$, there exists $k/\dQ$ with $E(k)$ having rank 
+$\geqslant 100$, or $N$ for any fixed integer $N$. If we fix $k$, is there 
+$E_{/k}$ with arbitrarily large rank? Even if $k=\dQ$, this is wide open. 
+Heuristics suggest that $\sup\{\rank E(k):E_{/k}\text{ an elliptic curve}\}$ 
+is finite. 
+
+The height function $h_x:E(\dQ)\to \dR$ we have defined is ``almost'' a 
+quadratic form. Tate observed that if $f:E\to \dP^1$ is a morphism over $\dQ$, 
+set $h_f(P)=\log H(f(P))$, where $H:\dP^1(\dQ)\to \dR$ is determined by 
+$H(a:b)=\max\{|a|,|b|\}$ when $(a,b)=1$. Set 
+\[
+  \widehat h(P)=\frac{1}{\deg f}\lim_{N\to \infty} 4^{-N} h_f(2^N\cdot P) .
+\]
+This gives a quadratic form on $E(\dQ)$ which does not depend on $f$. One 
+calls $\widehat h$ the \emph{N\'eron-Tate canonical height}; it vanishes on 
+$E(\dQ)_\mathrm{tors}$. 
+
+\begin{proposition}
+The height function $h_x:E(\dQ)\to \dR$ satisfies the conditions of 
+\autoref{prop:height-abelian}. 
+\end{proposition}
+\begin{proof}
+We check that $h_x$ satisfies the last three conditions. The fact that 
+$\#\{h<c\}<\infty$ is trivial. Now we show that for all 
+$Q\in E(\dQ)$, there exists a constant $C_Q$ such that 
+$h(P+Q)\leqslant 2 h(P)+C_Q$ for all $P\in E(\dQ)$. Write 
+$Q=(\frac{a_0}{d_0^2},\frac{b_0}{d_0^3})$ and
+$P=(\frac{a}{d^2},\frac{b}{d^2})$, where all the variables are in $\dZ$, and 
+$a_0,b_0,d_0$ are fixed. Write $E$ as $y^2=x^3+A x+B$ for fixed $A,B\in \dZ$. 
+Basic algebra tells us that 
+\[
+  x(P+Q) = \frac{(a a_0+A d^2 d_0^2)(a d_0^2+a_0 d^2) + 2 B d^4 d_0^4 - 2 b d b_0 d_0}{(a d_0^2-a_0 d^2)^2} .
+\]
+The numerator is 
+\[
+  a^2\cdot (\text{fixed stuff}) + d^4\cdot(\text{fixed stuff}) + b d\cdot(\text{f.~s.}) + a d^2\cdot (\text{f.~s.}) 
+\]
+In general, $H(r+s+t+u)\leqslant 4\max\{H(r),H(s),H(t),H(u)\}$ when 
+$r,s,t,u\in \dZ$. The denominator is 
+\[
+  a^2\cdot (\text{fixed stuff})+d^4\cdot (\text{f.~s.})+a d^2\cdot(\text{f.~s.}) .
+\]
+We have $h_x(P)=\max\{\log|a|,\log|d|^2\}$. Bound $a d^2$ using Cauchy-Schwarz. 
+For $b d$, plug $P$ into the equation $y^2=x^3+A x+B$. One gets 
+$b^2=a^3+A ad^4 + B d^6$, whence 
+\[
+  |b|\leqslant C\max\{|a^{3/2}|,|a^{1/2} d^2|,|d|^3\} .
+\]
+Some more annoying computations give the result. 
+The remaining condition is left to the reader. 
+\end{proof}
+
+For a more conceptual approach to heights, see the book 
+\cite{bombieri-gubler-2006}. 
+
+\begin{proposition}
+Let $k$ be a number field, $E_{/k}$ an elliptic curve. Let $v$ be a finite place 
+at which $E$ has good reduction. Let $\cE$ be the N\'eron model for $E$ at $v$, and 
+let $m$ be an integer with $v\nmid m$. Then $E(k)[m]\monic \cE(\kappa_v)[m]$. 
+\end{proposition}
+\begin{proof}
+This is hard -- it uses the theory of formal groups and minimal Weierstrass 
+models. 
+\end{proof}
+
+When $k=\dQ$, this tells us that $E(\dQ)[m]\monic E(\dF_l)$ whenever 
+$l\nmid m$. 
+
+It remains to prove the weak Mordell-Weil theorem. Let $L=k(\frac 1 m E(k))$; 
+then we have a pairing $E(k)/m\times \galois(L/k)\to E[m]$. This is perfect if 
+$E[m]\subset k$. Our job is to show that $\galois(L/k)$ is finite. Note that 
+$\galois(L/k)$ is an $m$-torsion abelian group. If $m Q\in E(k)$, then 
+$Q\in E(L)$. It follows that $k(Q)/k$ is unramified at those $v$ for which 
+$E$ has good reduction at $v$ and $v\nmid m$. 
+[\ldots didn't write down whole proof. It's not hard\ldots]
+
 
 
 
