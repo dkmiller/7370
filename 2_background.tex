@@ -1715,6 +1715,79 @@ $Q\in E(L)$. It follows that $k(Q)/k$ is unramified at those $v$ for which
 $E$ has good reduction at $v$ and $v\nmid m$. 
 [\ldots didn't write down whole proof. It's not hard\ldots]
 
+\begin{theorem}
+Let $k$ be a number field containing $\dmu_m$. Let $L/k$ be the maximal abelian 
+extension killed by $m$ and ramified at a finite set. Then $[L:k]<\infty$. 
+\end{theorem}
+\begin{proof}
+We will use the fact that $\class(k)=\picard(\cO_k)$ is finite. Moreover, 
+each class is represented by a prime ideal $\fp$. So if we invert finitely many 
+well chosen primes, we can kill the class group. That is, there is a finite 
+set $S\subset \cO_k\smallsetminus 0$ such that $\cO_{k,S}$ is a principal ideal 
+domain. For each fractional ideal $\fa\subset k$, we can talk about 
+$v_\fp(\fa)$, the $\fp$-adic valuation of $\fa$. This is the unique integer 
+$n$ such that $\fa_\fp=\fp^n$ inside $\cO_{k,\fp}$. 
+
+Note that $\cO_k^\times=\{x\in \cO_k:v_\fp(x)=0\text{ for all }\fp\}$. Note 
+that we've excluded the archimedean places coming from the embeddings 
+$k\monic (\dR\text{ or }\dC)$. There are $r_1+r_2$ such embeddings, where 
+$r_1$ (resp.~$r_2$) is the number of real (resp.~complex) places of $k$. If 
+$S$ is a finite set of places of $k$, containing all archimedean places, put 
+$\cO_{k,S}^\times=\{x\in \cO_k:v_\fp(x)=0\text{ for all }\fp\notin S\}$. 
+
+Since $\dmu_m\subset k$, Kummer theory tells us that any subextension 
+$L\supset M\supset k$ with $M/k$ cyclic is of the for $M=k(\alpha^{1/m})$ 
+for some $\alpha\in k^\times/m$. The extension $M/k$ is ramified exactly at 
+those primes $\fp$ for which either $\fp\mid m$ or 
+$v_\fp(\alpha)\not\equiv 0\pmod m$. So if we let 
+\[
+  T_S=\{\alpha\in k^\times/m:v_\fp(\alpha)\equiv 0\pmod m\text{ for all }\fp\notin S\} ,
+\]
+then $L=k(T_S^{1/m})$. 
+
+Let $S$ be the union of the set of places at which $L$ is ramified and the set 
+of archimedean places. Enlarge $S$ as necessary to make $\picard(\cO_{k,S})=0$. 
+Let $\alpha\in T_S$ be integral and consider $v_\fp(\alpha)$. At $\fp\in S$, 
+we're a unit so we don't care about $v_\fp(\alpha)$. At $\fp\notin S$, 
+$v_\fp(\alpha)\equiv 0\pmod m$ so because $\picard(\cO_{k,S})=0$, $\alpha$ is 
+an $m$-th power (up to unit). That is, $\alpha = \varepsilon \beta^m$ for 
+some $\varepsilon\in \cO_{k,S}^\times$. So $L$ is obtained by adjoining all 
+$m$-th roots of elements of the finitely generated group $\cO_{k,S}^\times$. 
+\end{proof}
+
+\begin{theorem}
+Let $k$ be a number field, $S$ a finite set of places containing all 
+archimedean places, then $\rank(\cO_{k,S}^\times)=\# S-1$. 
+\end{theorem}
+
+To summarize, the weak Mordell-Weil theorem states that for an elliptic curve 
+$E_{/\dQ}$, the group $E(\dQ)/m$ is finite. Via a Kummer pairing, we reduced 
+this to showing that the extension $L/k$ is finite, where $k=\dQ(E[m])$ and 
+$L$ is the maximal abelian extension of $k$ killed by $m$ and unramified 
+outside the (finite) set of places of bad reduction of $E$. We proved 
+$L/k$ is finite by using classical Kummer theory, the finiteness of the class 
+group, and the generalized Dirichlet unit theorem. 
+
+We used, but did not prove, two main ingredients in the proof of the 
+Mordell-Weil theorem for elliptic curves:
+\begin{enumerate}
+\item The reduction map $E(k)[m]\to \cE(\kappa_\fp)[m]$ is injective for 
+$\fp\nmid m$ of good reduction. This involves formal groups, the 
+N\'eron-Ogg-Shafarevich criterion, and reduction theory. 
+
+\item An abstract height function on an abelian group satisfying certain 
+axioms yields the finite generation of the group. 
+\end{enumerate}
+
+We did prove that the height function $h_x:E(\dQ)\to \dR_{\geqslant 0}$ 
+satisfies (two of) the necessary axioms. 
+
+The theorem can generalize to arbitrary abelian varieties over arbitrary 
+number fields. Besides the general theory of N\'eron models, no ``really new'' 
+ideas are needed. 
+
+
+
 
 
 
