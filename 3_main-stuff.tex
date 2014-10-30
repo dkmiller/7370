@@ -1,0 +1,233 @@
+% !TEX root = 7370.tex
+
+
+
+
+
+\section{Main stuff}
+
+Let $k$ be a number field, $C_{/k}$ a smooth proper curve. Let $g$ be the 
+genus of $C$. If $g=0$, either $C(k)=\varnothing$, or $C\simeq \dP^1_{/k}$. 
+If $g>1$, then Faltings gave an ineffective proof that $\# C(k)<\infty$. 
+If $g=1$, then either $C(k)=\varnothing$, or, if $C(k)\ne\varnothing$, then 
+$C(k)$ is a finitely generated abelian group. Recall that the Birch and 
+Swinnerton-Dyer conjecture is that $\rank(E(k))=\order_{s=1} L(E,s)$. The 
+function $L(E,s)$ satisfies a functional equation $L(E,s) \sim \pm L(E,2-s)$. 
+We expect $(-1)^{\rank(E)}=\pm$ accordingly. This is the ``sign conjecture.'' 
+Kolyvagin and others have proved that if $L(E,s)$ has a pole of order at most 
+$1$ at $1$, then BSD holds for $E$. A folklore question is: is 
+$\sup_{E/\dQ} \rank(E)<\infty$?
+
+Any $E_{/\dQ}$ can be written as $y^2=x^3+A x+B$ where $A,B\in \dZ$, and 
+$p^6\mid B\Rightarrow p^4\nmid A$. The \emph{height} of $E$ is 
+$H(E)=\max(4|A|^3,27 B^2)$. This is asymptotically degree-six in the roots 
+of $x^3+A x+B$. We could have ordered $E$ by (Galois-theoretic) conductor. The 
+reason we use height is that the number of elliptic curves with height 
+$\leqslant X$ is $C X^{5/6}+(\text{error term})$ for some constant $C$. On the 
+other hand, we have no idea how many elliptic curves there are with bounded 
+conductor. So even though height isn't as conceptually elegant, we'll order 
+elliptic curves by it. 
+
+Given $E_{/\dQ}$ with algebraic rank $3$, we could numerically show that the 
+analytic rank is $\leqslant 3$, then use sign considerations to get t
+$r_\mathrm{an}\in \{1,3\}$. If $r_\mathrm{an}=1$, we know that 
+$r_\mathrm{alg}=1$, a contradiction, hence $r_\mathrm{an}=3$. Thus, for 
+(specific) elliptic curves with algebraic rank $3$, it is possible to prove 
+BSD. At the present, no one knows how to do this for a family of elliptic 
+curves. From the Kummer exact sequence $0\to E[p] \to E\xrightarrow p E \to 0$, 
+one gets a short exact sequence
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\dQ)/p \ar[r] 
+    & \h^1(\dQ,E[p]) \ar[r] 
+    & \h^1(\dQ,E)[p] 
+    & 0 .
+\end{tikzcd}\]
+One has a similar short exact sequence for each place $v$. This yields a 
+(now-familiar) commutative diagram:
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\dQ)/p \ar[r] \ar[d] 
+    & \h^1(\dQ,E[p]) \ar[r] \ar[d] 
+    & \h^1(\dQ,E)[p] \ar[d] \ar[r] 
+    & 0 \\
+  0 \ar[r] 
+    & \prod E(\dQ_v)/p \ar[r] 
+    & \prod \h^1(\dQ_v,E[p]) \ar[r] 
+    & \prod \h^1(\dQ_v,E)[p] \ar[r] 
+    & 0.
+\end{tikzcd}\]
+Even better, we can write 
+\[
+  \selmer_p(E)  \ker\left(\h^1(\dQ,E[p])\to \h^1(\dA,E)[p]\right) ,
+\]
+where $\dA$ is the ring of adeles over $\dQ$ and ``$\h^1$'' denotes \'etale 
+cohomology. 
+
+We'd like to give a geometric interpretation of $\h^1(\dQ,E)$ and 
+$\h^1(\dQ,E[p])$. First, note that 
+$\dim (E(\dQ)/p)=\rank(E)+\delta$, where $\delta=\dim E[p](\dQ)\leqslant 2$. 
+With respect to height, $\delta>0$ on a density zero set, so we may as well 
+assume $\delta=0$. Recall there is a short exact sequence 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\dQ)/p \ar[r] 
+    & \selmer_p(E) \ar[r] 
+    & \sha[p] \ar[r] 
+    & 0 .
+\end{tikzcd}\]
+Separating $\selmer_p(E)$ into its contributions from $E(\dQ)/p$ and 
+$\sha[p]$ is very difficult. One conjectures that 
+$\sha=\ker(\h^1(\dQ,E) \to \h^1(\dA,E))$ is finite for all $E$. This conjecture 
+implies that $\sha[p]=0$ for almost all $p$. Cassels has constructed a perfect 
+pairing $\sha\times \sha\to \dQ/\dZ$. So if $\#\sha<\infty$, then $\#\sha$ 
+should be a perfect square. The ``$\sha$-part'' of BSD can be computed in 
+some examples, and it always turns out to be a perfect square. 
+
+[\ldots recap of strategy for Bhargava's proof\ldots]
+\[
+  \rho:\Gamma_\dQ\to \operatorname{GL}_2(\mathbf T_\mathfrak m) .
+\]
+
+
+
+
+
+\subsection{Group cohomology}
+
+For the moment, let $G$ be a profinite group. By a $G$-module, we mean 
+an abelian group $M$ with $G$-action, such that for all $m\in M$, the 
+stabilizer $\stabilizer_G(m)$ is an open subgroup of $G$. The category of 
+$G$-modules is an abelian category with enough injectives. Indeed, let 
+$\cC$ be the category of finite sets with continuous $G$-action. Then the 
+category of $G$-modules is equivalent to the category of sheaves of abelian 
+groups on $\cC$. It is known in general that the category of abelian group 
+objects in a Grothendieck topos has enough injectives. 
+
+\begin{definition}
+Let $M$ be a $G$-module. We define $\h^i(G,M)=\mathsf R^i (-)^G(M)$. 
+\end{definition}
+
+That is, $\h^i(G,-)$ is the $i$-th derived functor of $(-)^G$. The group 
+$\h^2(G,M)$ classifies central extensions $0\to M\to X\to G\to 1$, up to 
+isomorphism making the following diagram commute:
+\[\begin{tikzcd}
+  1 \ar[r] 
+    & M \ar[r] \ar[d, equal] 
+    & X \ar[r] \ar[d, "\wr"] 
+    & G \ar[r] \ar[d, equal] 
+    & 1 \\
+  1 \ar[r] 
+    & M \ar[r] 
+    & Y \ar[r] 
+    & G \ar[r] 
+    & 1 .
+\end{tikzcd}\]
+For $i\leqslant 2$, $\h^i(G,M)$ can be more readily computed directly. Let 
+\begin{align*}
+  Z^1(G,M) &= \{f:G\to M\text{ continuous, such that }f(\sigma\tau)=f(\sigma)+\sigma(f(\tau))\} \\
+  B^1(G,M) &= \{f:G\to M\text{ of the form }\sigma\mapsto \sigma(m)-m\text{ for some }m\in M\} .
+\end{align*}
+Then $\h^1(G,M)\simeq Z^1(G,M)/B^1(G,M)$. 
+
+If $H\subset G$, the restriction functor $\res_H^G(-)$ from $G$-modules to 
+$H$-modules is exact, so the natural inclusion 
+$\h^0(H,\res_H^G M)\monic \h^0(G,M)$ extends canonically to a natural 
+transformation $\h^\bullet(H,\res_H^G(-))\to \h^\bullet(G,-)$. 
+
+\begin{theorem}
+If $G$ acts trivially on $M$, then $\h^1(G,M)=\hom(G,M)$. 
+\end{theorem}
+\begin{proof}
+If $G$ acts trivially, then $B^1(G,M)=0$. Also, $Z^1(G,M)$ consists of those 
+$f:G\to M$ such that $f(\sigma\tau)=f(\sigma)+f(\tau)$. 
+\end{proof}
+
+Let $k$ be a number field. If $v$ is a place of $k$, write $G_v\subset G_k$ 
+for the Galois group $\galois(\overline{k_v}/k_v)$. If $M$ is a $G_k$-module 
+$v$ is a place of $k$, one puts 
+\[
+  \sha(M) = \ker\left(\h^1(k,M) \to \prod_v \h^1(k_v,M)\right) .
+\]
+
+\begin{theorem}
+Let $k$ be a number field, $M$ a finite $G_k$-module. Then 
+$\sha(M)$ is finite. 
+\end{theorem}
+\begin{proof}
+Let $K=k(M)$; then $G_K$ acts trivially on $M$. If $f\in \sha(M)$, then 
+$f|_{G_K}$ is a homomorphism cutting out an extension $L/K$. Since 
+$f|_{G_v}=0$ for all places $v$ of $K$, we know that all primes in $L$ split 
+completely (hence are unramified) over $K$. By the Hermite-Minkowski thorem, 
+there are only finitely many possibilities for $f$. 
+\end{proof}
+
+Via the above proof, we see that cohomology relates to class groups (via 
+Hermite-Minkowski). Let $M$ be a finite $\dF_p[G_{\dQ_l}]$-module. Put 
+$M^\ast=\hom(M,\dmu_p)$. Then there is a 
+perfect pairing 
+$\h^\bullet(\dQ_l,M)\times \h^{2-\bullet}(\dQ_l,M^\ast)\to \h^2(\dQ_l,\dmu_p)$, 
+and 
+\[
+  \sum_{i=0}^2 (-1)^i\dim_{\dF_p} \h^i(\dQ_l,M) = \begin{cases} 0 & l\ne p \\ -\dim(M) & l = p \end{cases}
+\]
+This is \emph{Local Tate Duality}. It should be thought of as analogous 
+to algebraic topology. In fact, \'etale cohomology is the ``right'' cohomology 
+theory for varieties, and satisfies a good duality theory that resembles 
+Poincar\'e duality. There is a duality theory for modules over $G_k$ when $k$ 
+is a global field. You can compute 
+$\dim \h^1(\dQ,M)-\dim \h^2(\dQ,M)$ when $M$ is a $\dF_p[G_\dQ]$-module. 
+Getting either one of $\h^1$ or $\h^2$ involves computing the class group of 
+$\dQ(M)$. 
+
+
+
+
+
+\subsection{Geometric interpretation of cohomology}
+
+The elliptic curves 
+\begin{align*}
+  E_1 &: y^2=x^3+x+1 \\
+  E_2 &: 3 y^2=x^3+x+1 ,
+\end{align*}
+are isomorphic over $\dQ(\sqrt 3)$ but not over $\dQ$. Considering such pairs 
+is a standard approach to the $r_\mathrm{an}\leqslant 1$ cases of BSD. 
+
+In general, if $L/K$ is a field extension and $X_{/L}$ is some ``arithmetic 
+object'' the set of $Y_{/K}$ giving rise to $X$ via base-change is classified 
+by $\h^1(\galois(L/K),\automorphisms X)$. Since $\automorphisms(X)$ might be 
+nonabelian, this $\h^1(L/K,\automorphisms X)$ may only be a pointed set. 
+
+Let $E_{/\dQ}$ be an elliptic curve. We'll realise $E[p]$ and 
+$E(\overline\dQ)$ as automorphisms of pairs of objects, one entry of which is 
+$E$. So $\h^1(\dQ,E[p])$ and $\h^1(\dQ,E)$ will classify descents of some type 
+of object to $\dQ$. 
+
+\begin{definition}
+Let $G$ be a profinite group, $N$ a (possibly nonabelian) group with 
+continuous $G$-action. Then $Z^1(G,N)$ is the set of continuous 
+$f:G\to N$ such that $f(\sigma\tau)=f(\sigma)\sigma(f(\tau))$ for all 
+$\sigma,\tau\in G$. If $f,g\in Z^1(G,N)$, we say they are 
+\emph{cohomologous} if there exists $n\in N$ such that 
+$f(\sigma)=n^{-1} g(\sigma) \sigma(n)$ for all $\sigma\in G$. Let 
+$\h^1(G,N)=Z^1(G,N)/\sim$, where $f\sim g$ if $f$ is cohomologous to $g$. 
+\end{definition}
+
+We'll find elements of $\h^1(\dQ,E[p])$ that correspond bijectively to 
+pairs $(C,D)$ where $C$ is a curve of genus $1$ over $\dQ$ and $D$ is a 
+divisor of degree $p$ over $\dQ$. These correspond to maps 
+$C\to S\simeq_{\overline\dQ} \dP^{p-1}$, where $C\simeq_{\overline\dQ} E$. 
+
+\begin{example}
+Let $C_{/\dQ}$ be the projective curve $3 x^3+4 y^3+5 z^3=0$. Then 
+$C(\dQ)=\varnothing$. However, if we take some 
+$x\in C(\overline\dQ)$ and let $D=\sum_{\sigma\in G_\dQ} (\sigma(x))$, then 
+$D$ is a divisor on $C$ defined over $\dQ$. Essentially, the point is that 
+even if $C(\dQ)=\varnothing$, we will have 
+$\picard^\circ(C)(\dQ)\ne\varnothing$. 
+\end{example}
+
+
+
+
