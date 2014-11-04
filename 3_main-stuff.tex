@@ -228,6 +228,107 @@ even if $C(\dQ)=\varnothing$, we will have
 $\picard^\circ(C)(\dQ)\ne\varnothing$. 
 \end{example}
 
+\begin{theorem}
+Let $E_{/\dQ}$ be an elliptic curve. Then $\selmer_p(E)$ is finite. 
+\end{theorem}
+\begin{proof}
+We essentially reprove weak Mordell-Weil. Recall that if $l\ne p$ is a prime of 
+good reduction, then $E[p]\monic E_{\dF_l}(\overline{\dF_l})$. Alternatively, 
+the inertia group $I_l$ acts trivially on $E[p]$. So we'll prove that any 
+$f\in \selmer_p E$ is unramified outside a (fixed) finite set, namely $p$ 
+together with the set of bad primes for $E$. Let $S$ be that set. For 
+$l\notin S$, the restriction $f|_{G_{\dQ_l}}$ is a coboundary in 
+$\h^1(\dQ_l,E)$. So there exists $P\in E(\overline{\dQ_l})$ such that 
+$f(\sigma)=\sigma(P)-P$ for all $\sigma\in G_{\dQ_l}$. But 
+$\sigma(P)-P\in E[p]$. For $\sigma\in I_l$, $\sigma(P)-P=0$ in 
+$E(\overline{\dF_l})$. Since $E[p]\monic E_{\dF_l}[p]$, we have 
+$\sigma(P)=P$, i.e.~$f(I_l)=0$. We have shown that all classes 
+$f\in \selmer_p(E)$ are unramified outside of $S$, which yields the result. 
+\end{proof}
+
+This proof depends on the finiteness of the class group. 
+
+\begin{lemma}
+Let $E_{/\dQ}$ be an elliptic curve, $\phi:E\to E$ a nonconstant map such 
+that $\phi(0)=0$. Then $\phi$ is an isogeny. Moreover, if $\phi$ is an 
+isomorphism ad commutes with all translations, then $\phi=1$. 
+\end{lemma}
+\begin{proof}
+We sketch a proof of the latter claim. If $E$ is non-CM, then 
+$\phi=\pm 1$. Clearly $-1$ does not commute with translations, so $\phi=1$. If 
+$E$ has CM, think about $E_{/\dC}\simeq \dZ/\Lambda$ for $\Lambda$ an order 
+in a quadratic imaginary field. Say $\Lambda=\langle 1,\tau\rangle$ for 
+$\tau\in \dQ(\sqrt{-d})$ where $d\in \{1,3\}$. The only automorphisms are 
+$\{\pm 1,\pm i\}$ or $\{\pm 1,\pm \omega,\pm\omega^2\}$. You can check 
+directly that none of these commute with translations, except for $1$. 
+
+Alternatively, just plug $x=0$ into $\phi(x+y)=\phi(x)+y$. 
+\end{proof}
+
+\begin{definition}
+Let $k$ be a field of characteristic zero, $C_{/k}$ a curve. A \emph{twist} of 
+$C$ is a curve $D_{/k}$ together with an isomorphism 
+$\phi:C_{\overline k}\iso D_{\overline k}$. 
+\end{definition}
+
+The philosophy is that $\h^1(G_\dQ,\automorphisms(E_{\overline\dQ}))$ 
+classifies twists of $E$ over $\dQ$. More generally, if ``$X_{/\dQ}$ is an 
+object,'' then $\h^1(G_\dQ,\automorphisms(X_{\overline\dQ}))$ classifies 
+twists of $X$.''
+
+\begin{theorem}
+Let $X_{/\dQ}$ be a twist of $\dP_{/\dQ}^n$. Then $X\simeq \dP^n$ if and only 
+if $X(\dQ)\ne\varnothing$. Moreover, if $X(\dA)\ne\varnothing$, then 
+$X(\dQ)\ne\varnothing$. 
+\end{theorem}
+
+We will use this theorem because $\alpha\in \selmer_p E$ gives rise to a map 
+$C\to S$, where $C$ is a twist of $E$ and $S$ is a twist of 
+$\dP^{p-1}_{/\dQ}$. But elements of $\selmer_p(E)$ are locally trivial. This 
+will imply $C(\dA)\ne\varnothing$. Thus $S(\dA)\ne\varnothing$, so 
+$S\simeq \dP^{p-1}$. We end up with a curve $C\subset \dP^{p-1}$. We hope to 
+write such curves as the zero-locus of a single function, or a small 
+managable set of functions. For $p\in \{2,3,5\}$, this can be done. 
+
+Suppose we are given a twist $C'$ of $C_{/\dQ}$ with 
+$\phi:C'_{\overline\dQ}\iso C_{\overline\dQ}$. Define 
+$f:G_\dQ\to \automorphisms(C_{\overline\dQ})$ by 
+$f(\sigma)=\phi^\sigma\circ\phi^{-1}$. Here, $\phi^\sigma(x)=\sigma(\phi(x))$. 
+
+\begin{proposition}
+As constructed above, $f$ is a $1$-cocycle. Moreover, adjusting $f$ by a 
+$1$-coboundary preserves the isomorphism class of $C'$. So $C\mapsto f$ induces 
+a bijection between the set of isomorphism classes of twists of $C$ and 
+$\h^1(G_\dQ,\automorphisms(C_{\overline\dQ}))$. 
+\end{proposition}
+\begin{proof}
+We begin with a computation: 
+\begin{align*}
+  f(\sigma\tau) &= \phi^{\sigma\tau}\phi^{-1} \\ 
+    &= \phi^{\sigma\tau}(\phi^\tau)^{-1}\phi^\tau\phi^{-1} \\
+    &= (\phi^\sigma\phi^{-1})^\tau \phi^\tau \phi^{-1} \\
+    &= \prescript{\tau}{}{f(\sigma)} f(\tau) .
+\end{align*}
+The rest is relatively trivial. Showing surjectivity is a bit tricky -- this 
+ends up being a special case of descent (\'etale descent, to be precise). 
+\end{proof}
+
+We'll begin with the easier case of a discrete $G_\dQ$-module. Let 
+$f\in \h^1(G_\dQ,\automorphisms(M))$; we need to build a twist of $M$. 
+Put $\sigma\cdot_f m = f(\sigma)(\sigma(m))$. Check that $\cdot_f$ gives 
+a well-defined action of $G_\dQ$ on $M$. Write $f^\ast M$ for the twist of $M$ 
+that we have defined. Check that if $f$ is a coboundary, then 
+$M\simeq f^\ast M$. 
+
+\begin{theorem}[Bhargava-Shankar]
+Set $E:y^2=x^3-\frac{I}{3} x-\frac{J}{27}$ for $I,J\in k$. Then 
+$E(k)/2$ is naturally in bijection with $\PGL_2$-orbits of $k$-soluble 
+binary quartic forms having invariants $I$ and $J$, via 
+\[
+  (\varepsilon,\eta)\mapsto \frac{x^4}{4}-\frac 3 2 \varepsilon x^2 y^2 + 2\eta x y^3 + \left(\frac I 3-\frac 3 4 \varepsilon^2\right) y^4 .
+\]
+\end{theorem}
+
 
 
 
