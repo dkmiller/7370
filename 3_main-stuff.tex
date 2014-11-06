@@ -332,3 +332,155 @@ binary quartic forms having invariants $I$ and $J$, via
 
 
 
+
+\subsection{Torsors}
+
+\begin{definition}
+Let $E_{/\dQ}$ be an elliiptic curve. A \emph{torsor} under $E$ is a curve 
+$C_{/\dQ}$ with $E$-action such that $C_{\overline\dQ}\simeq E_{\overline\dQ}$ 
+as $E$-varieties. 
+\end{definition}
+
+That is, we are given a map $\mu:E\times C\to C$ defined over $\dQ$ satisfying 
+the appropriate associativity conditions. Given any $x\in C(\overline\dQ)$, the 
+map $\mu(-,x):E_{\overline\dQ}\to C_{\overline\dQ}$ will be an isomorphism of 
+varieties over $\overline\dQ$. 
+
+\begin{definition}
+Two $E$-torsors $C_1,C_2$ are isomorphic if there exists an $E$-equivariant 
+isomorphism $\phi:C_1\iso C_2$ defined over $\dQ$. 
+\end{definition}
+
+So we need the following diagram to commute:
+\[\begin{tikzcd}
+  E\times C_1 \ar[r, "\mu_1"] \ar[d, "1\times \phi"] 
+    & C_1 \ar[d, "\phi"] \\
+  E\times C_2 \ar[r, "\mu_2"] 
+    & C_2 .
+\end{tikzcd}\]
+
+The \emph{trivial torsor} is $E\times E\xrightarrow+ E$. 
+Note that by definition, every torsor is a twist of the trivial torsor. Recall 
+that $\automorphisms_E(E)$, the group of $E$-equivariant automorphisms of $E$, 
+is $E$. Thus $\h^1(\dQ,E)$ classifies $E$-torsors up to isomorphism. 
+In general, let $G_{/k}$ be a group scheme. Then $\h^1(\dQ,G)$ classifies 
+$G$-torsors up to isomorphism. 
+
+The papers \cite{cfnss-2008,cfnss-2009,cfnss-2014} give many different 
+descriptions of elements of $\h^1(\dQ,E[p])$ for $p$ not necessarily prime. 
+
+\begin{definition}
+A torsor divisor class pair (of degree $p$) is an $E$-torsor with a divisor 
+$D$ of degree $p$, defined over $\dQ$. 
+\end{definition}
+
+Two torsor divisor class pairs $(C_1,D_1)$, $(C_2,D_2)$ are isomorphic if there 
+is an isomorphism $\phi:C_1\to C_2$ of $E$-torsors such that 
+$\phi^\ast D_2\sim D_1$ in $\picard(C_1)$. The trivial torsor divisor class 
+pair is $(E,p\cdot 0)$. 
+
+\begin{lemma}
+Every torsor divisor class pair is a twist of $(E,p\cdot 0)$. 
+\end{lemma}
+\begin{proof}
+Let $\phi:C_{\overline\dQ}\iso E_{\overline\dQ}$. We need 
+$\phi^\ast(p\cdot 0)\sim 0$. Equivilantly, we need 
+$p\cdot 0-(\phi^{-1})^\ast D\sim 0$. It is sufficient to show that the sum of 
+points (with multiplicities) in $\phi^{-1\ast} D$ equal to $0$ on $E$? Say 
+the sum is $x\in E(\overline\dQ)$. Let $p y=x$ and compose $\phi$ with 
+``translate by $-y$.'' This gives the result. 
+\end{proof}
+
+\begin{lemma}
+$\automorphisms_{E_{\overline\dQ}}(E,p\cdot 0) = E[p]$. 
+\end{lemma}
+\begin{proof}
+Any automorphism of a torsor divisr class pair must be translation by some 
+element, and the condition $\phi\ast D_2\sim D_1$ forces that point to be 
+$p$-torsion. 
+\end{proof}
+
+It follows that $\h^1(\dQ,E[p])$ is in bijection with the set of isomorphism 
+classes of torsor divisor class pairs. Note that 
+$\h^1(\dQ,E[p])\supset \selmer_p E\supset E(\dQ)/p$. The latter set corresponds 
+to those $(C,D)$ for which $C(\dQ)\ne\varnothing$, while $\selmer_p E$ 
+corresponds to the set of $(C,D)$ for which $C(\dA)\ne\varnothing$. 
+
+\begin{definition}
+A \emph{Brauer-Severi diagram} $C\to S$ is a morphism from $C$, an $E$-torsor, 
+to $S$, a twist of $\dP^{p-1}$. 
+\end{definition}
+
+Twoo Brauer-Severi diagrams $C_1\to S_1$ and $C_2\to S_2$ are isomorphic if 
+there isomorphisms $\phi:C_1\iso C_2$ and $\psi:S_1\to S_2$ making the 
+following diagram commute:
+\[\begin{tikzcd}
+  C_1 \ar[r] \ar[d, "\phi"] 
+    & S_1 \ar[d, "\psi"] \\
+  C_2 \ar[r] 
+    & S_2 .
+\end{tikzcd}\]
+The trivial Brauer-Severi diagram is the map $E\to \dP^{p-1}$ coming from 
+the divisor $p\cdot 0$. 
+
+\begin{lemma}
+The trivial Brauer-Severi diagram $E\to \dP^{p-1}$ satisfies 
+$\automorphisms(E\to \dP^{p-1})=E[p]$. 
+\end{lemma}
+\begin{proof}
+Let $\phi:E_{\overline\dQ}\iso E_{\overline\dQ}$. We need 
+$\phi^\ast(p\cdot 0)=(p\cdot 0)$. We know $\phi=(-)+x$ for some $x$, and 
+$\phi^\ast(p\cdot 0)\sim (p\cdot 0)$ implies $x\in E[p]$. We need an 
+automorphism of projective space making the following diagram commute:
+\[\begin{tikzcd}
+  E \ar[r, "p\cdot 0"] \ar[d, "+x"] 
+    & \dP^{p-1} \ar[d, dashrightarrow] \\
+  E \ar[r, "\phi^\ast(p\cdot 0)"] 
+    & \dP^{p-1} .
+\end{tikzcd}\]
+Such an automorphism exists because $\automorphisms(\dP^{p-1})=\GL(p)$ acts 
+transitively on $\dP^{p-1}$. 
+\end{proof}
+
+\begin{definition}
+An \emph{$n$-covering} of $E$ is a curve $C_{/\dQ}$ together with 
+$\pi:C\to E$, such that there is an isomorphism 
+$\phi:C_{\overline\dQ}\iso E_{\overline\dQ}$ making the following diagram 
+commute: 
+\[\begin{tikzcd}
+  C \ar[d, "\phi"] \ar[dr, "\pi"] \\
+  E \ar[r, "n"] 
+    & E .
+\end{tikzcd}\]
+\end{definition}
+
+The trivial $n$-covering is $\cdot n:E\to E$. 
+
+\begin{lemma}
+All $n$-coverings are twists of the trivial $n$-covering. Moreover, 
+the trivial $n$-covering has automorphism group $E[n]$. 
+\end{lemma}
+
+Thus isomorphism classes of $n$-coverings of $E$ are in bijection with 
+$\h^1(\dQ,E[n])$. 
+
+\begin{definition}
+Let $\pi:C\epic E$ be an $n$-covering. Then $(C,\pi)$ is \emph{solvable} 
+if $C(\dQ)\ne\varnothing$, and \emph{locally soluble} if 
+$C(\dA)\ne\varnothing$. 
+\end{definition}
+
+Let $x_0\in E(\dQ)/p\subset \selmer_p E\subset \h^1(\dQ,E[p])$. Consider 
+$\pi(x)=p\cdot x+x_0$. Then $\phi(x)=x+(\text{some }\frac 1 p x_0)$. So 
+$\pi$ is trivial if and only if $x_0=0$ in $E(\dQ)/p$. 
+
+Let $\alpha\in \selmer_p(E)$. We know that $\alpha=0$ in 
+$\h^1(\dA,E)$. Thus, if $C$ is the corresponding $p$-covering, we have 
+$C(\dA)\ne\varnothing$. Finally, $\alpha$ will correspond to a Brauer-Severi 
+embedding which is locally soluble. Since projective spaces satisfy the 
+Hasse principle, locally soluble Brauer-Severi embeddings look like 
+$C\to \dP^{p-1}$. 
+
+
+
+
