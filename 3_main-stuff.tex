@@ -484,3 +484,174 @@ $C\to \dP^{p-1}$.
 
 
 
+
+\subsection{Review and plan of attack}
+
+Let $E_{/\dQ}$ be an elliptic curve. So far, we've (mostly) proved that 
+$E(\dQ)$ is finitely generated. The one thing we skipped was the fact that 
+$E[n]\monic \cE_{\dF_l}(\overline{\dF_l})$ so long as $l\nmid n$ and 
+$l$ is a prime of good reduction. We can write $E(\dQ)\simeq\dZ^r\oplus T$, 
+where $T$ is a finite group. Due to Mazur's work in \cite{mazur-1977}, 
+we completely understand $T$. Mazur's proof requires some extremely delicate 
+algebraic geometry. The rank $r=\rank(E)$ is still poorly understood. 
+
+One way to bound $r$ is to look at the canonical short exact sequence 
+\[\begin{tikzcd}
+  0 \ar[r] 
+    & E(\dQ)/p \ar[r] 
+    & \selmer_p(E) \ar[r] 
+    & \sha(E)[p] \ar[r] 
+    & 0 .
+\end{tikzcd}\]
+It gives us the bound $p^r\leqslant \# \selmer_p(E)$, or equivalently 
+$r\leqslant \dim \selmer_p(E)$. We interpreted elements of $\selmer_p(E)$ as 
+locally soluble $p$-coverings of $E$, and elements of 
+$E(\dQ)/p\subset \selmer_p(E)$ as those coverings which are actually 
+globally soluble. Both these groups live inside $\h^1(\dQ,E[p])$, which 
+classifies \emph{all} $p$-coverings of $E$. Recall that a $p$-covering is 
+a map $\psi:C\epic E$ defined over $\dQ$, for which there exists an isomorphism 
+$\phi:C_{\overline\dQ}\to E_{\overline\dQ}$ making the following diagram 
+commute:
+\[\begin{tikzcd}
+  C_{\overline\dQ} \ar[dr, "\psi"] \ar[d, "\phi"] \\
+  E_{\overline\dQ} \ar[r, "p"] 
+    & E .
+\end{tikzcd}\]
+For such a covering to be locally soluble, one needs $C(\dA)\ne\varnothing$, 
+and to be globally soluble, one needs $C(\dQ)\ne\varnothing$. 
+The group $\h^1(\dQ,E[p])$ classifies diagrams $C\to S$, where $S$ is a twist 
+of $\dP^{p-1}_{/\dQ}$. The group $\selmer_p(E)$ classifies diagrams 
+$C\to S$, where $S\simeq \dP^{p-1}$. 
+
+Note that everything we have done with $\selmer_p(E)$ and $\h^1(\dQ,E[p])$ 
+works for $p=n$ a composite number. Bhargava and Shankar find 
+$\average(\#\selmer_n)$ for $n\in \{2,3,4,5\}$. It's 
+\[
+  \sigma(n) = \sum_{d\mid n} d .
+\]
+These sorts of sums show up in Eisensterin series, which are used extensively 
+in Mazur's classification of the possible torsion in $E(\dQ)$. 
+
+Let $p=2$. Then $\selmer_2 E$ classifies degree-two maps $C\to \dP^1$. 
+From Riemann-Hurwitz, we get 
+\[
+  \chi(C) = 2\chi(\dP^1) - \sum (e_x -1) ,
+\]
+which shows that there must be four branch points. So $C$ comes from a 
+binary quartic $a x^4+b x^3 y+c x^2 y^2+d x y^3+e y^4$. 
+
+If we set $p=3$, we are looking at maps $C\monic \dP^2$ whose image is the 
+zero locus of a ternary cubic. Such cubics live in a $10$-dimensional space. 
+
+For $n=4$, we classify maps $C\monic \dP^3$. The image is no longer the zero 
+locus of one function, but rather a complete intersection of two quadrics. 
+
+When $p=5$, we have maps $C\monic \dP^4$. The image is not a complete 
+intersection. It will be defined by five quadrics coming from 
+$4\times 4$ submatrices of a skew-symmetric $5\times 5$ matrix (all thought of 
+as quadratic forms). The moral of the story is that the geometry is getting a 
+\emph{lot} harder. 
+
+\begin{theorem}
+If, for all $p$, $\average(\#\selmer_p)=p+1$, then BSD holds $100\%$ of the 
+time. 
+\end{theorem}
+
+The curves in the above theorem will all have 
+$r_\mathrm{an},r_\mathrm{alg}\leqslant 1$. 
+
+The group $E(\dQ)/2$ corresponds to globally soluble diagrams $C\to \dP^1$, 
+which in turn correspond to binary quartics. The point $(\varepsilon,\eta)$ on 
+the elliptic curve $E:y^2=x^3-\frac I 3 x - \frac{J}{27}$ corresponds to the 
+quartic 
+\[
+  \frac{x^4}{4}-\frac 3 2 \eta^2 x^2 y^2 + 2\eta x y^3 + \left(\frac I 3-\frac 3 4\varepsilon^2\right) y^4 .
+\]
+The point $0\in E(\dQ)/2$ corresponds to a quartic having a linear factor. 
+
+\begin{example}
+Let $(I,J)=(3,-27)$. Then our curve is $E:y^2=x^3-x+1$. The point 
+$(1,1)\in E(\dQ)$ has $(1,1)+(1,1)=(-1,1)=(\varepsilon,\eta)$. So the 
+corresponding quartic should have a linear factor. This quartic is 
+\[
+  \frac 1 4 x^4 + \frac 3 2 x^2 y^2 + 2 x y^3 + \frac 1 4 y^4 
+    \sim \frac 1 4 (x^4 + 6 x^2 + 8 x+1) ,
+\]
+which has the integer $x=1$ is a root. The quartic corresponding to $(1,1)$ 
+is 
+\[
+  \frac 1 4 x^4 - \frac 3 2 x^2 y^2 + 2 x y^3 + \frac 1 4 y^4 
+    \sim \frac 1 4(x^4-6 x^2+8 x+1) ,
+\]
+which has no rational roots. 
+\end{example}
+
+\begin{theorem}
+Let $E_{/\dQ}$ be the affine curve given by $y^2=x^3+A x+B$. Then 
+$\# E(\dZ)<\infty$. 
+\end{theorem}
+
+Looking ahead: our job now is to count binary quartic forms. They live 
+in the space $V_R=\{(a,b,c,d,e)\in R^5\}$ where $R$ is some commutative 
+ring (probably just $\dZ$, $\dQ$, or some $\dQ_v$). Write an element of 
+$V_R$ as $f=a x^4 + \cdots + e y^4$. The group 
+$\GL_2(R)$ acts on $V_R$ by 
+\[
+  (\gamma\cdot f)(x,y) = f\left(\begin{pmatrix} x & y \end{pmatrix} \gamma\right) .
+\]
+Set 
+\begin{align*}
+  I &=12 a e-3 b d+c^2 \\
+  J &= 72 a c e+9 b c d-27 c d^2 - 27 e b^2 - 2 c^3 .
+\end{align*}
+Then $\dQ[a,b,c,d,e]^{\SL_2^\pm(\dQ)} = \dQ[I,J]$ is a polynomial ring. 
+We'll count binary quartics with given invariant $(I,J)$. That will correspond 
+to elliptic curves $E_{/\dQ}$ of the form $y^2=x^3+\frac I ? + \frac J \ast$, 
+where $?$ and $\ast$ are fixed constants only involving powers of $2$ and $3$. 
+For given $(I,J)$, there are only finitely many equivalence classes of 
+quartics. 
+
+If we studied binary quadratics $a x^2+b x y+c y^2$, the ring of invariants 
+is generated by the discriminant $b^2-4 a c$. The crucial property is: is 
+$b^2-4 a c\equiv 0\pmod 4$ for $f\in V_\dZ$?
+
+\begin{theorem}
+A pair $(I,J)$ occurs as the invariant of a binary quartic form if and only if 
+\begin{enumerate}
+  \item $(I,J)\equiv (0,0)\mod{(3,27)}$, 
+  \item $(I,J)\equiv (1,\pm 2)\mod{(9,27)}$,
+  \item $(I,J)\equiv (4,\pm 16)\mod{(9,27)}$,
+  \item $(I,J)\equiv (7,\pm 7)\mod{(9,27)}$,
+\end{enumerate}
+\end{theorem}
+
+Modulo $(9,27)$, there are $9$ pairs. So $\frac{1}{27}$ of pairs occur. 
+
+\begin{theorem}
+Let $h^{(i)}(I,J)$ be the number of $\GL_2(\dZ)$-equivalence classes of 
+irreducible binary quartic forms having invariants $(I,J)$, and having 
+$4-2 i$ real roots. Then 
+\begin{align*}
+  \sum_{H(I,J)< X} h^{(0)}(I,J) &= \frac{4}{135} \zeta(2) X^{5/6} + O(X^{3/4+\epsilon}) \\
+  \sum_{H(I,J)<X} h^{(1)}(I,J) &= \frac{32}{135} \zeta(2) X^{5/6}+O(X^{3/4+\epsilon}) \\
+  \sum_{H(I,J)<X} h^{(2)}(I,J) &= \frac{8}{135} \zeta(2) X^{5/6} + O(X^{3/4+\epsilon}) ,
+\end{align*}
+where $H(I,J) = \max(|I|^3,J^2)$ [with some constants]. 
+\end{theorem}
+
+We have to omit the $(I,J)$ corresponding to singular curves, but that's a 
+thin set with size $O(X^{1/3})$. 
+
+We need to understand $\GL_2(\dZ)\backslash V_\dZ$. We'll also be 
+interested in $\GL_2(\dR)\backslash V_\dR$ or $\GL_2(\dZ)\backslash V_\dR$. 
+We'll find a fundamental domain for something like 
+$\GL_2(\dZ)\backslash V_\dR$, and count lattice points inside the domain. 
+The fundamental domain will have a cusp and a ``main body.'' You can estimate 
+the volume of the main body; this gives (roughly) the number of integral 
+points. To handle the cusp, we first thicken it slightly, then find that 
+far out lattice points have linear factors, so they correspond to 
+$0\in \selmer_2 E$. 
+
+
+
+
