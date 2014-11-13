@@ -655,3 +655,131 @@ $0\in \selmer_2 E$.
 
 
 
+
+\subsection{The case \texorpdfstring{$p=2$}{p=2}}
+
+For any ring $R$, let $V_R$ be the set of binary quartic forms over $R$. 
+We're especially interested in $V_\dZ$, $V_\dR$, and $V_\dQ$. Recall that 
+$\GL_2(R)$ acts on $V_R$. We'd like to count elements of 
+$\GL_2(\dZ)\backslash V_\dZ$. 
+
+In general, if a discrete group $G$ acts on a manifold $X$, it is useful to 
+find a fundamental domain $\cF\subset X$ for the action of $G$ on $X$. The 
+example we care about is $\GL_2(\dZ)$ acting on $V_\dR$. 
+
+The group $\SL_2(\dR)$ acts on the upper half-plane $\fH=\{z\in \dC:\Im z>0\}$ 
+in the standard way via fractional linear transformations:
+\[
+  \mat{a}{b}{c}{d}\cdot z = \frac{a z+b}{c z+d} .
+\]
+The action is transitive, because 
+\[
+  \mat{\sqrt x}{x/\sqrt y}{}{1/\sqrt y}\cdot i = x+i y .
+\]
+Let's compute the stabilizer. If $\mat{a}{b}{c}{d}\cdot i=i$, then 
+$a=d,b=-c$. But the matrix lies in $\SL_2(\dR)$, so 
+$\det=a^2+b^2=1$, whence $\mat{a}{b}{-b}{a}\in \SO_2(\dR)$. It easily follows 
+that $\stabilizer_{\SL_2(\dR)}(i) = \SO_2(\dR)$. So we can think of 
+$\SL_2(\dR)/\SO_2(\dR)\simeq \fH$. 
+
+One conceptual picture here is: $\GL_2(\dR)$ acts on $\dC/\dR$, and elements 
+with negative determinant swap $\fH$ with $\fH^-=\{z\in \dZ:\Im z<0\}$. 
+Connected components, symmetric spaces, \ldots. 
+
+[K.~Conrad notes, maybe NAK decomposition.
+
+Serre's \emph{Arithmetic}
+
+Bump
+
+Gelbart: \emph{Automorphic forms an adele groups}]
+
+A couple elements of $\SL_2(\dZ)$ act in easily computable ways:
+\begin{align*}
+  \mat{1}{1}{}{1}\cdot z &= z+1 \\
+  \mat{}{-1}{1}{}\cdot z &= -\frac 1 z .
+\end{align*}
+
+\begin{theorem}
+A fundamental domain for the action of $\SL_2(\dZ)$ on $\fH$ is 
+\[
+  \cF = \{z\in \fH:|z|\geqslant 1\text{ and }-1/2\leqslant \Im z\leqslant 1/2 \} [fudge on boundary].
+\]
+\end{theorem}
+\begin{proof}
+This proof is [p.~77 of Serre]. Let $\gamma\in \SL_2(\dZ)$, and write 
+$\gamma=\mat{a}{b}{c}{d}$. Then 
+\[
+  \gamma\cdot z = \frac{a z+b}{c z+d} = \frac{(a z+b)(c\bar z+d)}{|c z+d|^2} ,
+\]
+which has imaginary part $|c z+d|^{-2} \Im(z)$. Fix $z_0\in \fH$. Note that 
+$\Im(\gamma\cdot z_0)>\Im(z_0)$ if and only if $|c z_0+d|$. The set 
+$\{c z_0+d:c,d\in \dZ\}\subset \dC$ is a lattice, so its intersection with 
+$\{z\in \dC:|z|<1\}$. It follows that in $\SL_2(\dZ)\cdot z_0$, there is an 
+element which attains the largest possible size for $\Im(\gamma\cdot z_0)$. 
+As $\mat{1}{b}{}{1} z_0 = z_0+b$, we can choose a representative $z_1$ of 
+$\SL_2(\dZ)\cdot z_0$ with maximal imaginary part, which also has real 
+part in $[-1/2,1/2)$. Furthermore, $|z_1|\geqslant 1$. Indeed, otherwise 
+$\mat{}{-1}{1}{}\cdot z_1=-z_1^{-1}$, which either has size $>1$ or bigger 
+imaginary part. We've shown that every orbit $\SL_2(\dZ)\cdot z_0$ intersects 
+$\cF$. All we need to do is show that if $z_1,z_2\in \cF$ are in the same 
+$\SL_2(\dZ)$-orbit, then 
+\begin{enumerate}
+  \item $z_2=z_1+1$, or 
+  \item $z_2=-1/z_1$ and $|z_1|=|z_2|=1$. 
+\end{enumerate}
+Without loss of generality, suppose $z$ and $\gamma z$ are both in 
+$\overline\cF$ and have $\Im(\gamma z)\geqslant \Im(z)$. So for 
+$\gamma=\mat{a}{b}{c}{d}$, we have $|c z+d|\leqslant 1$ and $|z|\geqslant 1$. 
+If $|c|\geqslant 2$, then $|c z+d|\geqslant 1$. So $c\in \{0,-1,1\}$. 
+
+If $c=0$, we need only consider the case 
+$\gamma=\mat{1}{b}{}{1}$, which translates to the right by $b\in \dZ$. 
+
+If $c=-1$, this is similar to $c=1$. 
+
+If $c=1$, $|c z+d|=|z+d|\leqslant 1$. Then $d\in \{-1,0,1\}$. Suppose $d=0$; 
+we look at $\mat{a}{-1}{1}{} z=a-z^{-1}$, which is not in 
+$\overline\cF$ unless $|z|=1$. We get $z=e^{2\pi i/3}$ or $e^{\pi i/3}$. The 
+other cases are similar. 
+\end{proof}
+
+For the moment, let's study binary quadratic forms $f=a x^2+b x y_c y^2$ 
+over $\dZ$, up to $\GL_2(\dZ)$-equivalence. We'll assume the fact that 
+$\mat{1}{1}{}{1}$ and $\mat{}{-1}{1}{}$ generate $\SL_2(\dZ)$. We compute: 
+\begin{align*}
+  \mat{1}{1}{}{1} f(x,y) &= f\left(\begin{pmatrix} x & y \end{pmatrix} \mat{1}{1}{}{1}\right) \\
+    &= f(x,x+y) \\
+    &= a x^2+b x(x+y)+c(x+y)^2 \\
+    &= (a+b+c) x^2 +(b+2 c) x y + c y^2 .
+\end{align*}
+Similarly, if $z$ is a root of the dehomogenization 
+$a x^2+b x+c$, then $z-1$ is a root of $\mat{1}{}{1}{1}\cdot f$, and 
+$-1/z$ is a root of $\mat{}{-1}{1}{}\cdot f$. Thus the action of $\SL_2(\dZ)$ 
+on binary quadratic forms over $\dZ$ induces the standard action on the roots. 
+Let's work with positive definite forms (this is the easy case: on the same 
+level as negative definite). So $a>0$ and $b^2-4 a c<0$. Thus roots 
+$z,\bar z$ live in an imaginary quadratic field. Indefinite quadratic forms 
+have real roots, so we're working with real quadratic fields, whose rings of 
+integers have infinite unit groups. 
+
+So we're trying to classify positive-definite binary quadratic forms over $\dZ$ 
+with $a,c>0$, up to equivalence. They have roots $\bar z$, $z\in \fH$. 
+Given a positive-definite binary quadratic form $f$, find 
+$\gamma\in \SL_2(\dZ)$ such that the root of $\gamma\cdot f$ is in $\cF$. The 
+new form equivalent to $f$ is $a x^2+b x y+c y^2$, where 
+$\Delta=b^2-4 a c<0$. We care about the root 
+$z=\frac{-b+i\sqrt{|\Delta|}}{2a}$. Since $z\in \cF$, we have 
+$|b|\leqslant a$. Moreover, $|z|\geqslant 1$ implies 
+$c\geqslant a$. Now 
+$3 a^2+b^2\leqslant 4 a c$, so 
+$a^2\leqslant \frac{|\Delta|}{3}$, whence $a\leqslant \sqrt{|\Delta|/3}$. 
+How do we count inequivalent positive-definite binary quadratic forms over 
+$\dZ$ with discriminant $\Delta$? We need $a,b,c$ with 
+$0\leqslant |b|\leqslant a \leqslant \sqrt{|\Delta|/3}$. Given fixed 
+$\Delta$, there are only finitely many such $a,b$, and $c$ is determined by 
+$a,b$. WE'll proceed to do this with indefinite quadratic forms. 
+
+
+
+
