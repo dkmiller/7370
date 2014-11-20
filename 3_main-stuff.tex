@@ -778,7 +778,144 @@ How do we count inequivalent positive-definite binary quadratic forms over
 $\dZ$ with discriminant $\Delta$? We need $a,b,c$ with 
 $0\leqslant |b|\leqslant a \leqslant \sqrt{|\Delta|/3}$. Given fixed 
 $\Delta$, there are only finitely many such $a,b$, and $c$ is determined by 
-$a,b$. WE'll proceed to do this with indefinite quadratic forms. 
+$a,b$. We'll proceed to do this with indefinite quadratic forms. 
+
+
+
+
+
+\subsection{Binary quartic forms}
+
+Let $R\subset \dR$ be a ring. We want to understand the action of $\GL_2(R)$ on 
+the space $V_\dR$ of real binary quartic forms. Write such a form as 
+\[
+  f = a x^4 + b x^3 y + c x^2 y^2 + d x y^3 + e y^4 .
+\]
+Given $f\in V_\dR$, define 
+\begin{align*}
+  I &= 12 a c-3 b d+c^2 \\
+  J &= 72 a c e+ 9 b c d-27 a d^2-27b^2 e- 2c^3 .
+\end{align*}
+We can think of $I,J$ as functions on the scheme $V_{/\dZ}$. Any 
+$\gamma\in \GL(2)$ acts on $V$ by 
+\[
+  \gamma\cdot f = f\left(\begin{pmatrix} x & y \end{pmatrix} \gamma \right) .
+\]
+We have, for $\gamma\in \GL(2)$, the identities:  
+\begin{align*}
+  I(\gamma\cdot f) &= (\det\gamma)^4 I(f) \\
+  J(\gamma\cdot f) &= (\det\gamma)^6 J(f) .
+\end{align*}
+Thus $I$ and $J$ are $\SL^\pm(2)$-invariant functions on $V$. The \emph{height} 
+of $f\in V_\dR$ is 
+\[
+  H(f) = \max\{|I|^3,J^2/4\} .
+\]
+Our goal is to count the number of $f\in \GL_2(\dZ)\backslash V_\dR$ with 
+$H(f)\leqslant X$. As with binary quadratic forms, we'll have to treat the 
+different possible signatures of $f$ separately. Put, for $R\subset \dR$:
+\begin{align*}
+  V_R^{(0)} &= \{f\in V_R:f\text{ has four real roots}\} \\
+  V_R^{(1)} &= \{f\in V_R:f\text{ has two real roots}\} \\
+  V_R^{(2-)} &= \{f\in V_R:f\text{ is negative definite}\} \\
+  V_R^{(2+)} &= \{f\in V_R:f\text{ is positive definite}\} .
+\end{align*}
+
+\begin{proposition}
+The fundamental domains for $V_\dR^{(\ast)}$ with $\GL_2(\dR)$-action are: 
+\begin{align*}
+  L_\dR^{(0)} &= \left\{x^3 y-\frac{x y^3}{3} - \frac{J y^4}{27}:-2<J<2\right\} \\
+  L_\dR^{(1)} &= \ldots \\ 
+  L_\dR^{(2\pm )} &= \ldots 
+\end{align*}
+\end{proposition}
+
+The fundamental domains $L_\dR^{(1)}$ and $L_\dR^{(2\pm)}$ have similarly 
+explicit fundamental domains. An all of the $L_\dR^{(\ast)}$, the coefficients 
+are bounded. In other words, 
+$V_\dR/\GL_2(\dR)$ has finite volume. It will be convenient to choose a compact 
+subgroup $G_0\subset \GL_2(\dR)$, and consider, for $h\in G_0$, the coset 
+$h L_\dR^{(\ast)}$. These cosets will be contained in some compact set which 
+depends only on $G_0$. We care about $\GL_2(\dZ)\backslash V_\dZ$. This leads 
+us to study $\GL_2(\dZ)\backslash \GL_2(\dR)$. In the previous subsection, we 
+got a pretty good understanding of $\SL_2(\dZ)\backslash \SL_2(\dR)/\SO(2)$. 
+We have 
+\[
+  \GL_2(\dZ)\backslash \GL_2(\dR) = \SL_2(\dZ)\backslash \GL_2^+(\dR)  = \SL_2(\dZ)\backslash N A K \Lambda ,
+\]
+in which 
+\begin{align*}
+  N &= \mat{1}{}{\ast}{1} \\
+  A &= \left\{\mat{t^{-1}}{}{}{t}:t>0\right\} \\
+  K &= \SO(2) \\
+  \Lambda &= \left\{\mat{\lambda}{}{}{\lambda}:\lambda>0\right\} 
+\end{align*}
+
+\begin{proposition}
+The multiplication map $N\times A\times K\times \Lambda\to \GL_2(\dR)^+$ is 
+a homeomorphism. 
+\end{proposition}
+\begin{proof}
+This is standard. 
+\end{proof}
+
+So $\GL_2(\dZ)\backslash \GL_2(\dR)$ has the same fundamental domain 
+\[
+  \cG = \left\{\mat{1}{}{u}{1} \mat{t^{-1}}{}{}{t}k \mat{\lambda}{}{}{\lambda}:u\in [-1/2,1/2],t\geqslant \sqrt{\frac{\sqrt 3}{2}}\right\} ,
+\]
+where we fudge the bounds for $u$ appropriately to be in one or two intervals, 
+depending on $t$. Let $h\in G_0$, our compact subgroup of $\GL_2(\dR)$. Then 
+$\cG h L_\dR^{(\ast)}$ is not compact (moreover, it is a multiset -- some 
+elements of $V_\dR$ occur with multiplicities $>1$). 
+
+If $x\in V_\dR^{(\ast)}$, how many times does the $\GL_2(\dZ)$-orbit of $x$ 
+intersect $\cG h \cdot L_\dR^{(\ast)}$? There exists a unique 
+$x_L\in h L_\dR^{(\ast)}$ that is $\GL_2(\dR)$-equivalent to $x$. If 
+$g\cdot x_L=x$, then $g' x_L\sim_{\GL_2(\dZ)} x$ if and only if 
+$g' = \gamma g \tilde g$ for some $\gamma\in \GL_2(\dZ)$ and 
+$\tilde g\in \stabilizer(x_L)\GL_2(\dR)$. Thus $g$ and $g'$ represent the same 
+double coset in 
+\[
+  \GL_2(\dZ)\backslash \GL_2(\dR)/\stabilizer_{\GL_2(\dR)}(x_L) .
+\]
+The number of such cosets is: 
+\[
+  \frac{\#(g \stabilizer_{\GL_2(\dR)}(x_L)g^{-1})}{\#(\SL_2(\dZ)\cap g\stabilizer_{\GL_2(\dR)}(x_L)g^{-1})} = \frac{\#\stabilizer_{\GL_2(\dR)}(x)}{\#\stabilizer_{\GL_2(\dZ)}(x)} .
+\]
+Both stabilizers contain $\dmu_2$. In fact, 
+$\stabilizer_{\GL_2(\dZ)}(x)=\{\pm 1\}$ away from a set of measure zero. On the 
+other hand, 
+\[
+  \#\stabilizer_{\GL_2(\dR)}(x) = \begin{cases} 8 & \ast \ne 1 \\ 4 & \ast = 1 \end{cases} ,
+\]
+again, away from a set of measure zero. 
+
+\begin{definition}
+$R_X(h\cdot L^{(\ast)})$ is the multiset of $w\in \cG h\cdot L^{(\ast)}$ such 
+that $H(w)\leqslant X$. 
+\end{definition}
+
+Let $N(V_\dZ^{(\ast)},X)$ be the number of integral irreducible binary quartic 
+forms with signature of type $\ast$ and height $\leqslant X$. Let 
+$n_{(\ast)}=\frac 1 2\#\stabilizer_{\GL_2(\dR)}(\ast)$. Then 
+\[
+  n_{(\ast)} N(V_\dZ^{(\ast)},X) = \#\{\text{irred.~int.~points in }R_X(h\cdot L^{(\ast)})\text{ weighted by $1/r$}\},
+\]
+in which $2 r=\#\stabilizer(\ast)$. Let $h\in G_0$. Then the number of 
+reducible integral binary quartic forms in $R_X(h\cdot L^{(\ast)}$ is 
+$O(X^{2/3+\epsilon})$. There are roughly $O(X^{5/6})$ forms with height 
+$\leqslant X$. 
+
+For $n\in \dN$, let $d(n)$ be the number of divisors of $n$. So if 
+$n=\prod p^{e_p}$, we have $d(n)=\prod (e_p+1)$. 
+
+\begin{lemma}
+$\limsup_{n\to \infty} \frac{\log d(n)}{\log n/\log\log n} = \log 2$. 
+\end{lemma}
+
+As a corollary, $d(n)=o(n^\epsilon)$ for all $\epsilon>0$. We'll count 
+quartics that have a factor $p x+q y$. This will tell us $p\mid a$ and 
+$q\mid e$. 
 
 
 
