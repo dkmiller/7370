@@ -920,3 +920,122 @@ $q\mid e$.
 
 
 
+
+\subsection{Responses to questions}
+
+We're interested in the local-global principle for Brauer-Severi varieties. 
+That is, if $k$ is a global field, a twist $X_{/k}$ of $\dP^{n-1}_{/k}$ 
+satisfies the local-global principle. 
+
+\begin{theorem}[Hilbert 90]
+Let $k$ be a field. Then $\h^1(k,\GL_n)=1$. 
+\end{theorem}
+
+When $n=1$, this is the more classical Hilbert 90, a theorem of Emmy 
+Noether. 
+
+
+\begin{theorem}
+Let $X_{/k}$ be a Brauer-Severi variety over a global field. The following are 
+equivalent:
+\begin{enumerate}
+  \item $X\simeq \dP^{n-1}_k$. 
+  \item $X$ is birational to $\dP^{n-1}_k$. 
+  \item $X(k)\ne\varnothing$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Clearly $1\Rightarrow 3$. We'll also prove the converse. Let $x_0\in X(k)$. 
+So $(X,x_0)$ is a twist of $(\dP^{n-1},(1:0:\cdots:0))$. These twists are 
+classified by $\h^1(k,\automorphisms(\dP^{n-1},(1:0:\cdots:0))$. Recall that 
+$\automorphisms(\dP^{n-1})=\PGL(n)$. We want automorphisms fiximg a point. 
+These correspond to $(\Gm\times \GL(n))/\Gm\simeq \Ga^n\ltimes\GL(n-1)$. So 
+we have a short exact sequence 
+\[
+  1\to \Ga^n \to \automorphisms(\dP^n,p) \to \GL(n-1)\to 1 .
+\]
+It is well-known that $\h^1(k,\Ga)=0$. There is a long exact sequence for 
+non-abelian Galois cohomology; it tells us that 
+$\h^1(k,\automorphisms(\dP^n,p))=1$. This tells us that the only twist of 
+$(\dP^n,p)$ is trivial, hence $X\simeq \dP^n$. 
+\end{proof}
+
+
+\begin{theorem}
+For $k$ a global field, the map 
+\[
+  \h^2(k,\Gm)\to \bigoplus_v \h^2(k_v,\Gm) 
+\]
+is an injection. 
+\end{theorem}
+
+This is a fundamental result of class field theory. Now we can prove the 
+local-global principle for Brauer-Severi varieties. We have a short exact 
+sequence 
+\[
+  1\to \Gm\to \GL(n)\to \PGL(n)\to 1 .
+\]
+Since $\h^1(k,\GL_n)=1$, the map $\h^1(k,\PGL_n)\to \h^2(k,\Gm)$ is an 
+injection. Let $X_{/k}$ be a brauer-Severi variety. This corresponds to a 
+unique cohomology class $c\in \h^1(k,\PGL_n)\subset \h^2(k,\Gm)$. We know 
+that $X(k)\ne\varnothing$ if and only if $c\ne 0$. This holds if and only if 
+$c|_v\ne 0$ in $\h^2(k_v,\Gm)$ for all $v$, which is equivalent to 
+$X(\dA)\ne\varnothing$. In other words, we have proved that 
+$X(k)\ne\varnothing\Leftrightarrow X(\dA)\ne\varnothing$, or equivalently that 
+$X\simeq \dP^n_{/k}$ if and only if $X_{k_v}\simeq \dP^n_{/k_v}$ for all $v$. 
+
+This proof is from Poonen's notes, with file name \texttt{Qpoints.pdf}. 
+
+The other question asked concerned the Hermite-Minkowski theorem. Let $k$ 
+be a number field, $S$ a finite set of primes of $k$. Let $K/k$ be the 
+maximal abelian $p$-extension of $k$. We will use the fact that 
+$[K:k]<\infty$. 
+
+\begin{theorem}[Dirichlet]
+Let $k$ be a number field. Then $\rank \cO_k^\times=r+s-1$, where $r$ is the 
+number of real places of $k$ and $s$ is the number of complex places of $k$. 
+More generally, $\rank \cO_{k,S}^\times = \# S-1$ for $S$ any finite set of 
+places containing the infinite places. 
+\end{theorem}
+
+[Other way around: use Dirichlet's theorem to prove Hermite-Minkowski.]
+
+\begin{proof}
+To prove the finiteness of $K/k$, we'll prove the finiteness of 
+$K(\dmu_p)/k(\dmu_p)$. So we may as well assume $\dmu_p\subset k$. We'll also 
+assume $S$ contains all primes above $p$. Now we can use Kummer theory to 
+classify $\dZ/p$-extensions of $k$ as splitting fields of $x^p-\alpha$ for 
+$\alpha\in k^\times/p$. Work locally at some $v\in S$. Then 
+$\alpha=\pi^e\cdot u$, for $\pi$ a uniformizer at $v$ and $u\in \cO_{k,v}$ a 
+unit. Roots of $x^p-\alpha$ are conjugates of $\pi^{e/p} u^{1/p}$. The measure 
+of ramification is $v(p)+r\cdot \frac{p-1}{p}$, unless $r\equiv 0\pmod p$, in 
+which case we take $\alpha=u$. In other words, $k(\sqrt[p]{\alpha})/k$ is 
+ramified at $v$ unless $\alpha$ is (equivalent to) a $v$-unit. So we are 
+interested in $\Gm(\cO_{k,S})\otimes \dZ/p \simeq (\dZ/p)^{\# S-1}$, a finite 
+group. 
+\end{proof}
+
+The local-global principle is false in general. We could prove it for 
+$\dP^n$ because $\automorphisms(\dP^{n-1})=\GL(n)$, and we know the Galois 
+cohomology of $\GL_n$. For a general curve, the automorphism group is much 
+more complicated, so the Galois cohomology may not satisfy a local-global 
+principle. 
+
+
+
+
+
+\subsection{What we've done}
+
+Let $V_\dR$ be the space of binary quartic forms over $\dR$. The group 
+$G_\dR=\GL_2(\dR)$ acts on $V_\dR$. The action of $G_\dR$ changes the heights 
+of quartic forms, but the change of height is determined by $\det(g)^2$. So 
+$\SL_2(\dZ)$ and $\GL_2(\dZ)$ do not change heights. We had a fundamental 
+domain $\cF=N A K \Lambda$. We constructed fundamental domains for 
+$\GL_2(\dZ)\backslash V_\dR^{(i)}$. 
+
+[\ldots stopped taking notes\ldots]
+
+
+
+
